@@ -160,8 +160,8 @@
           dctx.beginPath();
           dctx.arc(p.x * w, p.y * h, p.r, 0, 6.2832);
           dctx.fillStyle = p.teal
-            ? "rgba(53,208,176," + p.a * 0.8 + ")"
-            : "rgba(74,127,232," + p.a + ")";
+            ? "rgba(249,168,199," + p.a * 0.8 + ")"
+            : "rgba(246,83,143," + p.a + ")";
           dctx.fill();
         }
       }
@@ -183,8 +183,12 @@
     });
   });
 
+  /* Section-specific effects below only exist on the product page. `has()`
+     keeps the other pages from logging a wall of GSAP target-not-found. */
+  function has(sel) { return !!document.querySelector(sel); }
+
   /* ---------- exploded labels stagger ---------- */
-  if (desktop) {
+  if (desktop && has(".xlabel")) {
     gsap.from(".xlabel", {
       autoAlpha: 0,
       y: 14,
@@ -213,28 +217,34 @@
   });
 
   /* ---------- washdown parallax ---------- */
-  gsap.fromTo(".wash-bg", { yPercent: -8 }, {
-    yPercent: 8,
-    ease: "none",
-    scrollTrigger: { trigger: ".wash", start: "top bottom", end: "bottom top", scrub: true }
-  });
+  if (has(".wash-bg")) {
+    gsap.fromTo(".wash-bg", { yPercent: -8 }, {
+      yPercent: 8,
+      ease: "none",
+      scrollTrigger: { trigger: ".wash", start: "top bottom", end: "bottom top", scrub: true }
+    });
+  }
 
   /* ---------- heads figure parallax ---------- */
-  gsap.fromTo("#headsFig img", { y: 30 }, {
-    y: -30,
-    ease: "none",
-    scrollTrigger: { trigger: "#headsFig", start: "top bottom", end: "bottom top", scrub: true }
-  });
+  if (has("#headsFig img")) {
+    gsap.fromTo("#headsFig img", { y: 30 }, {
+      y: -30,
+      ease: "none",
+      scrollTrigger: { trigger: "#headsFig", start: "top bottom", end: "bottom top", scrub: true }
+    });
+  }
 
   /* ---------- phone: float + bar chart ---------- */
-  gsap.from(".bars i", {
-    scaleY: 0,
-    duration: 0.7,
-    ease: "power3.out",
-    stagger: 0.07,
-    scrollTrigger: { trigger: ".phone-chart", start: "top 92%", once: true }
-  });
-  if (desktop) {
+  if (has(".bars i")) {
+    gsap.from(".bars i", {
+      scaleY: 0,
+      duration: 0.7,
+      ease: "power3.out",
+      stagger: 0.07,
+      scrollTrigger: { trigger: ".phone-chart", start: "top 92%", once: true }
+    });
+  }
+  if (desktop && has("#phone")) {
     gsap.to("#phone", {
       y: -12,
       duration: 3.2,
@@ -259,9 +269,11 @@
     });
   }
 
-  /* ---------- nav section highlight ---------- */
+  /* ---------- nav section highlight (same-page anchor links only;
+     page links carry a static .on set in the HTML) ---------- */
   gsap.utils.toArray(".nav-links a").forEach(function (link) {
     var id = link.getAttribute("href");
+    if (!id || id.charAt(0) !== "#") return;
     var sec = document.querySelector(id);
     if (!sec) return;
     ScrollTrigger.create({
