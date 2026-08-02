@@ -6,9 +6,9 @@ Four-page company site for SMART SWINE, LLC. Pure static — no build step.
 
 | Page | File | What it carries |
 |---|---|---|
-| About | `index.html` | vision, mission, current status, timeline, team, advisors, partners |
+| About | `index.html` | vision, mission, current status, team, advisors, partners |
 | Product | `product.html` | the full SPM-01 story from `SPM-01_Product_Brochure.pdf` (13 pages), turntable hero |
-| Resources | `resources.html` | press, peer-reviewed foundations, downloads, industry and grant programs |
+| Resources | `resources.html` | video and podcasts, press, industry and grant programs |
 | Contact | `contact.html` | book a pilot, get in touch |
 
 ## Run
@@ -44,13 +44,14 @@ set the DNS record, then re-enable HTTPS in the repo's Pages settings.
 ```
 index.html            About (the company's front door)
 product.html          the SPM-01 product story, 12 sections
-resources.html        links, press and downloads
+resources.html        video, podcasts, press and industry links
 contact.html          pilot + contact
-css/style.css         design tokens: near-black stack + pink brand
+css/style.css         design tokens: plum-charcoal stack + pink brand
                       (--pink #f6538f, --rose #f9a8c7, --seal #cf3d78).
                       --coral / --teal / --seal are historical aliases kept so
                       the product page's markup did not have to be rewritten —
                       every one of them now resolves to a pink.
+css/fonts.css         self-hosted Roboto + Roboto Mono @font-face rules
 js/main.js            shared across all four pages. Turntable scrub, scroll
                       reveals, count-ups, parallax, card tilt, seal-line
                       progress. Product-page-only effects are guarded by
@@ -60,6 +61,8 @@ assets/img/           brochure renders resized to WebP
 assets/team/          founder + advisor headshots, 640px square WebP
 assets/team_raw/      originals (keep: the sources were temp files)
 assets/seq/           96-frame product turntable (scroll-scrubbed hero)
+assets/explode/       48-frame assembled-to-exploded scrub
+assets/fonts/         Roboto + Roboto Mono woff2, latin subset
 assets/logos/         partner logo wall
 vendor/               GSAP 3.12.5 + ScrollTrigger (cdnjs copies)
 ```
@@ -97,9 +100,22 @@ any of these when editing copy:
   federal identifiers and any producer lead contacts off the site entirely.
 - Attribution: sow and piglet geometry "Some Pig" by Austin Beaulier, CC BY 4.0.
 
-## Not yet on the site (waiting on the user)
+## Regenerating the exploded view
 
-- The 3-minute founder video is **unlisted** on YouTube and no URL exists in any
-  local file. Ask for the link and confirm it should be public before adding it.
-- Three of the four Log-1 source papers were only reconstructed from PDF filenames,
-  so Resources links just the one verified USPLF 2025 paper.
+```bash
+cd ../v2_双光轴/源码
+/Applications/Blender.app/Contents/MacOS/Blender -b -P ss_explode_seq.py -- \
+    --frames 48 --samples 64 --resx 1600 --resy 900
+```
+
+Label anchors come out of the same run as `explode_anchors.json` — camera-space
+percentages for every part. Paste changed values into `XANCHORS` in
+`js/main.js`; never hand-tune them against a screenshot.
+
+## Notes on the Resources page
+
+- The two podcast episodes are third-party interviews with advisor Dr. Ziteng Xu,
+  not coverage of Smart Swine. They are labelled that way on purpose.
+- Only one peer-reviewed paper is linked because it is the only one whose URL was
+  verified; three others exist but their links were reconstructed from local PDF
+  filenames and were never confirmed.
