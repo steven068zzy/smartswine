@@ -1,30 +1,32 @@
 /* SMART SWINE — company site
-   Tokens: near-black stack + pink brand (the mascot's own color).
+   Tokens: plum-charcoal stack + pink brand (the mascot's own color).
    --coral/--teal/--seal keep their names as historical aliases; every value
-   now resolves into the black + pink system.
-   Type: Helvetica display + ui-monospace spec labels. */
+   now resolves into the pink system.
+   Type: Roboto throughout — Black for display, Bold for headings, Roboto Mono
+   for spec labels. Self-hosted in assets/fonts, see css/fonts.css. */
+
+@import url("fonts.css");
 
 :root {
-  /* Lifted off pure black: the darkest surface is ~#1b1a1e, not #0b0a0c.
-     Deep charcoal with a warm pink cast reads as a considered dark theme
-     rather than an unlit void, and the renders sit on it without looking
-     like cut-outs. */
-  --bg0: #1b1920;
-  --bg1: #232128;
-  --bg2: #2c2932;
-  --bg3: #383440;
-  --line: #423d4c;
-  --ink: #f7f4f7;
-  --mut: #b6afba;
-  --dim: #8a8292;
+  /* Well off black: the darkest surface is a plum-tinted charcoal, not a void.
+     Every step is ~11 levels apart so cards, cards-on-cards and rules all
+     separate without needing borders to do the work. */
+  --bg0: #262330;
+  --bg1: #2e2b39;
+  --bg2: #383445;
+  --bg3: #464152;
+  --line: #574f68;
+  --ink: #f8f6f9;
+  --mut: #c5bfcd;
+  --dim: #9d95a9;
   --pink: #f6538f;
   --rose: #f9a8c7;
   --coral: var(--pink);
   --teal: var(--rose);
   --seal: #cf3d78;
   --seal-hi: #f76fa8;
-  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --pad: clamp(20px, 5vw, 72px);
 }
 
@@ -54,7 +56,8 @@ section { scroll-margin-top: 64px; }
 .fine.center { text-align: center; max-width: 720px; margin: 28px auto 0; padding: 0 var(--pad); }
 
 /* ---------- headings ---------- */
-h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.06; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.022em; line-height: 1.08; }
+.beat h1, .beat h2, .page-hero h1, .cta h2 { font-weight: 900; letter-spacing: -0.035em; }
 h2 { font-size: clamp(34px, 4.6vw, 58px); margin-bottom: 22px; }
 h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .sub-h { font-size: clamp(26px, 3.2vw, 40px); margin: 90px 0 18px; }
@@ -84,14 +87,14 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   display: flex; align-items: center; gap: 26px;
   padding: 0 clamp(16px, 3vw, 36px);
   height: 60px;
-  background: rgba(27, 25, 32, 0.80);
+  background: rgba(38, 35, 48, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(66, 61, 76, 0.7);
+  border-bottom: 1px solid rgba(87, 79, 104, 0.7);
 }
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
-  font-weight: 800; letter-spacing: 0.12em; font-size: 14px;
+  font-weight: 700; letter-spacing: 0.14em; font-size: 14px;
   text-decoration: none;
 }
 .nav-links { display: flex; gap: 4px; margin-left: auto; }
@@ -129,7 +132,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 /* ---------- seal line (signature) ---------- */
 .sealline {
   position: fixed; left: 26px; top: 14vh; bottom: 14vh; width: 2px;
-  background: rgba(66, 61, 76, 0.85);
+  background: rgba(87, 79, 104, 0.8);
   z-index: 40; border-radius: 2px;
 }
 .sealline-fill {
@@ -158,8 +161,8 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .hero-grid {
   position: absolute; inset: -1px;
   background-image:
-    linear-gradient(rgba(247, 111, 168, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(247, 111, 168, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(247, 111, 168, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 111, 168, 0.07) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 35%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 35%, transparent 78%);
@@ -190,7 +193,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: absolute; z-index: 5;
   left: clamp(20px, 7vw, 110px); bottom: clamp(72px, 13vh, 150px);
   max-width: 640px;
-  text-shadow: 0 2px 26px rgba(27, 25, 32, 0.9);
+  text-shadow: 0 2px 26px rgba(38, 35, 48, 0.92);
 }
 .beat h1 {
   font-size: clamp(64px, 11vw, 148px);
@@ -245,7 +248,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .stat strong {
   display: block;
-  font-size: clamp(28px, 3vw, 42px); font-weight: 800; letter-spacing: -0.02em;
+  font-size: clamp(28px, 3vw, 42px); font-weight: 700; letter-spacing: -0.03em;
   margin-bottom: 8px; font-variant-numeric: tabular-nums;
 }
 .stat span { color: var(--mut); font-size: 12.5px; line-height: 1.5; display: block; }
@@ -358,7 +361,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   line-height: 1.5; white-space: nowrap;
   opacity: 0;
   transition: opacity 0.45s ease;
-  text-shadow: 0 1px 4px rgba(27, 25, 32, 0.95), 0 0 14px rgba(27, 25, 32, 0.9);
+  text-shadow: 0 1px 4px rgba(27, 25, 32, 0.95), 0 0 14px rgba(38, 35, 48, 0.92);
 }
 .xlabels.on .xlabel { opacity: 1; }
 .xlabel b { color: var(--pink); margin-right: 7px; font-weight: 700; }
@@ -413,12 +416,12 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .wash-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(27, 25, 32, 0.94) 0%, rgba(27, 25, 32, 0.60) 52%, rgba(27, 25, 32, 0.28) 100%);
+  background: linear-gradient(90deg, rgba(38, 35, 48, 0.94) 0%, rgba(38, 35, 48, 0.62) 52%, rgba(38, 35, 48, 0.30) 100%);
 }
 .wash-inner { position: relative; z-index: 2; }
 .wash-inner .lede { max-width: 560px; }
 .wash .stats { grid-auto-rows: 1fr; max-width: 900px; }
-.wash .stat { background: rgba(44, 41, 50, 0.78); backdrop-filter: blur(6px); }
+.wash .stat { background: rgba(56, 52, 69, 0.80); backdrop-filter: blur(6px); }
 
 /* ---------- mounting ---------- */
 .wide-fig { max-width: 1420px; margin: 40px auto; padding: 0 var(--pad); }
@@ -444,16 +447,16 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .phone-col { display: grid; place-items: center; }
 .phone {
   width: min(330px, 88vw);
-  background: #16151a;
-  border: 1px solid #4a4556;
+  background: #201e28;
+  border: 1px solid #5a5470;
   border-radius: 44px;
   padding: 14px 14px 10px;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65), 0 0 0 6px #2a2732;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65), 0 0 0 6px #363144;
   position: relative;
 }
 .phone-notch {
   position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-  width: 96px; height: 22px; background: #2a2732; border-radius: 12px;
+  width: 96px; height: 22px; background: #363144; border-radius: 12px;
 }
 .phone-status {
   display: flex; justify-content: space-between;
@@ -494,10 +497,10 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   background: rgba(10, 10, 13, 0.72); padding: 3px 7px; border-radius: 4px;
 }
 .phone-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin: 10px 0; }
-.phone-stats div { background: #23222a; border-radius: 10px; padding: 9px 10px; }
+.phone-stats div { background: #2e2b38; border-radius: 10px; padding: 9px 10px; }
 .phone-stats strong { font-size: 19px; display: block; }
 .phone-stats span { color: var(--dim); font-size: 8.5px; }
-.phone-chart { background: #23222a; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+.phone-chart { background: #2e2b38; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
 .phone-chart .mono, .phone-brief .mono { font-size: 8px; color: var(--dim); letter-spacing: 0.16em; }
 .bars { display: flex; align-items: flex-end; gap: 7px; height: 58px; margin-top: 8px; }
 .bars i {
@@ -506,12 +509,12 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   transform-origin: 50% 100%;
 }
 .bars i.hot { background: var(--coral); }
-.phone-brief { background: #23222a; border-radius: 10px; padding: 10px 12px; }
+.phone-brief { background: #2e2b38; border-radius: 10px; padding: 10px 12px; }
 .phone-brief p:last-child { font-size: 10.5px; color: var(--mut); line-height: 1.55; margin-top: 5px; }
 .phone-brief strong { color: var(--ink); }
 .phone-alert {
   display: flex; align-items: center; gap: 8px;
-  background: #23222a; border-radius: 10px; padding: 9px 12px; margin-top: 7px;
+  background: #2e2b38; border-radius: 10px; padding: 9px 12px; margin-top: 7px;
   font-size: 10px; color: var(--mut);
 }
 .phone-alert .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); flex: none; }
@@ -690,7 +693,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: absolute; inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
   width: 54px; height: 54px; border-radius: 50%;
-  background: rgba(27, 25, 32, 0.72);
+  background: rgba(38, 35, 48, 0.74);
   border: 2px solid var(--pink);
   backdrop-filter: blur(3px);
   transition: background 0.25s, transform 0.25s;
@@ -708,7 +711,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .vlen {
   position: absolute; right: 10px; bottom: 10px;
   font-family: var(--mono); font-size: 10.5px; font-weight: 400;
-  background: rgba(27, 25, 32, 0.85); color: var(--ink);
+  background: rgba(38, 35, 48, 0.86); color: var(--ink);
   padding: 3px 7px; border-radius: 4px;
 }
 
@@ -735,8 +738,115 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .foot { border-top: 1px solid var(--line); padding: 54px 0 70px; background: var(--bg0); }
 .foot-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
 @media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr; } }
-.foot-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.12em; font-size: 13px; margin-bottom: 12px; }
+.foot-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.14em; font-size: 13px; margin-bottom: 12px; }
 .foot .mut { font-size: 13.5px; }
 .foot a { color: var(--mut); }
 .foot a:hover { color: var(--ink); }
 .foot .fine { margin: 0; }
+
+/* =====================================================================
+   Material layer — texture, structural rules and registration marks.
+   Everything below is decoration that carries the engineering language:
+   a drawing has grain, rules that run to the margin, and corner ticks.
+   ===================================================================== */
+
+/* Film grain over the whole page. Flat dark surfaces read as plastic
+   without it; at 3% it is felt rather than seen. */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) { body::after { opacity: 0.02; } }
+
+/* The eyebrow's rule runs out to the container edge, the way a drawing
+   title block rules off from its label. */
+.eyebrow::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line) 0%, rgba(87, 79, 104, 0) 72%);
+}
+.page-hero .eyebrow::after,
+.cta .eyebrow::after { max-width: 340px; }
+
+/* Registration tick: one corner bracket per card, picked up in pink on
+   hover so the whole grid answers the pointer. */
+.card, .stat, .tcard, .rcard, .ccard, .mcard, .vm article, .warranty {
+  position: relative;
+}
+.card::after, .stat::after, .tcard::after, .rcard::after,
+.ccard::after, .mcard::after, .vm article::after, .warranty::after {
+  content: "";
+  position: absolute; right: 11px; bottom: 11px;
+  width: 13px; height: 13px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.25s;
+  pointer-events: none;
+}
+.card:hover::after, .stat:hover::after, .tcard:hover::after,
+.rcard:hover::after, .ccard:hover::after, .mcard:hover::after,
+.vm article:hover::after, .warranty:hover::after {
+  border-color: var(--pink);
+}
+
+/* Blueprint field on the deep sections: the same 72px module as the hero
+   grid, so the page keeps one measuring system throughout. */
+.sec-deep, .wash, .page-hero { position: relative; isolation: isolate; }
+.sec-deep::before, .cta::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(247, 111, 168, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 111, 168, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+}
+
+/* Ambient brand glow, low and wide, so the darkest sections still have a
+   light source rather than sitting flat. */
+.sec-deep::after, .page-hero::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 46% at 82% 8%, rgba(246, 83, 143, 0.09), transparent 68%);
+}
+.page-hero::after {
+  background: radial-gradient(ellipse 58% 60% at 88% 22%, rgba(246, 83, 143, 0.13), transparent 70%);
+}
+
+/* Stat figures get a hairline shelf, which lines the numbers up as a row
+   of readings instead of four floating numerals. */
+.stat strong::after {
+  content: "";
+  display: block;
+  width: 26px; height: 2px;
+  background: var(--pink);
+  margin-top: 12px;
+  transition: width 0.35s ease;
+}
+.stat:hover strong::after { width: 46px; }
+
+/* Section headings carry a short brand rule, echoing the hero's. */
+.sec h2 { position: relative; }
+
+/* Card lift: the whole grid responds, not only the ones that already did */
+.card, .stat, .rcard, .ccard {
+  transition: transform 0.22s, border-color 0.22s, background 0.22s;
+}
+.card:hover, .stat:hover, .ccard:hover { transform: translateY(-3px); }
+
+/* Footer gets the same rule treatment as the eyebrows */
+.foot { position: relative; }
+.foot::before {
+  content: "";
+  position: absolute; left: 0; top: -1px; height: 2px;
+  width: clamp(80px, 18vw, 260px);
+  background: linear-gradient(90deg, var(--pink), transparent);
+}
