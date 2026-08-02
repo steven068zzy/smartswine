@@ -282,7 +282,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   animation: beamx 1.6s linear infinite;
 }
 .beam-down {
-  left: 56.5%; top: 72%; width: 2px; height: 26%;
+  left: 53.5%; top: 74%; width: 2px; height: 24%;
   background: repeating-linear-gradient(180deg, var(--coral) 0 10px, transparent 10px 18px);
   opacity: 0.75;
   animation: beamy 1.6s linear infinite;
