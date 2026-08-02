@@ -1,5 +1,7 @@
 # SMART SWINE — company site
 
+**Live: https://steven068zzy.github.io/smartswine/**
+
 Four-page company site for SMART SWINE, LLC. Pure static — no build step.
 
 | Page | File | What it carries |
@@ -23,8 +25,19 @@ canvas image loading in some browsers); everything else works from disk.
 
 ## Deploy
 
-Push to GitHub and enable Pages on the repo root. No build, no dependencies —
-GSAP + ScrollTrigger are vendored in `vendor/`.
+GitHub Pages serves `main` from the repo root, so a push is a deploy:
+
+```bash
+git push
+```
+
+No build step and no external requests at runtime — GSAP + ScrollTrigger are
+vendored in `vendor/` and Roboto is self-hosted in `assets/fonts/`. The only
+third-party requests the site makes are the YouTube thumbnails on the
+Resources page.
+
+To point a custom domain at it, add a `CNAME` file containing the domain and
+set the DNS record, then re-enable HTTPS in the repo's Pages settings.
 
 ## Structure
 
