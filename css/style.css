@@ -200,6 +200,12 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .beat-2, .beat-3 { opacity: 0; visibility: hidden; }
 .beat-3 { left: auto; right: clamp(20px, 7vw, 110px); text-align: right; }
 
+@media (max-width: 640px) {
+  .beat { right: 20px; }
+  .beat-3 { left: 20px; text-align: left; }
+  .hero-tag { font-size: 14.5px; }
+}
+
 .hero-cue {
   position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.34em;
@@ -270,13 +276,13 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 /* scan beams on the heads figure */
 .beam { position: absolute; pointer-events: none; }
 .beam-fwd {
-  left: 4%; top: 46%; width: 34%; height: 2px;
+  left: 74%; top: 41%; width: 24%; height: 2px;
   background: repeating-linear-gradient(90deg, var(--teal) 0 10px, transparent 10px 18px);
   opacity: 0.75;
   animation: beamx 1.6s linear infinite;
 }
 .beam-down {
-  left: 56%; top: 66%; width: 2px; height: 30%;
+  left: 56.5%; top: 72%; width: 2px; height: 26%;
   background: repeating-linear-gradient(180deg, var(--coral) 0 10px, transparent 10px 18px);
   opacity: 0.75;
   animation: beamy 1.6s linear infinite;
@@ -293,6 +299,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: absolute; left: var(--x); top: var(--y);
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
   white-space: nowrap; line-height: 1.5;
+  text-shadow: 0 1px 3px rgba(10, 10, 13, 0.95), 0 0 12px rgba(10, 10, 13, 0.8);
 }
 .xlabel::before {                       /* anchor dot */
   content: ""; position: absolute; left: 0; top: 0;
@@ -305,7 +312,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   background: linear-gradient(180deg, var(--seal-hi), rgba(74, 127, 232, 0.15));
 }
 .xlabel b { color: var(--coral); margin-right: 7px; font-weight: 700; }
-.xlabel em { display: block; font-style: normal; color: var(--dim); font-size: 10px; }
+.xlabel em { display: block; font-style: normal; color: var(--mut); font-size: 10px; }
 .xlabel.up   { transform: translate(-14px, calc(-100% - 40px)); }
 .xlabel.up::before  { transform: translate(calc(14px - 50%), calc(100% + 40px)) translateY(-2px); }
 .xlabel.up::after   { bottom: -38px; left: 13.5px; }
@@ -313,8 +320,8 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .xlabel.down::before { transform: translate(calc(14px - 50%), -48px); }
 .xlabel.down::after  { top: -38px; left: 13.5px; background: linear-gradient(0deg, var(--seal-hi), rgba(74, 127, 232, 0.15)); }
 @media (max-width: 900px) {
-  .xlabels { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 22px var(--pad) 0; }
-  .xlabel { position: static; transform: none; white-space: normal; }
+  .xlabels { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 22px var(--pad) 0; }
+  .xlabel, .xlabel.up, .xlabel.down { position: static; transform: none; white-space: normal; text-shadow: none; }
   .xlabel::before, .xlabel::after { display: none; }
 }
 
