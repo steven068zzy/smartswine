@@ -273,6 +273,8 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 @media (max-width: 940px) { .split { grid-template-columns: 1fr; } }
 .split-img { position: relative; }
 .split-img img { border-radius: 14px; border: 1px solid var(--line); }
+/* the FOV overlay must be clipped to the card, not spill past its corners */
+.split-img .fig-media { border-radius: 14px; overflow: hidden; }
 
 .axis { margin-top: 30px; }
 .axis p:last-child { color: var(--mut); font-size: 15px; }
@@ -283,23 +285,53 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .axis-tag.teal { color: var(--teal); }
 .axis-tag.coral { color: var(--coral); }
 
-/* scan beams on the heads figure */
-.beam { position: absolute; pointer-events: none; }
-.beam-fwd {
-  left: 74%; top: 41%; width: 24%; height: 2px;
-  background: repeating-linear-gradient(90deg, var(--teal) 0 10px, transparent 10px 18px);
-  opacity: 0.75;
-  animation: beamx 1.6s linear infinite;
+/* adjustable field-of-view wedges on the heads figure */
+.fig-media { position: relative; }
+.fov {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
 }
-.beam-down {
-  left: 53.5%; top: 74%; width: 2px; height: 24%;
-  background: repeating-linear-gradient(180deg, var(--coral) 0 10px, transparent 10px 18px);
-  opacity: 0.75;
-  animation: beamy 1.6s linear infinite;
+.fov-fill { stroke: none; }
+.fov-edge { stroke-width: 1.1; stroke-dasharray: 5 4; fill: none; }
+.fov-scan { stroke-width: 1.6; opacity: 0.95; }
+.fov-pivot { stroke: none; }
+
+.fov-fwd .fov-fill  { fill: rgba(249, 168, 199, 0.10); }
+.fov-fwd .fov-edge,
+.fov-fwd .fov-scan  { stroke: var(--rose); }
+.fov-fwd .fov-pivot { fill: var(--rose); }
+.fov-down .fov-fill { fill: rgba(246, 83, 143, 0.10); }
+.fov-down .fov-edge,
+.fov-down .fov-scan { stroke: var(--pink); }
+.fov-down .fov-pivot { fill: var(--pink); }
+
+/* the sweep: each ray pivots between its own wedge limits */
+.fov-fwd .fov-scan {
+  transform-origin: 305px 111px;
+  animation: sweepFwd 4.2s ease-in-out infinite;
 }
-@keyframes beamx { to { background-position: -18px 0; } }
-@keyframes beamy { to { background-position: 0 18px; } }
-@media (prefers-reduced-motion: reduce) { .beam { animation: none; } }
+.fov-down .fov-scan {
+  transform-origin: 194px 211px;
+  animation: sweepDown 4.2s ease-in-out infinite;
+  animation-delay: -1.4s;
+}
+@keyframes sweepFwd {
+  0%, 100% { transform: rotate(-17deg); }
+  50%      { transform: rotate(17deg); }
+}
+@keyframes sweepDown {
+  0%, 100% { transform: rotate(-19deg); }
+  50%      { transform: rotate(19deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fov-scan { animation: none; }
+}
+
+.split-img figcaption {
+  color: var(--dim); font-size: 12.5px; line-height: 1.6;
+  margin-top: 14px; max-width: 460px;
+}
 
 /* ---------- exploded (scroll-scrubbed assembly) ---------- */
 .xstage { height: 100vh; position: relative; }

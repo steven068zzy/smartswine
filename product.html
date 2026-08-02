@@ -126,9 +126,35 @@
       </div>
     </div>
     <figure class="split-img rv" id="headsFig">
-      <img src="assets/img/heads.webp" alt="Close-up of the two tilting camera heads — concept industrial design">
-      <span class="beam beam-fwd" aria-hidden="true"></span>
-      <span class="beam beam-down" aria-hidden="true"></span>
+      <!-- The overlay must box the image alone: if it stretches to include the
+           caption the viewBox skews and every apex slides off its optic. -->
+      <div class="fig-media">
+        <img src="assets/img/heads.webp" alt="Close-up of the two tilting camera heads — concept industrial design">
+        <!-- Each wedge is the span a head can be aimed across on its yoke; the
+             ray sweeping inside it is the head being re-aimed. Geometry is in
+             the render's own 4:3 space, so the apexes sit on the real optics. -->
+        <svg class="fov" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Apexes are measured off the render itself: the forward aperture
+               strip ends at (305,111) and the RGB lens face is at (196,220) in
+               these units, so each wedge starts on the glass, not near it. -->
+          <g class="fov-fwd">
+            <path class="fov-fill" d="M305,111 L382,96 A78,78 0 0,1 377,142 Z"/>
+            <line class="fov-edge" x1="305" y1="111" x2="382" y2="96"/>
+            <line class="fov-edge" x1="305" y1="111" x2="377" y2="142"/>
+            <line class="fov-scan" x1="305" y1="111" x2="385" y2="119"/>
+            <circle class="fov-pivot" cx="305" cy="111" r="2"/>
+          </g>
+          <g class="fov-down">
+            <path class="fov-fill" d="M194,211 L216,275 A68,68 0 0,1 172,275 Z"/>
+            <line class="fov-edge" x1="194" y1="211" x2="216" y2="275"/>
+            <line class="fov-edge" x1="194" y1="211" x2="172" y2="275"/>
+            <line class="fov-scan" x1="194" y1="211" x2="194" y2="281"/>
+            <circle class="fov-pivot" cx="194" cy="211" r="2"/>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Each head tilts on its own yoke — the wedges are the pitch
+        range you can set, one thumb screw at a time.</figcaption>
     </figure>
   </div>
 </section>
