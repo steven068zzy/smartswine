@@ -114,7 +114,7 @@ percentages for every part. Paste changed values into `XANCHORS` in
 
 ## Notes on the Resources page
 
-- The two podcast episodes are third-party interviews with advisor Dr. Ziteng Xu,
+- The two podcast episodes are third-party interviews with advisor Dr. Ziteng “Tim” Xu,
   not coverage of Smart Swine. They are labelled that way on purpose.
 - Only one peer-reviewed paper is linked because it is the only one whose URL was
   verified; three others exist but their links were reconstructed from local PDF
