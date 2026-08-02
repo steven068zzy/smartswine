@@ -56,14 +56,9 @@
         One sealed unit watches the sow and her newborn piglets at once.</p>
     </div>
     <div class="beat beat-2">
-      <h2>Two axes.<br>One enclosure.</h2>
-      <p>A stereo depth module reads the sow.<br>
-         An RGB&nbsp;+&nbsp;IR head reads the piglets beneath her.</p>
-    </div>
-    <div class="beat beat-3">
-      <h2>Built for<br>the washdown.</h2>
-      <p>IP69K-target sealing. Tool-free demount.<br>
-         Lifetime warranty — bought or rented.</p>
+      <h2>Sealed on<br>every face.</h2>
+      <p>Gasket, gland, vents, rain lip — engineered for the pressure washer,<br>
+         then hung on the crate without a tool.</p>
     </div>
 
     <div class="hero-cue" aria-hidden="true"><span></span>SCROLL</div>
@@ -144,22 +139,31 @@
     <p class="eyebrow"><i></i>INSIDE THE SEAL</p>
     <h2 class="rv">Sixteen parts. One gasket line.</h2>
     <p class="lede rv">Every penetration — cable, antenna, screws, vents — gets the
-      same treatment: engineered, then sealed.</p>
+      same treatment: engineered, then sealed. Scroll to take it apart.</p>
   </div>
-  <div class="xwrap">
-    <img class="ximg rv" src="assets/img/exploded.webp"
-         alt="SPM-01 exploded view — internal layout is a design proposal">
-    <div class="xlabels" aria-hidden="false">
-      <span class="xlabel down"  style="--x:25.4%; --y:41.9%"><b>01</b>POWER + DATA CABLE<em>Sealed gland · strain relief</em></span>
-      <span class="xlabel up"    style="--x:30.8%; --y:30.5%"><b>04</b>SEALED ANTENNA<em>Wi-Fi / BT feed-through</em></span>
-      <span class="xlabel up"    style="--x:48.8%; --y:34.4%"><b>07</b>COMPUTE CARRIER<em>Raspberry Pi CM4 · M.2 storage</em></span>
-      <span class="xlabel up"    style="--x:55.9%; --y:35.1%"><b>09</b>IP69K GASKET<em>Compressed perimeter seal</em></span>
-      <span class="xlabel up"    style="--x:66.3%; --y:24.3%"><b>12</b>QUICK-MOUNT PLATE<em>Tool-free bracket interface</em></span>
-      <span class="xlabel down"  style="--x:69.3%; --y:55.8%"><b>10</b>SEALED ENCLOSURE<em>IP69K target · equalizing vents</em></span>
-      <span class="xlabel down"  style="--x:85.5%; --y:49.9%"><b>14</b>STEREO DEPTH MODULE<em>Sow posture · respiration</em></span>
-      <span class="xlabel down"  style="--x:64.0%; --y:86.0%"><b>16</b>RGB CAMERA + IR<em>Newborn · stillborn imaging</em></span>
+
+  <div class="xstage" id="xstage">
+    <div class="xsticky">
+      <img class="xfallback" src="assets/img/exploded.webp"
+           alt="SPM-01 exploded view — internal layout is a design proposal">
+      <canvas class="xcanvas" id="xCanvas"
+              aria-label="SPM-01 taking itself apart as you scroll"></canvas>
+      <div class="xlabels" id="xLabels" aria-hidden="true"></div>
     </div>
   </div>
+
+  <ul class="xlist wrap" aria-label="Exploded components">
+    <li><b>01</b>Power + data cable<em>Sealed gland · strain relief</em></li>
+    <li><b>02</b>Captive screws ×6<em>Bonded seal washers</em></li>
+    <li><b>04</b>Sealed antenna<em>Wi-Fi / BT feed-through</em></li>
+    <li><b>07</b>Compute carrier<em>Raspberry Pi CM4 · M.2 storage</em></li>
+    <li><b>08</b>Camera I/O board<em>USB 3 hub · head connectors</em></li>
+    <li><b>09</b>IP69K gasket<em>Compressed perimeter seal</em></li>
+    <li><b>12</b>Quick-mount plate<em>Tool-free bracket interface</em></li>
+    <li><b>14</b>Stereo depth module<em>Sow posture · respiration</em></li>
+    <li><b>16</b>RGB camera + IR<em>Newborn · stillborn imaging</em></li>
+  </ul>
+
   <p class="fine center rv">Internal layout is a design proposal · IP69K is a design target</p>
 </section>
 
@@ -425,16 +429,9 @@
           semifinalists.</p>
       </div>
     </div>
-    <div class="logowall">
-      <span class="rv"><img src="assets/logos/tamu.png"       alt="Texas A&M University"></span>
-      <span class="rv"><img src="assets/logos/mizzou.png"     alt="University of Missouri"></span>
-      <span class="rv"><img src="assets/logos/nsf.png"        alt="U.S. National Science Foundation"></span>
-      <span class="rv"><img src="assets/logos/usda.png"       alt="USDA"></span>
-      <span class="rv"><img src="assets/logos/smithfield.png" alt="Smithfield"></span>
-      <span class="rv"><img src="assets/logos/npb.png"        alt="National Pork Board"></span>
-      <span class="rv"><img src="assets/logos/tppa.png"       alt="Texas Pork Producers Association"></span>
-      <span class="rv"><img src="assets/logos/mpa.png"        alt="Missouri Pork Association"></span>
-    </div>
+    <p class="lede rv" style="margin-top: 30px;">The university, federal and
+      pork-industry organizations behind that work are listed on the
+      <a href="index.html#partners" style="color: var(--pink);">About page</a>.</p>
   </div>
 </section>
 
