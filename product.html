@@ -22,8 +22,8 @@
     <a href="index.html">About</a>
     <a href="product.html" class="on" aria-current="page">Product</a>
     <a href="resources.html">Resources</a>
+    <a href="contact.html">Get in touch</a>
   </nav>
-  <a class="btn btn-ghost nav-git" href="contact.html">Get in touch</a>
   <a class="btn btn-coral nav-cta" href="contact.html#pilot">Book a pilot</a>
   <span class="nav-progress" aria-hidden="true"></span>
 </header>
@@ -252,7 +252,30 @@
 <section class="sec sec-deep" id="connected">
   <div class="wrap split">
     <figure class="split-img rv">
-      <img src="assets/img/antenna.webp" alt="Sealed through-wall antenna on top of the SPM-01 — concept industrial design">
+      <div class="fig-media">
+        <img src="assets/img/antenna.webp" alt="Sealed through-wall antenna on top of the SPM-01 — concept industrial design">
+        <!-- Both fans spring from the dome's apex at (176,101), measured off
+             the render. Wi-Fi pulses outward (the unit reporting to the barn
+             network), Bluetooth inward (a phone reaching the unit crate-side)
+             — one sealed antenna doing both directions. -->
+        <svg class="rf" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <g class="rf-wifi">
+            <path class="rf-arc a1" d="M187.0,77.4 A26,26 0 0,1 201.9,98.7"/>
+            <path class="rf-arc a2" d="M192.9,64.7 A40,40 0 0,1 215.8,97.5"/>
+            <path class="rf-arc a3" d="M198.8,52.1 A54,54 0 0,1 229.8,96.3"/>
+            <text class="rf-tag" x="236" y="60">WI-FI</text>
+          </g>
+          <g class="rf-bt">
+            <path class="rf-arc a1" d="M150.1,98.7 A26,26 0 0,1 165.0,77.4"/>
+            <path class="rf-arc a2" d="M136.2,97.5 A40,40 0 0,1 159.1,64.7"/>
+            <path class="rf-arc a3" d="M122.2,96.3 A54,54 0 0,1 153.2,52.1"/>
+            <text class="rf-tag" x="128" y="58" text-anchor="end">BLUETOOTH</text>
+          </g>
+          <circle class="rf-dot" cx="176" cy="101" r="2.2"/>
+        </svg>
+      </div>
+      <figcaption>One sealed dome, both directions — Wi-Fi carrying alerts out
+        to the barn network, Bluetooth taking setup in at the crate.</figcaption>
     </figure>
     <div class="split-txt">
       <p class="eyebrow"><i></i>CONNECTIVITY</p>

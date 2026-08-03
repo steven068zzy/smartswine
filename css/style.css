@@ -2,8 +2,8 @@
    Tokens: plum-charcoal stack + pink brand (the mascot's own color).
    --coral/--teal/--seal keep their names as historical aliases; every value
    now resolves into the pink system.
-   Type: Roboto throughout — Black for display, Bold for headings, Roboto Mono
-   for spec labels. Self-hosted in assets/fonts, see css/fonts.css. */
+   Type: Roboto only — Black for display, Bold for headings, Medium with wide
+   tracking for spec labels. Self-hosted in assets/fonts, see css/fonts.css. */
 
 @import url("fonts.css");
 
@@ -26,7 +26,9 @@
   --seal: #cf3d78;
   --seal-hi: #f76fa8;
   --sans: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Roboto everywhere — label roles keep their own voice through tracking,
+     case and Medium weight rather than a second family. */
+  --mono: var(--sans);
   --pad: clamp(20px, 5vw, 72px);
 }
 
@@ -49,7 +51,7 @@ a { color: inherit; }
 section { scroll-margin-top: 64px; }
 
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--pad); }
-.mono { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.08em; }
+.mono { font-family: var(--mono); font-size: 0.8em; font-weight: 500; letter-spacing: 0.1em; }
 .mut { color: var(--mut); }
 .teal { color: var(--teal); }
 .fine { color: var(--dim); font-size: 12.5px; line-height: 1.7; margin-top: 40px; }
@@ -66,7 +68,8 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .eyebrow {
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   color: var(--mut);
   display: flex;
   align-items: center;
@@ -99,7 +102,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .nav-links { display: flex; gap: 4px; margin-left: auto; }
 .nav-links a {
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
   color: var(--mut); text-decoration: none;
   padding: 6px 10px; border-radius: 4px;
   transition: color 0.2s, background 0.2s;
@@ -116,7 +119,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 /* ---------- buttons ---------- */
 .btn {
   display: inline-block;
-  font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
   text-decoration: none;
   padding: 11px 22px; border-radius: 6px;
   transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
@@ -282,7 +285,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .axis { margin-top: 30px; }
 .axis p:last-child { color: var(--mut); font-size: 15px; }
 .axis-tag {
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.18em;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.2em;
   color: var(--mut); margin-bottom: 8px;
 }
 .axis-tag.teal { color: var(--teal); }
@@ -391,7 +394,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 @media (max-width: 900px) { .xlist { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .xlist { grid-template-columns: 1fr; } }
 .xlist li {
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em;
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.02em;
   padding: 11px 0; border-bottom: 1px solid var(--line);
   color: var(--ink);
 }
@@ -564,11 +567,6 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .cta-row { display: flex; gap: 14px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
 
 /* ---------- company pages (about / resources / contact) ---------- */
-.nav-git { margin-left: auto; }
-.nav-git + .nav-cta { margin-left: 0; }
-.nav-links { margin-left: auto; }
-.nav-links ~ .nav-git { margin-left: 6px; }
-@media (max-width: 980px) { .nav-git { display: none; } }
 @media (max-width: 560px) { .nav-links { display: none; } }
 
 .page-hero {
@@ -609,7 +607,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .tcard .t-body { padding: 20px 22px 24px; }
 .tcard h4 { font-size: 19px; margin-bottom: 4px; }
 .tcard .t-role {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
   color: var(--pink); text-transform: uppercase; margin-bottom: 10px;
 }
 .tcard p:last-child { color: var(--mut); font-size: 13.5px; line-height: 1.6; }
@@ -626,7 +624,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .acard img { width: 96px; height: 96px; border-radius: 12px; object-fit: cover; }
 .acard h4 { font-size: 16px; margin-bottom: 3px; }
 .acard .t-role {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em;
   color: var(--rose); text-transform: uppercase; margin-bottom: 7px;
 }
 .acard p:last-child { color: var(--mut); font-size: 12.5px; line-height: 1.55; }
@@ -645,7 +643,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   background: var(--bg0); border: 2px solid var(--pink);
   box-shadow: 0 0 10px rgba(246, 83, 143, 0.6);
 }
-.tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--pink); }
+.tl-date { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; color: var(--pink); }
 .tl-item h4 { font-size: 17px; margin: 5px 0 4px; }
 .tl-item p:last-child { color: var(--mut); font-size: 14px; max-width: 640px; }
 
@@ -662,7 +660,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .rcard:hover { transform: translateY(-4px); border-color: rgba(246, 83, 143, 0.5); }
 .rcard .r-kind {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.18em;
   color: var(--pink); text-transform: uppercase;
 }
 .rcard h4 { font-size: 16.5px; margin: 10px 0 8px; }
@@ -673,6 +671,21 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .rcard:hover .r-url { color: var(--rose); }
+
+/* news cards carry the publisher's own preview image */
+.rcard:has(.nthumb) { padding: 0 0 20px; overflow: hidden; }
+.rcard:has(.nthumb) > :not(.nthumb) { margin-left: 24px; margin-right: 24px; }
+.nthumb {
+  display: block; position: relative;
+  aspect-ratio: 16 / 9; overflow: hidden;
+  background: var(--bg3); margin-bottom: 18px;
+}
+.nthumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.rcard:hover .nthumb img { transform: scale(1.05); }
+.nthumb::after {          /* keep the eyebrow legible over any photo */
+  content: ""; position: absolute; inset: auto 0 0 0; height: 42%;
+  background: linear-gradient(180deg, transparent, rgba(38, 35, 48, 0.55));
+}
 
 /* video cards */
 .vcard { padding: 0 0 20px; overflow: hidden; }
@@ -849,4 +862,65 @@ body::after {
   position: absolute; left: 0; top: -1px; height: 2px;
   width: clamp(80px, 18vw, 260px);
   background: linear-gradient(90deg, var(--pink), transparent);
+}
+
+/* ---------- antenna: the two radios, drawn as they behave ---------- */
+.rf {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.rf-arc {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-origin: 176px 101px;   /* the dome apex — both fans pivot here */
+  opacity: 0;
+}
+.rf-dot { fill: var(--pink); filter: drop-shadow(0 0 4px rgba(246, 83, 143, 0.9)); }
+.rf-tag {
+  font-family: var(--sans);
+  font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+  fill: var(--mut);
+  /* the labels cross both the dark backdrop and the bright quick-mount
+     plate, so they carry their own halo rather than relying on either */
+  paint-order: stroke;
+  stroke: rgba(24, 22, 30, 0.85);
+  stroke-width: 2.6px;
+  stroke-linejoin: round;
+}
+
+.rf-wifi .rf-arc { stroke: var(--pink); }
+.rf-wifi .rf-tag { fill: var(--pink); }
+.rf-bt   .rf-arc { stroke: var(--rose); }
+.rf-bt   .rf-tag { fill: var(--rose); }
+
+/* Wi-Fi: arcs grow away from the dome — the unit talking to the barn */
+.rf-wifi .rf-arc { animation: rfOut 2.8s cubic-bezier(.35,.6,.4,1) infinite; }
+.rf-wifi .a1 { animation-delay: 0s; }
+.rf-wifi .a2 { animation-delay: .34s; }
+.rf-wifi .a3 { animation-delay: .68s; }
+
+/* Bluetooth: arcs close in on the dome — a phone reaching the unit */
+.rf-bt .rf-arc { animation: rfIn 2.8s cubic-bezier(.35,.6,.4,1) infinite; }
+.rf-bt .a3 { animation-delay: 1.4s; }
+.rf-bt .a2 { animation-delay: 1.74s; }
+.rf-bt .a1 { animation-delay: 2.08s; }
+
+@keyframes rfOut {
+  0%   { opacity: 0;   transform: scale(0.45); }
+  18%  { opacity: 0.95; }
+  55%  { opacity: 0.5;  }
+  75%, 100% { opacity: 0; transform: scale(1.18); }
+}
+@keyframes rfIn {
+  0%   { opacity: 0;    transform: scale(1.18); }
+  18%  { opacity: 0.95; }
+  55%  { opacity: 0.5;  }
+  75%, 100% { opacity: 0; transform: scale(0.45); }
+}
+
+/* Motion off: hold the fans at full spread so the diagram still reads */
+@media (prefers-reduced-motion: reduce) {
+  .rf-arc { animation: none !important; opacity: 0.75; }
 }
