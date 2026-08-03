@@ -11,6 +11,29 @@
 
   if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
+  /* ---------- promo bar ----------
+     Pinned under the fixed nav, so it costs vertical space the layout has to
+     know about. body.has-promo carries that offset; dismissing removes it and
+     the choice sticks for the session. */
+  var promo = document.getElementById("promo");
+  if (promo) {
+    var DISMISS = "ss-promo-dismissed";
+    var gone = false;
+    try { gone = sessionStorage.getItem(DISMISS) === "1"; } catch (e) {}
+    if (gone) {
+      promo.remove();
+    } else {
+      document.body.classList.add("has-promo");
+      var x = promo.querySelector(".promo-x");
+      if (x) x.addEventListener("click", function () {
+        promo.remove();
+        document.body.classList.remove("has-promo");
+        try { sessionStorage.setItem(DISMISS, "1"); } catch (e) {}
+        if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+      });
+    }
+  }
+
   /* ---------- nav progress + seal line (no GSAP needed) ---------- */
   var navBar = document.querySelector(".nav-progress");
   var sealFill = document.querySelector(".sealline-fill");

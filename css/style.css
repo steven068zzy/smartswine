@@ -953,3 +953,76 @@ body::after {
   padding: 0; margin: -1px; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap;
 }
+
+/* =====================================================================
+   Promo bar — pinned directly under the fixed nav, so it rides with it
+   rather than scrolling away. Slim enough to live there permanently.
+   ===================================================================== */
+.promo {
+  position: fixed; inset: 60px 0 auto 0; z-index: 49;
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(10px, 2vw, 20px);
+  height: 42px; padding: 0 clamp(14px, 3vw, 36px);
+  background: linear-gradient(90deg,
+    rgba(207, 61, 120, 0.92) 0%, rgba(246, 83, 143, 0.92) 55%, rgba(207, 61, 120, 0.92) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(38, 35, 48, 0.35);
+  color: #2b0a19;
+  font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em;
+  overflow: hidden;
+}
+/* a slow sheen, so the bar reads as live without blinking at anyone */
+.promo::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.30) 50%, transparent 62%);
+  transform: translateX(-100%);
+  animation: promoSheen 7s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes promoSheen { 0%, 62% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .promo::before { animation: none; opacity: 0; } }
+
+.promo-dot {
+  width: 7px; height: 7px; flex: none; border-radius: 50%;
+  background: #2b0a19;
+  animation: promoPulse 2.4s ease-in-out infinite;
+}
+@keyframes promoPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .promo-dot { animation: none; } }
+
+.promo-txt { position: relative; }
+.promo-txt b { font-weight: 700; }
+.promo-cta {
+  position: relative;
+  flex: none;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+  color: #2b0a19; text-decoration: none;
+  padding: 5px 13px; border-radius: 5px;
+  background: rgba(255, 255, 255, 0.82);
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.promo-cta:hover { background: #fff; transform: translateY(-1px); }
+.promo-x {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; border: 0; border-radius: 5px;
+  background: transparent; color: #2b0a19; cursor: pointer;
+  font: 400 17px/1 var(--sans);
+  opacity: 0.55; transition: opacity 0.2s, background 0.2s;
+}
+.promo-x:hover { opacity: 1; background: rgba(255,255,255,0.35); }
+
+/* the bar occupies 42px, so everything the nav used to clear moves down */
+body.has-promo .sealline { top: calc(14vh + 42px); }
+body.has-promo section { scroll-margin-top: 106px; }
+@media (max-width: 720px) {
+  .promo { height: auto; min-height: 44px; padding: 7px 40px 7px 14px;
+           font-size: 12.5px; line-height: 1.35; flex-wrap: wrap; row-gap: 4px; }
+}
+
+/* the bar sits between the nav and the page, so anything that measured from
+   the nav's 60px has to clear 102px while it is up */
+body.has-promo .page-hero { padding-top: calc(102px + clamp(80px, 14vh, 170px)); }
+body.has-promo .hero-stage { top: 42px; height: calc(100vh - 42px); }
+body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
