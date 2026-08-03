@@ -610,24 +610,9 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
   color: var(--pink); text-transform: uppercase; margin-bottom: 10px;
 }
-.tcard p:last-child { color: var(--mut); font-size: 13.5px; line-height: 1.6; }
-
-.advisors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-@media (max-width: 900px) { .advisors { grid-template-columns: 1fr; } }
-.acard {
-  display: grid; grid-template-columns: 96px 1fr; gap: 18px; align-items: start;
-  background: var(--bg2); border: 1px solid var(--line); border-radius: 14px;
-  padding: 20px;
-  transition: transform 0.25s, border-color 0.25s;
-}
-.acard:hover { transform: translateY(-4px); border-color: rgba(249, 168, 199, 0.45); }
-.acard img { width: 96px; height: 96px; border-radius: 12px; object-fit: cover; }
-.acard h4 { font-size: 16px; margin-bottom: 3px; }
-.acard .t-role {
-  font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em;
-  color: var(--rose); text-transform: uppercase; margin-bottom: 7px;
-}
-.acard p:last-child { color: var(--mut); font-size: 12.5px; line-height: 1.55; }
+/* the bio, addressed directly — :last-child broke the moment a card
+   gained a trailing link */
+.tcard .t-body p:not(.t-role) { color: var(--mut); font-size: 13.5px; line-height: 1.6; }
 
 .timeline { position: relative; margin: 46px 0 8px; padding-left: 26px; }
 .timeline::before {
@@ -923,4 +908,36 @@ body::after {
 /* Motion off: hold the fans at full spread so the diagram still reads */
 @media (prefers-reduced-motion: reduce) {
   .rf-arc { animation: none !important; opacity: 0.75; }
+}
+
+/* ---------- team card: personal site link ---------- */
+/* The card is the column, not the body: height:100% on .t-body resolved
+   against the whole card (image included) and pushed the link out through
+   overflow:hidden. */
+.tcard { display: flex; flex-direction: column; }
+.tcard .t-body { display: flex; flex-direction: column; flex: 1 1 auto; }
+.tcard .t-body > p:not(.t-role) { flex: 1 1 auto; }
+.t-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  align-self: flex-start;
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  font-size: 12.5px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--mut); text-decoration: none;
+  transition: color 0.2s;
+}
+.t-link svg {
+  width: 11px; height: 11px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.5;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+.t-link:hover { color: var(--pink); }
+.t-link:hover svg { transform: translate(2px, -2px); }
+/* screen-reader-only text */
+.vh {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
 }
