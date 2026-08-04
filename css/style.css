@@ -414,6 +414,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 @media (max-width: 900px) {
   .xstage, .xstage--scrub { height: auto; }
   .xsticky { position: static; height: auto; display: block; padding: 0 var(--pad); }
+  body.has-promo .xsticky { top: auto; height: auto; }
   .xfallback { position: static; width: 100%; height: auto; }
   .xstage--scrub .xcanvas { display: none; }
   .xstage--scrub .xfallback { display: block; }
@@ -1026,3 +1027,187 @@ body.has-promo section { scroll-margin-top: 106px; }
 body.has-promo .page-hero { padding-top: calc(102px + clamp(80px, 14vh, 170px)); }
 body.has-promo .hero-stage { top: 42px; height: calc(100vh - 42px); }
 body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
+
+/* =====================================================================
+   SPC-01 page — travel hero, control-law schematic, posture gallery.
+   Same tokens, same material language as everything above.
+   ===================================================================== */
+
+/* ---------- hero travel rail: the hem's progress, drawn as a gauge ---- */
+.trail {
+  position: absolute; right: clamp(18px, 4vw, 64px); top: 50%;
+  transform: translateY(-50%);
+  height: min(52vh, 480px);
+  display: none; flex-direction: column; align-items: center; gap: 14px;
+  z-index: 4;
+}
+.hero--scrub .trail { display: flex; }
+.trail-track {
+  flex: 1 1 auto; width: 2px; position: relative;
+  background: rgba(87, 79, 104, 0.8); border-radius: 2px;
+}
+.trail-fill {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--seal-hi), var(--seal));
+  transform-origin: 50% 0; transform: scaleY(0);
+  border-radius: 2px;
+}
+.trail-tag {
+  font-size: 10px; letter-spacing: 0.22em; color: var(--dim);
+  writing-mode: vertical-rl; white-space: nowrap;
+}
+@media (max-width: 900px) { .trail { display: none !important; } }
+
+/* ---------- filmed control-loop stage ----------
+   Same guard pattern as .hero/.xstage: base height stays 100vh (a no-op
+   single-screen block, so no-JS/reduced-motion/GSAP-failure users never
+   pay for dead pinned scroll) and the tall scrub height only arrives via
+   a JS-added --scrub class once the frame sequence has actually loaded. */
+.loop-stage { height: 100vh; position: relative; margin-top: 30px; }
+.loop-stage--scrub { height: 340vh; }
+.loop-sticky {
+  position: sticky; top: 0; height: 100vh;
+  display: grid; grid-template-rows: 1fr auto;
+  place-items: center;
+  padding: 76px var(--pad) 30px;
+  overflow: hidden;
+}
+body.has-promo .loop-sticky { top: 42px; height: calc(100vh - 42px); }
+.loop-view {
+  /* the 4/3 frame must leave the caption strip on screen inside a 100vh
+     pin, so the width is also capped by the height budget (~66vh) */
+  position: relative;
+  width: min(1240px, 94vw, calc(66vh * 4 / 3));
+  aspect-ratio: 4 / 3;
+}
+.loop-fallback, .loop-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 14px;
+}
+.loop-canvas { display: none; }
+.loop-stage--scrub .loop-canvas { display: block; }
+.loop-stage--scrub .loop-fallback { display: none; }
+
+/* status card (shared with nothing else, kept its schematic-era name) */
+.sk-status {
+  position: absolute; top: 0; right: 0;
+  width: min(240px, 24vw);
+  background: rgba(46, 43, 57, 0.88); backdrop-filter: blur(6px);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 16px 12px;
+}
+.sk-st-h { font-size: 10px; color: var(--dim); letter-spacing: 0.22em;
+           margin-bottom: 10px; }
+.sk-status dl { display: grid; gap: 7px; }
+.sk-status div { display: grid; gap: 1px; }
+.sk-status dt { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+                letter-spacing: 0.18em; color: var(--dim); }
+.sk-status dd { font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+                letter-spacing: 0.06em; color: var(--ink); }
+.sk-status dd.ok  { color: #57e0a8; }
+.sk-status dd.hot { color: var(--pink); }
+
+/* captions under the loop stage — mirrors .beat-2/.beat-3: every caption
+   but the first is hidden by PLAIN CSS (no JS-added class required), so a
+   no-JS or reduced-motion visitor always gets exactly one legible caption
+   instead of six stacked ones overflowing the pinned box. JS crossfades
+   between them for everyone who gets the scrub. */
+.sk-caps { position: relative; width: min(860px, 90vw); min-height: 64px;
+           margin-top: 18px; text-align: center; }
+.sk-cap {
+  position: absolute; inset: 0;
+  color: var(--mut); font-size: clamp(14px, 1.5vw, 17px); line-height: 1.55;
+  opacity: 0; visibility: hidden; transition: opacity 0.35s ease;
+}
+.sk-cap[data-i="0"] { opacity: 1; visibility: visible; }   /* no-JS default */
+.sk-caps.sk-live .sk-cap { opacity: 0; visibility: hidden; }  /* JS takes over */
+.sk-caps.sk-live .sk-cap.on { opacity: 1; visibility: visible; }
+
+/* small screens: no pin, static fallback frame + all captions readable */
+@media (max-width: 900px) {
+  .loop-stage, .loop-stage--scrub { height: auto; }
+  .loop-sticky { position: static; height: auto; display: block; padding: 10px 0 0; }
+  body.has-promo .loop-sticky { top: auto; height: auto; }
+  .loop-view { width: 100%; }
+  .loop-fallback { position: static; width: 100%; height: auto; max-height: none; }
+  .loop-stage--scrub .loop-canvas { display: none; }
+  .loop-stage--scrub .loop-fallback { display: block; }
+  .sk-status { position: static; width: 100%; margin-top: 14px;
+               display: none; }
+  .sk-caps { min-height: 0; margin: 18px 0 0; text-align: left;
+             display: grid; gap: 10px; }
+  .sk-cap {
+    position: static; opacity: 1 !important; visibility: visible !important;
+    padding-left: 14px; border-left: 2px solid var(--seal);
+  }
+}
+
+/* ---------- posture gallery ---------- */
+.pgal { display: grid; grid-template-columns: minmax(340px, 5fr) 7fr;
+        gap: clamp(20px, 3vw, 40px); margin-top: 46px; align-items: start; }
+@media (max-width: 940px) { .pgal { grid-template-columns: 1fr; } }
+.prows { display: grid; gap: 10px; }
+.prow {
+  text-align: left; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 16px 18px 14px;
+  color: var(--ink); font-family: var(--sans); font-size: 15px;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  position: relative;
+}
+.prow:hover { transform: translateY(-2px); }
+.prow.on { border-color: rgba(246, 83, 143, 0.6); background: var(--bg3); }
+.prow.on::before {
+  content: ""; position: absolute; left: -1px; top: 12px; bottom: 12px;
+  width: 3px; border-radius: 2px; background: var(--pink);
+}
+.prow b { display: block; font-size: 16.5px; letter-spacing: -0.01em; }
+.prow em { display: block; font-style: normal; color: var(--mut);
+           font-size: 13px; line-height: 1.5; margin: 4px 0 10px; }
+.pbadge { font-family: var(--mono); font-size: 10.5px; font-weight: 700;
+          letter-spacing: 0.14em; padding: 4px 9px; border-radius: 4px; }
+.pbadge.hot { color: var(--pink); background: rgba(246, 83, 143, 0.12);
+              border: 1px solid rgba(246, 83, 143, 0.4); }
+.pbadge.ok { color: #57e0a8; background: rgba(87, 224, 168, 0.09);
+             border: 1px solid rgba(87, 224, 168, 0.35); }
+.pstack { position: relative; }
+.pstack img {
+  border-radius: 14px; border: 1px solid var(--line);
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+}
+.pstack img:not(:first-child) { position: absolute; inset: 0; }
+.pstack img { opacity: 0; transition: opacity 0.55s ease; }
+.pstack img.on { opacity: 1; }
+.pstack figcaption { color: var(--dim); font-size: 12.5px; line-height: 1.6;
+                     margin-top: 14px; }
+
+/* ---------- closed-loop cards + steps ---------- */
+.loop-cards { margin-top: 40px; }
+.loopcard { text-decoration: none; display: block; }
+.loopcard img { border-radius: 10px; border: 1px solid var(--line);
+                aspect-ratio: 16 / 9; object-fit: cover; width: 100%;
+                margin-bottom: 18px; background: var(--bg0); }
+.loopcard h3 { font-size: 18px; }
+.loopcard .t-link { border-top: 1px solid var(--line); }
+a.loopcard:hover .t-link { color: var(--pink); }
+.steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+         gap: 14px; align-items: center; margin-top: 40px; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; }
+  .step-arrow { transform: rotate(90deg); justify-self: center; } }
+.step { background: var(--bg2); border: 1px solid var(--line);
+        border-radius: 10px; padding: 22px 22px 18px; height: 100%; }
+.step h3 { font-size: 17px; }
+.step p:last-child { color: var(--mut); font-size: 13.5px; line-height: 1.6; }
+.step-arrow { color: var(--pink); font-size: 26px; }
+
+/* ---------- spec list ---------- */
+.spec { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 26px;
+        margin-top: 26px; }
+@media (max-width: 760px) { .spec { grid-template-columns: 1fr; } }
+.spec div { display: grid; grid-template-columns: 150px 1fr; gap: 16px;
+            padding: 13px 0; border-bottom: 1px solid var(--line);
+            align-items: baseline; }
+.spec dt { font-family: var(--mono); font-size: 11px; font-weight: 500;
+           letter-spacing: 0.14em; color: var(--dim); text-transform: uppercase; }
+.spec dd { color: var(--ink); font-size: 14.5px; line-height: 1.5; }

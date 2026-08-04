@@ -20,7 +20,8 @@
   </a>
   <nav class="nav-links" aria-label="Pages">
     <a href="index.html">About</a>
-    <a href="product.html" class="on" aria-current="page">Product</a>
+    <a href="product.html" class="on" aria-current="page">SPM-01</a>
+    <a href="spc01.html">SPC-01</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Get in touch</a>
   </nav>
@@ -54,7 +55,7 @@
     </svg>
     <img class="hero-fallback" src="assets/img/hero_static.webp"
          alt="SPM-01 Smart Piglet Monitor, concept industrial design render">
-    <canvas class="hero-turn" id="turnCanvas"
+    <canvas class="hero-turn" id="turnCanvas" role="img"
             aria-label="SPM-01 rotating product view"></canvas>
 
     <div class="beat beat-1">
@@ -181,7 +182,7 @@
     <div class="xsticky">
       <img class="xfallback" src="assets/img/exploded.webp"
            alt="SPM-01 exploded view (internal layout is a design proposal)">
-      <canvas class="xcanvas" id="xCanvas"
+      <canvas class="xcanvas" id="xCanvas" role="img"
               aria-label="SPM-01 taking itself apart as you scroll"></canvas>
       <div class="xlabels" id="xLabels" aria-hidden="true"></div>
     </div>
@@ -489,6 +490,29 @@
     </div>
     <p class="lede rv" style="margin-top: 30px;">The partners behind that work are
       listed <a href="index.html#partners" style="color: var(--pink);">on the About page</a>.</p>
+  </div>
+</section>
+
+<!-- ===== 11.5 · The other half ===== -->
+<section class="sec" id="spcteaser">
+  <div class="wrap split">
+    <div class="split-txt">
+      <p class="eyebrow"><i></i>NEW · THE OTHER HALF</p>
+      <h2 class="rv">SPM-01 watches.<br>SPC-01 acts.</h2>
+      <p class="lede rv">Detection without an actuator leaves the last meter of
+        the crushing problem unsolved. SPC-01 closes it: a motorized curtain on
+        the crate that shuts the danger zone SPM-01 has named, seconds before
+        the sow rolls, and lifts the moment she is safe.</p>
+      <div class="cta-row rv" style="justify-content: flex-start;">
+        <a class="btn btn-coral" href="spc01.html">Meet SPC-01</a>
+        <a class="btn btn-ghost" href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
+      </div>
+    </div>
+    <figure class="split-img rv">
+      <img src="assets/img/spc_hero.webp" alt="SPC-01 Smart Piglet Curtain, concept industrial design render" loading="lazy">
+      <figcaption>SPC-01 Smart Piglet Curtain: two independent curtain units per
+        crate, commanded by SPM-01 over a sealed wireless link.</figcaption>
+    </figure>
   </div>
 </section>
 

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART SWINE · SPC-01 Smart Piglet Curtain</title>
+<meta name="description" content="SPC-01: a motorized curtain for the farrowing crate. It closes the crushing danger zone seconds before the sow rolls, and lifts the moment it is safe.">
+<link rel="icon" type="image/png" href="assets/img/logo_badge.png">
+<link rel="preload" href="assets/fonts/roboto-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/roboto-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== Nav ===== -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="index.html" aria-label="Smart Swine home">
+    <img src="assets/img/logo_badge.png" alt="" width="30" height="30">
+    <span>SMART&nbsp;SWINE</span>
+  </a>
+  <nav class="nav-links" aria-label="Pages">
+    <a href="index.html">About</a>
+    <a href="product.html">SPM-01</a>
+    <a href="spc01.html" class="on" aria-current="page">SPC-01</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Get in touch</a>
+  </nav>
+  <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
+  <span class="nav-progress" aria-hidden="true"></span>
+</header>
+
+<div class="promo" id="promo" role="region" aria-label="Announcement">
+  <span class="promo-dot" aria-hidden="true"></span>
+  <span class="promo-txt"><b>Free SPM-01 prototype trials</b> on your crates this farrowing season. Hand-built, so slots are limited and go first come.</span>
+  <a class="promo-cta" href="contact.html#pilot">Request a trial</a>
+  <button class="promo-x" type="button" aria-label="Dismiss announcement">&times;</button>
+</div>
+
+<div class="sealline" aria-hidden="true">
+  <span class="sealline-fill"></span>
+  <span class="sealline-dot"></span>
+</div>
+
+<main id="top">
+
+<!-- ===== 1 · Hero: the curtain runs its travel as you scroll ===== -->
+<section class="hero" id="spcHero">
+  <div class="hero-stage">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <canvas class="hero-dust" aria-hidden="true"></canvas>
+    <img class="hero-fallback" src="assets/img/spc_hero.webp"
+         alt="SPC-01 Smart Piglet Curtain, concept industrial design render">
+    <canvas class="hero-turn" id="travCanvas" role="img"
+            aria-label="SPC-01 curtain running from parked to fully closed"></canvas>
+
+    <div class="trail" aria-hidden="true">
+      <span class="trail-track"><span class="trail-fill" id="trailFill"></span></span>
+      <span class="trail-tag mono" id="trailTag">HEM PARKED</span>
+    </div>
+
+    <div class="beat beat-1">
+      <p class="eyebrow"><i></i>SMART SWINE · COLLEGE STATION, TX</p>
+      <h1>SPC&#8209;01</h1>
+      <p class="hero-sub">Smart Piglet Curtain</p>
+      <p class="hero-tag">A farrowing-crate device that acts on a crushing
+        risk<br>instead of just reporting it.</p>
+    </div>
+    <div class="beat beat-2">
+      <h2>Two seconds,<br>floor to closed.</h2>
+      <p>A torque-limited roller drops a soft fabric wall seconds before the
+        sow rolls,<br>and lifts it the moment she is safe.</p>
+    </div>
+
+    <div class="hero-cue" aria-hidden="true"><span></span>SCROLL</div>
+  </div>
+</section>
+
+<!-- ===== 2 · Problem ===== -->
+<section class="sec" id="problem">
+  <div class="wrap">
+    <p class="eyebrow"><i></i>THE CRUSHING EVENT</p>
+    <h2 class="rv">Three seconds, one direction</h2>
+    <p class="lede rv">Crushing kills more piglets than any disease, and it is not
+      random. Most crushing deaths happen during one specific event: the sow
+      rolling from sternal to lateral lying. The roll goes to one side that is
+      knowable in advance, and the window is about three seconds long. An alert
+      cannot cross a farrowing room that fast. An actuator that is already
+      mounted on the crate can.</p>
+
+    <div class="stats stats-4">
+      <div class="stat rv"><strong data-count="30" data-prefix="~" data-suffix="%">~30%</strong><span>of preweaning loss is crushing, the single largest cause</span></div>
+      <div class="stat rv"><strong data-count="80" data-suffix="%">80%</strong><span>of crushing deaths happen in the first four days after farrowing</span></div>
+      <div class="stat rv"><strong data-count="68" data-suffix="%">68%</strong><span>happen during the sternal-to-lateral roll</span></div>
+      <div class="stat rv"><strong data-count="3" data-prefix="~" data-suffix="&thinsp;s">~&thinsp;3&thinsp;s</strong><span>duration of the roll, too fast for any human response</span></div>
+    </div>
+
+    <div class="duo">
+      <article class="card edge-coral rv">
+        <h3>Why alarms are not enough</h3>
+        <p>A posture monitor can flag a sternal-lying sow with piglets in her roll
+          path, but the fastest stockperson is minutes away and the roll takes
+          seconds. Detection without an actuator leaves the last meter of the
+          problem unsolved.</p>
+      </article>
+      <article class="card edge-teal rv">
+        <h3>Why a curtain works</h3>
+        <p>The curtain never has to stop a 250&nbsp;kg sow. It only has to keep
+          2&nbsp;kg piglets out of the strip of floor she is about to occupy. That
+          is a light fabric barrier, closed early and lifted as soon as she
+          settles, so nursing access is restored within seconds.</p>
+      </article>
+    </div>
+    <p class="fine rv">Crushing shares and roll statistics from published preweaning-mortality literature. SPC-01 is a concept industrial design, not production hardware.</p>
+  </div>
+</section>
+
+<!-- ===== 3 · The loop, filmed end to end ===== -->
+<section class="sec sec-deep" id="window">
+  <div class="wrap">
+    <p class="eyebrow"><i></i>HOW IT WORKS</p>
+    <h2 class="rv">One roll, filmed end to end</h2>
+    <p class="lede rv">The whole loop, rendered to real crate dimensions from the
+      angle SPM-01 watches from. Scroll to run it: she settles, the danger side
+      is named, the curtain closes, the roll lands on empty floor that was never
+      occupied, and nursing comes back.</p>
+  </div>
+
+  <div class="loop-stage" id="loopStage">
+    <div class="loop-sticky">
+      <div class="loop-view">
+        <img class="loop-fallback" src="assets/loop/loop_020.webp"
+             alt="Overhead render of the farrowing crate: the sow has settled into sternal lying and SPM-01 has named the left strip as the side she can roll onto, concept industrial design">
+        <canvas class="loop-canvas" id="loopCanvas" role="img"
+                aria-label="Filmed sequence, rendered to real crate dimensions: the sow settles into sternal lying, SPM-01 names the danger side, the left curtain closes an empty strip, the sow rolls onto it, both curtains lift, and the piglets return to nurse"></canvas>
+
+        <aside class="sk-status" id="loopStatus" aria-hidden="true">
+          <p class="sk-st-h mono">CONTROL LAW · LIVE</p>
+          <dl>
+            <div><dt>SOW</dt><dd id="stPosture">STANDING</dd></div>
+            <div><dt>ROLL RISK</dt><dd id="stRisk" class="ok">NONE</dd></div>
+            <div><dt>LEFT CURTAIN</dt><dd id="stCL" class="ok">UP</dd></div>
+            <div><dt>RIGHT CURTAIN</dt><dd id="stCR" class="ok">UP</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="sk-caps" id="loopCaps">
+        <p class="sk-cap" data-i="0">Standing reads as safe. Both curtains stay up and the litter moves freely on both strips.</p>
+        <p class="sk-cap" data-i="1">She folds onto her sternum. SPM-01 reads the loaded flank from her back line: from here she can only roll left.</p>
+        <p class="sk-cap" data-i="2">The left curtain closes the strip she is about to occupy, before any piglet beds down in it. About two seconds, ahead of the roll.</p>
+        <p class="sk-cap" data-i="3">The roll takes about three seconds, and it lands on floor that was never occupied.</p>
+        <p class="sk-cap" data-i="4">Lateral lying is terminal. No further roll is possible from it, so both curtains lift.</p>
+        <p class="sk-cap" data-i="5">The litter returns to the udder within moments. Closure never costs a feeding.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="fine center rv">Rendered to North American farrowing-crate
+    dimensions. Posture classes as classified by the SPM-01 pipeline. Roll
+    duration is published preweaning-mortality literature and curtain travel
+    is an SPC-01 design figure, not a field measurement of the curtain
+    itself.</p>
+</section>
+
+<!-- ===== 4 · Four postures, one rule ===== -->
+<section class="sec" id="postures">
+  <div class="wrap">
+    <p class="eyebrow"><i></i>THE RULE</p>
+    <h2 class="rv">Four postures, one rule</h2>
+    <p class="lede rv">Crushing is a one-way transition. From sternal lying the sow
+      can roll to exactly one side without getting up, and the opposite side is
+      physically out of reach. Both lateral postures are terminal, no further
+      roll is possible from them. So the rule fits in four lines.</p>
+
+    <div class="pgal rv" id="pgal">
+      <div class="prows" aria-label="Sow postures">
+        <button class="prow on" aria-pressed="true" data-p="0">
+          <b>Sternal Lying, Right</b>
+          <em>can roll into Lateral-Right, that strip is the crush path</em>
+          <span class="pbadge hot">RIGHT CURTAIN DOWN</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="1">
+          <b>Lateral Lying, Right</b>
+          <em>terminal posture, no crushing threat anywhere in the crate</em>
+          <span class="pbadge ok">BOTH CURTAINS LIFT</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="2">
+          <b>Sternal Lying, Left</b>
+          <em>the mirror case, the left strip becomes the crush path</em>
+          <span class="pbadge hot">LEFT CURTAIN DOWN</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="3">
+          <b>Lateral Lying, Left</b>
+          <em>terminal posture, mirrored, traffic free on both strips</em>
+          <span class="pbadge ok">BOTH CURTAINS LIFT</span>
+        </button>
+      </div>
+      <figure class="pstack">
+        <img class="on" src="assets/img/spc_pose_sr.webp" alt="Overhead render: sow in sternal lying leaning right, right curtain closed, concept industrial design">
+        <img src="assets/img/spc_pose_lr.webp" alt="Overhead render: sow in lateral lying on her right strip, both curtains lifted, piglets nursing, concept industrial design" loading="lazy">
+        <img src="assets/img/spc_pose_sl.webp" alt="Overhead render: sow in sternal lying leaning left, left curtain closed, concept industrial design" loading="lazy">
+        <img src="assets/img/spc_pose_ll.webp" alt="Overhead render: sow in lateral lying on her left strip, both curtains lifted, concept industrial design" loading="lazy">
+        <figcaption id="pcap" aria-live="polite">Concept render, drawn to real
+          crate dimensions. The closed curtain keeps the strip she can reach
+          empty until her posture resolves.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 · The mechanism ===== -->
+<section class="sec sec-deep" id="roller">
+  <div class="wrap split">
+    <div class="split-txt">
+      <p class="eyebrow"><i></i>THE MECHANISM</p>
+      <h2 class="rv">A roller, and nothing else</h2>
+      <p class="lede rv">The whole product is one overhead roller assembly. No
+        posts on the floor, no rails, no moving parts at piglet height.</p>
+      <div class="axis rv">
+        <p class="axis-tag teal">FABRIC</p>
+        <h3>TPU-coated barrier</h3>
+        <p>A 1.0&nbsp;m curtain of coated polyester drops to the creep floor on a
+          weighted hem. It stops a piglet, wipes clean under a pressure washer
+          and weighs almost nothing.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag coral">DRIVE</p>
+        <h3>Tubular motor, sealed</h3>
+        <p>The motor lives inside the tube, the way awning drives do. Full travel
+          takes about two seconds, quiet enough not to startle the room.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag">FAIL SAFE</p>
+        <h3>Open by default</h3>
+        <p>Power loss, signal loss or a manual pull on the coral release all end
+          the same way: curtain up, and the crate behaving exactly like a crate
+          without an SPC-01.</p>
+      </div>
+    </div>
+    <figure class="split-img rv">
+      <img src="assets/img/spc_hero.webp" alt="SPC-01 roller assembly with the curtain partly deployed, concept industrial design">
+      <figcaption>One roller, two brackets, one sealed drive head. The
+        silk-screened branding unrolls with the cloth.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== 6 · Closed loop with SPM-01 ===== -->
+<section class="sec" id="loop">
+  <div class="wrap">
+    <p class="eyebrow"><i></i>THE SYSTEM</p>
+    <h2 class="rv">Half of a closed loop</h2>
+    <p class="lede rv">SPC-01 is the actuator half of the Smart Swine farrowing
+      system. The eyes belong to SPM-01, the dual-axis monitor already watching
+      the crate from the rear. The moment the sow settles into sternal lying it
+      knows which side she can roll to, and the matching curtain is closed over
+      the sealed wireless link before the roll can start.</p>
+
+    <div class="duo loop-cards">
+      <a class="card edge-teal loopcard rv" href="product.html">
+        <img src="assets/img/hero_static.webp" alt="SPM-01 Smart Piglet Monitor, concept industrial design render" loading="lazy">
+        <h3>SPM-01 · Smart Piglet Monitor</h3>
+        <p>Detects. Stereo depth reads posture and respiration, 99.15% posture
+          classification on an unseen sow in a 10-sow farm trial.</p>
+        <span class="t-link"><span class="t-kind">Product page</span> Meet SPM-01</span>
+      </a>
+      <article class="card edge-coral loopcard rv">
+        <img src="assets/img/spc_hero.webp" alt="SPC-01 Smart Piglet Curtain, concept industrial design render" loading="lazy">
+        <h3>SPC-01 · Smart Piglet Curtain</h3>
+        <p>Acts. Two independent curtain units close the danger zone SPM-01 has
+          named, and lift when it clears. Each product also operates on its
+          own.</p>
+      </article>
+    </div>
+
+    <div class="steps rv">
+      <article class="step">
+        <p class="axis-tag coral">01 · DETECT</p>
+        <h3>SPM-01 reads the sow</h3>
+        <p>The forward depth head classifies standing, sternal and lateral lying
+          continuously, with no wearables and no floor sensors.</p>
+      </article>
+      <span class="step-arrow" aria-hidden="true">&#10230;</span>
+      <article class="step">
+        <p class="axis-tag coral">02 · DECIDE</p>
+        <h3>The danger side is named</h3>
+        <p>Sternal lying resolves to a rollable side. That side's nursing strip
+          becomes the danger zone until her posture changes.</p>
+      </article>
+      <span class="step-arrow" aria-hidden="true">&#10230;</span>
+      <article class="step">
+        <p class="axis-tag coral">03 · ACT</p>
+        <h3>SPC-01 closes one side</h3>
+        <p>The matching curtain drops in about two seconds and holds. When she
+          commits to lateral lying or stands, both curtains lift and nursing
+          resumes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7 · Install ===== -->
+<section class="sec sec-deep" id="install">
+  <div class="wrap split">
+    <figure class="split-img rv">
+      <img src="assets/img/spc_clamp.webp" alt="Saddle clamp and drop arm hanging the SPC-01 roller from the crate top rail, concept industrial design">
+      <figcaption>The saddle snaps over the crate's top rail and a captive thumb
+        screw closes it. Half a turn per bracket.</figcaption>
+    </figure>
+    <div class="split-txt">
+      <p class="eyebrow"><i></i>INSTALLATION</p>
+      <h2 class="rv">Two brackets, half a turn each</h2>
+      <p class="lede rv">Every fastener goes to the crate and nothing touches the
+        floor, because the floor is pressure washed and scraped.</p>
+      <div class="axis rv">
+        <p class="axis-tag teal">SADDLE CLAMP</p>
+        <h3>Hangs on the top rail</h3>
+        <p>A rubber-lined saddle snaps over the crate's top rail and a captive
+          thumb screw closes it. No drilling, no welding, no tools, and removal
+          is just as fast.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag coral">END BRACKETS</p>
+        <h3>Grip only what never turns</h3>
+        <p>The two drop arms hold the static motor housing and the idler pin,
+          exactly like a roller blind's end brackets, so the winding fabric is
+          never obstructed.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag">FITS THE FLEET</p>
+        <h3>Standard NA crates</h3>
+        <p>The bracket span matches the common North American farrowing-crate
+          top rail, and both curtain units install from the aisle in minutes.</p>
+      </div>
+    </div>
+  </div>
+  <figure class="wide-fig rv">
+    <img src="assets/img/spc_crate.webp" alt="SPC-01 drive head and end bracket mounted inside a farrowing crate, concept industrial design" loading="lazy">
+    <figcaption><span class="mono">TWO UNITS</span> per crate, left and right driven independently · <span class="mono">TOOL-FREE</span> saddle clamps on the top rail · <span class="mono">NOTHING</span> on the floor</figcaption>
+  </figure>
+</section>
+
+<!-- ===== 8 · Sealed ===== -->
+<section class="sec" id="sealed">
+  <div class="wrap split">
+    <div class="split-txt">
+      <p class="eyebrow coral-i"><i></i>WASHDOWN</p>
+      <h2 class="rv">Sealed for the washdown</h2>
+      <p class="lede rv">Everything electrical lives at one end, in one sealed
+        stack, speaking the same waterproofing language as SPM-01.</p>
+      <div class="axis rv">
+        <p class="axis-tag teal">DRIVE HEAD</p>
+        <h3>Ribbed, O-ring sealed</h3>
+        <p>The finned motor housing closes the tube behind a blue compression
+          O-ring, with the coral manual release on its nose.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag coral">CONTROL POD</p>
+        <h3>Status at a glance</h3>
+        <p>RUN indicator, sealed antenna dome, membrane pressure vent and twin
+          cable glands with strain reliefs, behind a perimeter-sealed lid on
+          captive screws.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag">WASHDOWN</p>
+        <h3>IP69K design target</h3>
+        <p>Every seam that faces the hose is a compressed seal, and the fabric
+          itself is the same coated polyester used in barn curtains that are
+          washed for years.</p>
+      </div>
+    </div>
+    <figure class="split-img rv">
+      <img src="assets/img/spc_drive.webp" alt="SPC-01 sealed drive head and control pod, concept industrial design" loading="lazy">
+      <figcaption>The drive head and control pod: RUN light, vent, glands and
+        the coral manual release, all at one serviceable end.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== 9 · Safety + specs ===== -->
+<section class="sec sec-deep" id="safety">
+  <div class="wrap">
+    <p class="eyebrow"><i></i>DESIGN BRIEF</p>
+    <h2 class="rv">Designed to be harmless first</h2>
+    <p class="lede rv">A device that acts inside a farrowing crate has to be safe
+      against its own mistakes. Three behaviors are part of the design brief,
+      ahead of any performance figure.</p>
+
+    <div class="duo">
+      <article class="card edge-coral rv">
+        <h3>Safety behaviors</h3>
+        <p>The hem carries no cutting edge and the drive is torque-limited: a
+          curtain that meets a piglet on the way down reverses and retries. Both
+          units fail open on any loss of power or signal. The manual release
+          needs one hand and no tools, and always ends with both curtains
+          up.</p>
+      </article>
+      <article class="card edge-teal rv">
+        <h3>Honest limits</h3>
+        <p>SPC-01 is a concept industrial design under active development. The
+          mechanism, mounting and materials shown are design proposals, not a
+          production build, and no field performance is claimed for the curtain
+          itself. The posture detection it relies on is the validated SPM-01
+          pipeline.</p>
+      </article>
+    </div>
+
+    <h3 class="sub-h rv">Design parameters</h3>
+    <dl class="spec rv">
+      <div><dt>Curtain span</dt><dd>1.0 m per side, two independent units per crate</dd></div>
+      <div><dt>Curtain plane</dt><dd>outboard of the anti-crush bar, out of the sow's reach</dd></div>
+      <div><dt>Travel</dt><dd>creep floor to full open, about two seconds</dd></div>
+      <div><dt>Drive</dt><dd>sealed tubular motor inside the roller</dd></div>
+      <div><dt>Mounting</dt><dd>two saddle clamps on the crate top rail, tool free</dd></div>
+      <div><dt>Floor contact</dt><dd>none</dd></div>
+      <div><dt>Sealing</dt><dd>IP69K design target, washdown safe</dd></div>
+      <div><dt>Link</dt><dd>sealed wireless to SPM-01, each device also operates alone</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ===== 10 · CTA + Footer ===== -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Close the last meter.</h2>
+    <p class="lede rv">SPM-01 already watches the crate. SPC-01 is how the system
+      answers what it sees. Ask about the farrowing system, or start with a free
+      SPM-01 trial on one crate this season.</p>
+    <div class="cta-row rv">
+      <a class="btn btn-coral" href="contact.html#pilot">Request a trial</a>
+      <a class="btn btn-ghost" href="SPC-01_Product_Brochure.pdf" download>Download the brochure</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-brand"><img src="assets/img/logo_badge.png" alt="" width="26" height="26"> SMART&nbsp;SWINE</p>
+      <p class="mut">SMART SWINE, LLC · College Station, TX</p>
+      <p class="mut"><a href="mailto:Ziyuanzhao@tamu.edu">Ziyuanzhao@tamu.edu</a> ·
+         <a href="https://www.linkedin.com/company/133423991/" rel="noopener" target="_blank">LinkedIn</a></p>
+    </div>
+    <p class="fine">All product imagery on this page is concept industrial design.
+      SPC-01 is a design study: the mechanism, mounting and materials are design
+      proposals, not a production build, and no field performance is claimed for
+      the curtain. The posture detection it relies on reflects the SPM-01
+      prototype validated in a 10-sow on-farm trial under IACUC oversight
+      (Apr–May 2026). IP69K is a design target. Sow and piglet geometry in
+      SPC-01 imagery is a commercially licensed rigged asset.<br>
+      © 2026 SMART SWINE, LLC.</p>
+  </div>
+</footer>
+
+</main>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
