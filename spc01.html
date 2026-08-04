@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SMART SWINE · SPC-01 Smart Piglet Curtain</title>
-<meta name="description" content="SPC-01: a motorized curtain for the farrowing crate. It closes the crushing danger zone seconds before the sow rolls, and lifts the moment it is safe.">
+<meta name="description" content="SPC-01: a motorized curtain for the farrowing crate. It keeps the crushing danger zone curtained until the sow's posture makes it safe, and lifts the moment it is.">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
 <link rel="preload" href="assets/fonts/roboto-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/roboto-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,8 +20,15 @@
   </a>
   <nav class="nav-links" aria-label="Pages">
     <a href="index.html">About</a>
-    <a href="product.html">SPM-01</a>
-    <a href="spc01.html" class="on" aria-current="page">SPC-01</a>
+    <div class="nav-drop">
+      <a href="product.html" class="nav-drop-top on" aria-haspopup="true">Products<span class="caret" aria-hidden="true">&#9662;</span></a>
+      <div class="nav-sub">
+        <div class="nav-sub-panel">
+          <a href="product.html"><b>SPM-01</b><span>Smart Piglet Monitor</span></a>
+          <a href="spc01.html" class="on" aria-current="page"><b>SPC-01</b><span>Smart Piglet Curtain</span></a>
+        </div>
+      </div>
+    </div>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Get in touch</a>
   </nav>
@@ -48,8 +55,15 @@
   <div class="hero-stage">
     <div class="hero-grid" aria-hidden="true"></div>
     <canvas class="hero-dust" aria-hidden="true"></canvas>
-    <img class="hero-fallback" src="assets/img/spc_hero.webp"
-         alt="SPC-01 Smart Piglet Curtain, concept industrial design render">
+    <!-- Desktop (where the scrub runs) falls back to the PARKED first
+         frame so the canvas takeover is pixel-identical and nothing on
+         screen moves until the user scrolls. Mobile and no-JS keep the
+         richer part-deployed product still. -->
+    <picture>
+      <source media="(min-width: 900px)" srcset="assets/travel/trav_000.webp">
+      <img class="hero-fallback" src="assets/img/spc_hero.webp"
+           alt="SPC-01 Smart Piglet Curtain, concept industrial design render">
+    </picture>
     <canvas class="hero-turn" id="travCanvas" role="img"
             aria-label="SPC-01 curtain running from parked to fully closed"></canvas>
 
@@ -67,8 +81,8 @@
     </div>
     <div class="beat beat-2">
       <h2>Two seconds,<br>floor to closed.</h2>
-      <p>A torque-limited roller drops a soft fabric wall seconds before the
-        sow rolls,<br>and lifts it the moment she is safe.</p>
+      <p>A torque-limited roller holds a soft fabric wall over the strip the
+        sow can roll onto,<br>and lifts it the moment she is safe.</p>
     </div>
 
     <div class="hero-cue" aria-hidden="true"><span></span>SCROLL</div>
@@ -119,47 +133,50 @@
   <div class="wrap">
     <p class="eyebrow"><i></i>HOW IT WORKS</p>
     <h2 class="rv">One roll, filmed end to end</h2>
-    <p class="lede rv">The whole loop, rendered to real crate dimensions from the
-      angle SPM-01 watches from. Scroll to run it: she settles, the danger side
-      is named, the curtain closes, the roll lands on empty floor that was never
-      occupied, and nursing comes back.</p>
+    <p class="lede rv">The whole loop, rendered to real crate dimensions with
+      SPM-01 watching from the crate rear. Scroll to run it: on her feet both
+      strips stay curtained, SPM-01's forward camera reads her posture the
+      moment it changes and beams the call to the curtain that must act, the
+      safe curtain lifts, the roll lands on a strip that was never occupied,
+      and nursing comes back.</p>
   </div>
 
   <div class="loop-stage" id="loopStage">
     <div class="loop-sticky">
       <div class="loop-view">
         <img class="loop-fallback" src="assets/loop/loop_020.webp"
-             alt="Overhead render of the farrowing crate: the sow has settled into sternal lying and SPM-01 has named the left strip as the side she can roll onto, concept industrial design">
+             alt="Overhead render of the farrowing crate: the sow has settled into sternal lying loaded to her right, both curtains still down, concept industrial design">
         <canvas class="loop-canvas" id="loopCanvas" role="img"
-                aria-label="Filmed sequence, rendered to real crate dimensions: the sow settles into sternal lying, SPM-01 names the danger side, the left curtain closes an empty strip, the sow rolls onto it, both curtains lift, and the piglets return to nurse"></canvas>
+                aria-label="Filmed sequence, rendered to real crate dimensions with SPM-01 mounted at the crate rear: the sow stands with both curtains down, settles into sternal lying, SPM-01 reads the change and a visualized wireless signal travels to the left curtain which lifts the safe strip open, the sow rolls onto the empty right strip, a second signal lifts the right curtain, and the piglets cross from the left to nurse"></canvas>
 
         <aside class="sk-status" id="loopStatus" aria-hidden="true">
           <p class="sk-st-h mono">CONTROL LAW · LIVE</p>
           <dl>
-            <div><dt>SOW</dt><dd id="stPosture">STANDING</dd></div>
-            <div><dt>ROLL RISK</dt><dd id="stRisk" class="ok">NONE</dd></div>
-            <div><dt>LEFT CURTAIN</dt><dd id="stCL" class="ok">UP</dd></div>
-            <div><dt>RIGHT CURTAIN</dt><dd id="stCR" class="ok">UP</dd></div>
+            <div><dt>SOW</dt><dd id="stPosture">STERNAL LYING, RIGHT</dd></div>
+            <div><dt>ROLL RISK</dt><dd id="stRisk" class="hot">ROLL RIGHT · ~3&thinsp;s</dd></div>
+            <div><dt>LEFT CURTAIN</dt><dd id="stCL" class="hot">DOWN</dd></div>
+            <div><dt>RIGHT CURTAIN</dt><dd id="stCR" class="hot">DOWN</dd></div>
           </dl>
         </aside>
       </div>
 
       <div class="sk-caps" id="loopCaps">
-        <p class="sk-cap" data-i="0">Standing reads as safe. Both curtains stay up and the litter moves freely on both strips.</p>
-        <p class="sk-cap" data-i="1">She folds onto her sternum. SPM-01 reads the loaded flank from her back line: from here she can only roll left.</p>
-        <p class="sk-cap" data-i="2">The left curtain closes the strip she is about to occupy, before any piglet beds down in it. About two seconds, ahead of the roll.</p>
-        <p class="sk-cap" data-i="3">The roll takes about three seconds, and it lands on floor that was never occupied.</p>
-        <p class="sk-cap" data-i="4">Lateral lying is terminal. No further roll is possible from it, so both curtains lift.</p>
-        <p class="sk-cap" data-i="5">The litter returns to the udder within moments. Closure never costs a feeding.</p>
+        <p class="sk-cap" data-i="0">On her feet she can step or drop anywhere, so both curtains stay down and the litter waits out on the strips.</p>
+        <p class="sk-cap" data-i="1">She folds onto her sternum, loaded to her right. SPM-01 reads the change and signals the left curtain in real time.</p>
+        <p class="sk-cap" data-i="2">The left strip is out of her reach, so the signalled left curtain lifts and hands that strip back to the litter. The right curtain holds.</p>
+        <p class="sk-cap" data-i="3">The roll takes about three seconds, and it lands on the right strip that was kept empty. SPM-01 reads the landing as terminal.</p>
+        <p class="sk-cap" data-i="4">Lateral lying is terminal. The right curtain gets the signal and lifts too.</p>
+        <p class="sk-cap" data-i="5">The litter crosses from the left strip to the udder within moments. Closure never costs a feeding.</p>
       </div>
     </div>
   </div>
 
   <p class="fine center rv">Rendered to North American farrowing-crate
-    dimensions. Posture classes as classified by the SPM-01 pipeline. Roll
-    duration is published preweaning-mortality literature and curtain travel
-    is an SPC-01 design figure, not a field measurement of the curtain
-    itself.</p>
+    dimensions. Posture classes as classified by the SPM-01 pipeline. The
+    wireless link between SPM-01 and the curtains is drawn as a stylized
+    visualization. Roll duration is published preweaning-mortality
+    literature and curtain travel is an SPC-01 design figure, not a field
+    measurement of the curtain itself.</p>
 </section>
 
 <!-- ===== 4 · Four postures, one rule ===== -->
@@ -167,42 +184,49 @@
   <div class="wrap">
     <p class="eyebrow"><i></i>THE RULE</p>
     <h2 class="rv">Four postures, one rule</h2>
-    <p class="lede rv">Crushing is a one-way transition. From sternal lying the sow
-      can roll to exactly one side without getting up, and the opposite side is
-      physically out of reach. Both lateral postures are terminal, no further
-      roll is possible from them. So the rule fits in four lines.</p>
+    <p class="lede rv">Crushing is a one-way transition. On her feet nothing is
+      resolved yet, so both curtains stay down. From sternal lying she can roll
+      to exactly one side without getting up, so only that side stays curtained.
+      Both lateral postures are terminal, no further roll is possible from them.
+      So the rule fits in five lines.</p>
 
     <div class="pgal rv" id="pgal">
       <div class="prows" aria-label="Sow postures">
         <button class="prow on" aria-pressed="true" data-p="0">
-          <b>Sternal Lying, Right</b>
-          <em>can roll into Lateral-Right, that strip is the crush path</em>
-          <span class="pbadge hot">RIGHT CURTAIN DOWN</span>
+          <b>Standing</b>
+          <em>posture unresolved, she can step or drop anywhere</em>
+          <span class="pbadge hot">BOTH CURTAINS DOWN</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="1">
+          <b>Sternal Lying, Right</b>
+          <em>can roll only onto the right strip, the left curtain lifts</em>
+          <span class="pbadge hot">RIGHT CURTAIN DOWN</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="2">
           <b>Lateral Lying, Right</b>
           <em>terminal posture, no crushing threat anywhere in the crate</em>
           <span class="pbadge ok">BOTH CURTAINS LIFT</span>
         </button>
-        <button class="prow" aria-pressed="false" data-p="2">
+        <button class="prow" aria-pressed="false" data-p="3">
           <b>Sternal Lying, Left</b>
-          <em>the mirror case, the left strip becomes the crush path</em>
+          <em>the mirror case, the right curtain lifts, the left one holds</em>
           <span class="pbadge hot">LEFT CURTAIN DOWN</span>
         </button>
-        <button class="prow" aria-pressed="false" data-p="3">
+        <button class="prow" aria-pressed="false" data-p="4">
           <b>Lateral Lying, Left</b>
           <em>terminal posture, mirrored, traffic free on both strips</em>
           <span class="pbadge ok">BOTH CURTAINS LIFT</span>
         </button>
       </div>
       <figure class="pstack">
-        <img class="on" src="assets/img/spc_pose_sr.webp" alt="Overhead render: sow in sternal lying leaning right, right curtain closed, concept industrial design">
-        <img src="assets/img/spc_pose_lr.webp" alt="Overhead render: sow in lateral lying on her right strip, both curtains lifted, piglets nursing, concept industrial design" loading="lazy">
-        <img src="assets/img/spc_pose_sl.webp" alt="Overhead render: sow in sternal lying leaning left, left curtain closed, concept industrial design" loading="lazy">
-        <img src="assets/img/spc_pose_ll.webp" alt="Overhead render: sow in lateral lying on her left strip, both curtains lifted, concept industrial design" loading="lazy">
+        <img class="on" src="assets/img/spc_pose_st.webp" alt="Overhead render: sow standing in the crate, both curtains down, the litter out on both strips, concept industrial design">
+        <img src="assets/img/spc_pose_sr.webp" alt="Overhead render: sow in sternal lying loaded to her right, right curtain down, left curtain lifted, concept industrial design" loading="lazy">
+        <img src="assets/img/spc_pose_lr.webp" alt="Overhead render: sow in lateral lying on the right strip, both curtains lifted, piglets nursing from the left, concept industrial design" loading="lazy">
+        <img src="assets/img/spc_pose_sl.webp" alt="Overhead render: sow in sternal lying loaded to her left, left curtain down, right curtain lifted, concept industrial design" loading="lazy">
+        <img src="assets/img/spc_pose_ll.webp" alt="Overhead render: sow in lateral lying on the left strip, both curtains lifted, concept industrial design" loading="lazy">
         <figcaption id="pcap" aria-live="polite">Concept render, drawn to real
-          crate dimensions. The closed curtain keeps the strip she can reach
-          empty until her posture resolves.</figcaption>
+          crate dimensions. Standing keeps both strips curtained until her
+          posture resolves.</figcaption>
       </figure>
     </div>
   </div>
@@ -252,9 +276,10 @@
     <h2 class="rv">Half of a closed loop</h2>
     <p class="lede rv">SPC-01 is the actuator half of the Smart Swine farrowing
       system. The eyes belong to SPM-01, the dual-axis monitor already watching
-      the crate from the rear. The moment the sow settles into sternal lying it
-      knows which side she can roll to, and the matching curtain is closed over
-      the sealed wireless link before the roll can start.</p>
+      the crate from the rear. While the sow is on her feet both strips stay
+      curtained. The moment she settles into sternal lying it knows which side
+      she can roll to, and over the sealed wireless link the safe curtain lifts
+      while the danger side holds.</p>
 
     <div class="duo loop-cards">
       <a class="card edge-teal loopcard rv" href="product.html">
@@ -290,10 +315,10 @@
       <span class="step-arrow" aria-hidden="true">&#10230;</span>
       <article class="step">
         <p class="axis-tag coral">03 · ACT</p>
-        <h3>SPC-01 closes one side</h3>
-        <p>The matching curtain drops in about two seconds and holds. When she
-          commits to lateral lying or stands, both curtains lift and nursing
-          resumes.</p>
+        <h3>SPC-01 answers the posture</h3>
+        <p>Standing keeps both curtains down. Sternal lying lifts the safe
+          side and holds the roll path closed. Lateral lying lifts both, and
+          nursing resumes.</p>
       </article>
     </div>
   </div>

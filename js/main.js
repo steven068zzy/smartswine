@@ -67,6 +67,7 @@
     this.srcFn = srcFn;
     this.imgs = new Array(count);
     this.lastDrawn = -1;
+    this.want = -1;            /* the frame the scrub last asked for */
     this.rect = null;          /* where frame pixels actually landed */
   }
 
@@ -80,6 +81,7 @@
   };
 
   Sequence.prototype.draw = function (i) {
+    this.want = i;
     var k = this.nearest(i);
     if (k < 0 || !this.canvas) return;
     var ctx = this.canvas.getContext("2d");
@@ -112,7 +114,15 @@
           im.onload = function () {
             self.imgs[i] = im;
             inFlight--;
-            if (Math.abs(i - self.lastDrawn) < 3) self.draw(i);
+            /* refresh ONLY when this image improves the frame the scrub
+               is asking for. Never draw a frame just because it loaded —
+               frames load in order from 0, so the old proximity check
+               ratcheted lastDrawn forward and the sequence PLAYED ITSELF
+               during loading (the hero curtain "came down on its own",
+               user 2026-08-04). */
+            if (self.want >= 0 && self.nearest(self.want) !== self.lastDrawn) {
+              self.draw(self.want);
+            }
             pump();
           };
           im.onerror = function () { inFlight--; pump(); };
@@ -181,7 +191,11 @@
   /* ---------- SPC-01 hero: the curtain runs its travel as you scroll ----
      Same Sequence machinery as the turntable, but the frames sweep the
      drop parameter instead of the camera, so scroll position IS hem
-     position. The rail on the right is the same reading as a gauge. */
+     position. The rail on the right is the same reading as a gauge.
+     The travel completes at 62% of the pin (own 300vh height in the CSS):
+     the final screen of scrub is a hold on the fully-closed state, so the
+     hem always lands BEFORE the page is allowed to move on — at the old
+     92% finish a normal flick unpinned the section mid-drop. */
   var TN = 48;
   var travCanvas = document.getElementById("travCanvas");
   var spcHero = document.getElementById("spcHero");
@@ -201,7 +215,7 @@
           end: "bottom bottom",
           scrub: 0.4,
           onUpdate: function (self) {
-            var p = Math.min(1, self.progress / 0.92);
+            var p = Math.min(1, self.progress / 0.62);
             trav.draw(Math.round(p * (TN - 1)));
             if (trailFill) trailFill.style.transform = "scaleY(" + p + ")";
             if (trailTag) trailTag.textContent =
@@ -211,9 +225,9 @@
           }
         }
       });
-      tl.to(".beat-1", { autoAlpha: 0, y: -46, duration: 0.10 }, 0.30)
-        .fromTo(".beat-2", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.10 }, 0.46)
-        .to(".beat-2", { autoAlpha: 0, duration: 0.08 }, 0.88)
+      tl.to(".beat-1", { autoAlpha: 0, y: -46, duration: 0.10 }, 0.26)
+        .fromTo(".beat-2", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.10 }, 0.50)
+        .to(".beat-2", { autoAlpha: 0, duration: 0.08 }, 0.90)
         .to(".hero-cue", { autoAlpha: 0, duration: 0.05 }, 0.08);
     });
   }
@@ -267,9 +281,10 @@
     var pimgs = [].slice.call(pgal.querySelectorAll(".pstack img"));
     var pcap = document.getElementById("pcap");
     var pcaps = [
-      "Sternal Lying, Right: she can roll straight into Lateral-Right, so any piglet on the right strip is in the crush path. SPC-01 closes the right curtain. Concept render.",
-      "Lateral Lying, Right: terminal posture. Piglets are under no crushing threat anywhere in the crate. Both curtains lift and nursing begins. Concept render.",
-      "Sternal Lying, Left: the mirror case, read from the same signals. SPC-01 closes the left curtain and the right strip stays open the whole time. Concept render.",
+      "Standing: her next move is unreadable, so both curtains stay down and the litter is kept out on the strips. Concept render.",
+      "Sternal Lying, Right: she can roll only onto the right strip, so the right curtain holds it closed while the left curtain lifts the safe strip open. Concept render.",
+      "Lateral Lying, Right: terminal posture. No crushing threat anywhere in the crate, both curtains lift and nursing begins from the left strip. Concept render.",
+      "Sternal Lying, Left: the mirror case, read from the same signals. The left curtain holds and the right curtain lifts. Concept render.",
       "Lateral Lying, Left: terminal posture, mirrored. Piglets are under no crushing threat and traffic is free on both strips. Concept render."
     ];
     var pidx = 0, ptimer = null, phold = 0;
@@ -421,10 +436,12 @@
   }
 
   /* ---------- SPC-01 filmed control loop ----------
-     A 72-frame photoreal sequence rendered by ss02_loop.py: standing ->
-     settle sternal -> SPM-01 names the side -> right curtain closes ->
-     the roll -> lift -> nurse. Frame boundaries below mirror that script's
-     own frame-plan constants exactly, so status text and captions
+     A 72-frame photoreal sequence rendered by ss02_loop.py: standing
+     with BOTH curtains down -> settle sternal-right -> SPM-01 names the
+     side, the LEFT curtain lifts -> the roll onto the kept-empty right
+     strip -> the right curtain lifts -> the litter crosses from the left
+     to nurse. Frame boundaries below mirror that script's own frame-plan
+     constants exactly, so status text and captions
      stay truthful to what is actually on screen at each scroll position.
      Same Sequence machinery and no-JS/reduced-motion contract as the hero
      travel scrub: base .loop-stage is a single 100vh no-op block, the tall
@@ -448,39 +465,48 @@
       el.className = cls || "";
     }
     /* frame boundaries, verbatim from ss02_loop.py's frame plan.
-       Sides are named the way the client reads the shot (2026-08-04):
-       the curtain that closes in frame is the LEFT one, the sow is
-       loaded left and rolls left. */
+       FLANK naming (client 2026-08-04 evening): the story label names
+       the flank she rolls ONTO. Standing = BOTH curtains down; sternal
+       right = the RIGHT (near) curtain holds while the LEFT (far) one
+       lifts; lateral right lifts the right curtain too. */
     function loopStatus(i) {
       if (i < 10) {
-        set(stP, "STANDING"); set(stR, "NONE", "ok"); set(stCL, "UP", "ok");
+        set(stP, "STANDING"); set(stR, "POSTURE UNRESOLVED", "hot");
+        set(stCL, "DOWN", "hot"); set(stCR, "DOWN", "hot");
       } else if (i < 24) {
-        set(stP, "STERNAL LYING, LEFT");
-        set(stR, "ROLL LEFT · ~3 s", "hot"); set(stCL, "UP", "ok");
+        set(stP, "STERNAL LYING, RIGHT");
+        set(stR, "ROLL RIGHT · ~3 s", "hot");
+        set(stCL, "DOWN", "hot"); set(stCR, "DOWN", "hot");
       } else if (i < 34) {
-        set(stP, "STERNAL LYING, LEFT");
-        set(stR, "ROLL LEFT · ~3 s", "hot");
-        set(stCL, i < 30 ? "CLOSING" : "DOWN", "hot");
+        set(stP, "STERNAL LYING, RIGHT");
+        set(stR, "ROLL RIGHT · ~3 s", "hot");
+        set(stCL, i < 30 ? "LIFTING" : "UP", "ok");
+        set(stCR, "DOWN", "hot");
       } else if (i < 40) {
-        set(stP, "STERNAL LYING, LEFT");
-        set(stR, "ROLL LEFT · ~3 s", "hot"); set(stCL, "DOWN", "hot");
+        set(stP, "STERNAL LYING, RIGHT");
+        set(stR, "ROLL RIGHT · ~3 s", "hot");
+        set(stCL, "UP", "ok"); set(stCR, "DOWN", "hot");
       } else if (i < 50) {
-        set(stP, "ROLLING LEFT");
-        set(stR, "ROLL IN PROGRESS", "hot"); set(stCL, "DOWN", "hot");
+        set(stP, "ROLLING RIGHT");
+        set(stR, "ROLL IN PROGRESS", "hot");
+        set(stCL, "UP", "ok"); set(stCR, "DOWN", "hot");
       } else if (i < 54) {
-        set(stP, "LATERAL LYING, LEFT");
-        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "DOWN", "hot");
+        set(stP, "LATERAL LYING, RIGHT");
+        set(stR, "NONE · TERMINAL", "ok");
+        set(stCL, "UP", "ok"); set(stCR, "DOWN", "hot");
       } else if (i < 62) {
-        set(stP, "LATERAL LYING, LEFT");
-        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "LIFTING", "ok");
+        set(stP, "LATERAL LYING, RIGHT");
+        set(stR, "NONE · TERMINAL", "ok");
+        set(stCL, "UP", "ok"); set(stCR, "LIFTING", "ok");
       } else if (i < 66) {
-        set(stP, "LATERAL LYING, LEFT");
-        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "UP", "ok");
+        set(stP, "LATERAL LYING, RIGHT");
+        set(stR, "NONE · TERMINAL", "ok");
+        set(stCL, "UP", "ok"); set(stCR, "UP", "ok");
       } else {
         set(stP, "LATERAL LYING · NURSING");
-        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "UP", "ok");
+        set(stR, "NONE · TERMINAL", "ok");
+        set(stCL, "UP", "ok"); set(stCR, "UP", "ok");
       }
-      set(stCR, "UP", "ok");
     }
     /* caption windows, same source frame ranges */
     var capT = [[0, 8], [8, 24], [24, 40], [40, 54], [54, 62], [62, 71]];

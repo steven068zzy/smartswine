@@ -2,14 +2,27 @@
 
 **Live: https://steven068zzy.github.io/smartswine/**
 
-Four-page company site for SMART SWINE, LLC. Pure static — no build step.
+Five-page company site for SMART SWINE, LLC. Pure static — no build step.
+The nav groups both product pages under one **Products** dropdown
+(CSS-only, hover + focus-within; the top link still goes to product.html).
 
 | Page | File | What it carries |
 |---|---|---|
 | About | `index.html` | vision, mission, current status, team, advisors, partners |
-| Product | `product.html` | the full SPM-01 story from `SPM-01_Product_Brochure.pdf` (13 pages), turntable hero |
+| Products · SPM-01 | `product.html` | the full SPM-01 story from `SPM-01_Product_Brochure.pdf` (13 pages), turntable hero |
+| Products · SPC-01 | `spc01.html` | the SPC-01 curtain story: travel hero, filmed control loop, five-state rule gallery |
 | Resources | `resources.html` | video and podcasts, press, industry and grant programs |
 | Contact | `contact.html` | book a pilot, get in touch |
+
+SPC-01 control law shown on the site (client 2026-08-04): **standing =
+both curtains down**; sternal names the roll flank — that side's curtain
+holds while the safe side lifts; lateral lifts both. Posture labels use
+FLANK naming (the label names the flank the sow rolls onto; the closed
+curtain is the strip her body lands on). The loop sequence also shows
+SPM-01 mounted at the crate rear with a stylized wireless-signal
+visualization (detection → the acting curtain) — the fine print labels
+it as such. The render-side recipe lives in the render handoff doc §0 —
+regenerate imagery only through `v2_双光轴/源码/site_export.py`.
 
 ## Run
 
