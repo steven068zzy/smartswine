@@ -118,6 +118,34 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   transition: color 0.2s, background 0.2s;
 }
 .nav-links a:hover, .nav-links a.on { color: var(--ink); background: rgba(255,255,255,0.06); }
+/* Products dropdown: both product pages live under one nav item.
+   CSS-only — opens on hover and on keyboard focus (focus-within), the
+   top link itself still goes to product.html. */
+.nav-drop { position: relative; }
+.nav-drop-top .caret {
+  display: inline-block; margin-left: 5px; font-size: 9px;
+  transform: translateY(-1px); opacity: 0.7;
+}
+.nav-sub {
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  padding-top: 10px;                 /* hover bridge over the gap */
+  display: none; min-width: 250px;
+}
+.nav-sub-panel {
+  display: flex; flex-direction: column; gap: 2px;
+  background: rgba(38, 35, 48, 0.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(87, 79, 104, 0.7); border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+.nav-drop:hover .nav-sub,
+.nav-drop:focus-within .nav-sub { display: block; }
+.nav-sub a { display: block; white-space: nowrap; }
+.nav-sub a b { color: var(--ink); font-weight: 700; }
+.nav-sub a span { display: block; font-size: 11px; letter-spacing: 0.04em;
+                  color: var(--dim); margin-top: 1px; }
 .nav-cta { margin-left: 6px; }
 .nav-progress {
   position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
@@ -167,6 +195,12 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 /* 190vh, not 430vh: the turntable used to cost four full screens of wheel
    before the page moved on. One extra screen buys the whole rotation. */
 .hero--scrub { height: 190vh; }
+/* SPC-01 travel hero: 48 frames of hem travel need more runway than the
+   turntable, and the close must COMPLETE before the pin releases — the
+   travel finishes at 62% of this scrub (main.js) so the last screen is a
+   hold on the closed state. 190vh let the page move on mid-drop
+   (user 2026-08-04). */
+#spcHero.hero--scrub { height: 300vh; }
 .hero-stage {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
   display: grid; place-items: center;
@@ -1064,7 +1098,10 @@ body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
    pay for dead pinned scroll) and the tall scrub height only arrives via
    a JS-added --scrub class once the frame sequence has actually loaded. */
 .loop-stage { height: 100vh; position: relative; margin-top: 30px; }
-.loop-stage--scrub { height: 340vh; }
+/* 520vh, was 340: the client wants the whole filmed loop to run slower
+   under the wheel (2026-08-04 evening) — more runway per frame, and the
+   widened signal windows get real dwell time. */
+.loop-stage--scrub { height: 520vh; }
 .loop-sticky {
   position: sticky; top: 0; height: 100vh;
   display: grid; grid-template-rows: 1fr auto;
