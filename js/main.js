@@ -178,6 +178,48 @@
 
   if (hasGSAP && motionOK && desktop && canvas) initTurntable();
 
+  /* ---------- SPC-01 hero: the curtain runs its travel as you scroll ----
+     Same Sequence machinery as the turntable, but the frames sweep the
+     drop parameter instead of the camera, so scroll position IS hem
+     position. The rail on the right is the same reading as a gauge. */
+  var TN = 48;
+  var travCanvas = document.getElementById("travCanvas");
+  var spcHero = document.getElementById("spcHero");
+  var trav = travCanvas && new Sequence(travCanvas, TN, function (i) {
+    return "assets/travel/trav_" + String(i).padStart(3, "0") + ".webp";
+  });
+
+  function initTravel() {
+    var trailFill = document.getElementById("trailFill");
+    var trailTag = document.getElementById("trailTag");
+    trav.start(function () {
+      spcHero.classList.add("hero--scrub");
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#spcHero",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.4,
+          onUpdate: function (self) {
+            var p = Math.min(1, self.progress / 0.92);
+            trav.draw(Math.round(p * (TN - 1)));
+            if (trailFill) trailFill.style.transform = "scaleY(" + p + ")";
+            if (trailTag) trailTag.textContent =
+              p < 0.02 ? "HEM PARKED" :
+              p > 0.985 ? "CLOSED · STRIP EMPTY" :
+              "HEM TRAVEL " + Math.round(p * 100) + "%";
+          }
+        }
+      });
+      tl.to(".beat-1", { autoAlpha: 0, y: -46, duration: 0.10 }, 0.30)
+        .fromTo(".beat-2", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.10 }, 0.46)
+        .to(".beat-2", { autoAlpha: 0, duration: 0.08 }, 0.88)
+        .to(".hero-cue", { autoAlpha: 0, duration: 0.05 }, 0.08);
+    });
+  }
+
+  if (hasGSAP && motionOK && desktop && travCanvas && spcHero) initTravel();
+
   /* ---------- hero dust ---------- */
   var dust = document.querySelector(".hero-dust");
   if (dust && motionOK) {
@@ -214,6 +256,61 @@
       requestAnimationFrame(dustFrame);
     }
     requestAnimationFrame(dustFrame);
+  }
+
+  /* ---------- SPC-01 posture gallery ----------
+     Plain JS on purpose: the rule table must stay clickable with no GSAP
+     and no motion. Auto-advance is the only part gated on motionOK. */
+  var pgal = document.getElementById("pgal");
+  if (pgal) {
+    var prows = [].slice.call(pgal.querySelectorAll(".prow"));
+    var pimgs = [].slice.call(pgal.querySelectorAll(".pstack img"));
+    var pcap = document.getElementById("pcap");
+    var pcaps = [
+      "Sternal Lying, Right: she can roll straight into Lateral-Right, so any piglet on the right strip is in the crush path. SPC-01 closes the right curtain. Concept render.",
+      "Lateral Lying, Right: terminal posture. Piglets are under no crushing threat anywhere in the crate. Both curtains lift and nursing begins. Concept render.",
+      "Sternal Lying, Left: the mirror case, read from the same signals. SPC-01 closes the left curtain and the right strip stays open the whole time. Concept render.",
+      "Lateral Lying, Left: terminal posture, mirrored. Piglets are under no crushing threat and traffic is free on both strips. Concept render."
+    ];
+    var pidx = 0, ptimer = null, phold = 0;
+    var pshow = function (i) {
+      pidx = i;
+      prows.forEach(function (r, k) {
+        r.classList.toggle("on", k === i);
+        r.setAttribute("aria-pressed", k === i ? "true" : "false");
+      });
+      pimgs.forEach(function (im, k) { im.classList.toggle("on", k === i); });
+      if (pcap) pcap.textContent = pcaps[i];
+    };
+    prows.forEach(function (r, k) {
+      r.addEventListener("click", function () {
+        phold = Date.now() + 14000;   /* a person is reading: hold the reel */
+        pshow(k);
+      });
+      /* keyboard focus reads exactly like a click for hold purposes — a
+         person tabbing through the rows is reading them one at a time */
+      r.addEventListener("focus", function () {
+        phold = Date.now() + 14000;
+        pshow(k);
+      });
+    });
+    pshow(0);
+    if (motionOK && "IntersectionObserver" in window) {
+      var pio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !ptimer) {
+            ptimer = setInterval(function () {
+              if (Date.now() < phold) return;
+              pshow((pidx + 1) % prows.length);
+            }, 3800);
+          } else if (!e.isIntersecting && ptimer) {
+            clearInterval(ptimer);
+            ptimer = null;
+          }
+        });
+      }, { threshold: 0.25 });
+      pio.observe(pgal);
+    }
   }
 
   if (!hasGSAP || !motionOK) return;   /* everything below is pure garnish */
@@ -322,6 +419,104 @@
       if (xlabels.classList.contains("on")) placeXLabels(xseq);
     }, { passive: true });
   }
+
+  /* ---------- SPC-01 filmed control loop ----------
+     A 72-frame photoreal sequence rendered by ss02_loop.py: standing ->
+     settle sternal -> SPM-01 names the side -> right curtain closes ->
+     the roll -> lift -> nurse. Frame boundaries below mirror that script's
+     own frame-plan constants exactly, so status text and captions
+     stay truthful to what is actually on screen at each scroll position.
+     Same Sequence machinery and no-JS/reduced-motion contract as the hero
+     travel scrub: base .loop-stage is a single 100vh no-op block, the tall
+     pin only arrives via --scrub once frames have actually loaded. */
+  var LN = 72;
+  var loopCanvas = document.getElementById("loopCanvas");
+  var loopStage = document.getElementById("loopStage");
+  var loopSeq = loopCanvas && new Sequence(loopCanvas, LN, function (i) {
+    return "assets/loop/loop_" + String(i).padStart(3, "0") + ".webp";
+  });
+
+  function initLoop() {
+    var caps = [].slice.call(document.querySelectorAll("#loopCaps .sk-cap"));
+    var capsEl = document.getElementById("loopCaps");
+    var stP = document.getElementById("stPosture");
+    var stR = document.getElementById("stRisk");
+    var stCL = document.getElementById("stCL");
+    var stCR = document.getElementById("stCR");
+    function set(el, txt, cls) {
+      if (el.textContent !== txt) el.textContent = txt;
+      el.className = cls || "";
+    }
+    /* frame boundaries, verbatim from ss02_loop.py's frame plan.
+       Sides are named the way the client reads the shot (2026-08-04):
+       the curtain that closes in frame is the LEFT one, the sow is
+       loaded left and rolls left. */
+    function loopStatus(i) {
+      if (i < 10) {
+        set(stP, "STANDING"); set(stR, "NONE", "ok"); set(stCL, "UP", "ok");
+      } else if (i < 24) {
+        set(stP, "STERNAL LYING, LEFT");
+        set(stR, "ROLL LEFT · ~3 s", "hot"); set(stCL, "UP", "ok");
+      } else if (i < 34) {
+        set(stP, "STERNAL LYING, LEFT");
+        set(stR, "ROLL LEFT · ~3 s", "hot");
+        set(stCL, i < 30 ? "CLOSING" : "DOWN", "hot");
+      } else if (i < 40) {
+        set(stP, "STERNAL LYING, LEFT");
+        set(stR, "ROLL LEFT · ~3 s", "hot"); set(stCL, "DOWN", "hot");
+      } else if (i < 50) {
+        set(stP, "ROLLING LEFT");
+        set(stR, "ROLL IN PROGRESS", "hot"); set(stCL, "DOWN", "hot");
+      } else if (i < 54) {
+        set(stP, "LATERAL LYING, LEFT");
+        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "DOWN", "hot");
+      } else if (i < 62) {
+        set(stP, "LATERAL LYING, LEFT");
+        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "LIFTING", "ok");
+      } else if (i < 66) {
+        set(stP, "LATERAL LYING, LEFT");
+        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "UP", "ok");
+      } else {
+        set(stP, "LATERAL LYING · NURSING");
+        set(stR, "NONE · TERMINAL", "ok"); set(stCL, "UP", "ok");
+      }
+      set(stCR, "UP", "ok");
+    }
+    /* caption windows, same source frame ranges */
+    var capT = [[0, 8], [8, 24], [24, 40], [40, 54], [54, 62], [62, 71]];
+    var capIdx = -1;
+    function loopCaption(i) {
+      var k = 0;
+      for (var n = 0; n < capT.length; n++) {
+        if (i >= capT[n][0] && (i < capT[n][1] || n === capT.length - 1)) { k = n; break; }
+      }
+      if (k === capIdx) return;
+      capIdx = k;
+      caps.forEach(function (c, n) { c.classList.toggle("on", n === k); });
+    }
+
+    loopSeq.start(function () {
+      loopStage.classList.add("loop-stage--scrub");
+      capsEl.classList.add("sk-live");
+      loopCaption(0);
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#loopStage",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.4,
+          onUpdate: function (self) {
+            var i = Math.round(self.progress * (LN - 1));
+            loopSeq.draw(i);
+            loopStatus(i);
+            loopCaption(i);
+          }
+        }
+      });
+    });
+  }
+
+  if (hasGSAP && motionOK && desktop && loopCanvas && loopStage) initLoop();
 
   /* ---------- count-ups ---------- */
   gsap.utils.toArray("[data-count]").forEach(function (el) {
