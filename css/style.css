@@ -833,20 +833,9 @@ body.menu-open { overflow: hidden; }
 .ccard.hot {
   background: linear-gradient(150deg, rgba(246, 83, 143, 0.12), var(--bg2) 58%);
 }
-/* the referral is the quieter half of the same pair: same shape, less heat */
-.ccard.warm {
-  background: linear-gradient(150deg, rgba(249, 168, 199, 0.07), var(--bg2) 58%);
-  box-shadow: inset 0 0 0 1px var(--line);
-}
 .ccard.wide { grid-column: 1 / -1; }
 @media (max-width: 860px) { .ccard.wide { grid-column: auto; } }
 .ccard[id] { scroll-margin-top: calc(64px + var(--promo-h)); }
-.btn-ghost {
-  background: transparent; color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--pink);
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.btn-ghost:hover { background: rgba(246, 83, 143, 0.12); transform: translateY(-2px); }
 .ccard h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 10px 0 14px; }
 .ccard p { color: var(--mut); font-size: 15.5px; }
 .ccard .btn { margin-top: 26px; }
