@@ -1098,9 +1098,9 @@ body.menu-open { overflow: hidden; }
    Offer bar — pinned directly under the fixed nav, so it rides with it
    rather than scrolling away. Two offers share the strip and stay
    separate: the trial is the way in, the referral is what taking it
-   earns you. That ladder is carried by weight rather than colour, a
-   filled dot and a solid pill for the first, a duration badge and an
-   outlined pill for the second, with a hairline between them.
+   earns you. Both carry the same light pill so neither reads as the
+   afterthought; what tells them apart is the marker, a live dot on the
+   trial and the +3 MO badge on the referral, plus a hairline between.
    --promo-h is measured in JS so every offset below stays exact when
    the rail wraps to two rows on narrow screens.
    ===================================================================== */
@@ -1152,12 +1152,13 @@ body.menu-open { overflow: hidden; }
 @keyframes promoPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 @media (prefers-reduced-motion: reduce) { .promo-dot { animation: none; } }
 
-/* the reward, stated as a unit of time rather than a second live dot */
+/* the reward, stated as a unit of time rather than a second live dot, on
+   the same light surface as the buttons so the offer carries its own weight */
 .promo-badge {
   flex: none;
   font: 700 10px/1 var(--mono); letter-spacing: 0.09em;
-  padding: 4px 6px; border-radius: 4px;
-  border: 1px solid rgba(43, 10, 25, 0.42);
+  padding: 5px 7px; border-radius: 4px;
+  background: rgba(255, 255, 255, 0.82);
   color: #2b0a19;
 }
 
@@ -1174,9 +1175,6 @@ body.menu-open { overflow: hidden; }
   white-space: nowrap;
 }
 .promo-cta:hover { background: #fff; transform: translateY(-1px); }
-/* the second offer is a consequence of the first, so its button waits */
-.promo-cta-ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(43, 10, 25, 0.45); }
-.promo-cta-ghost:hover { background: rgba(255, 255, 255, 0.9); box-shadow: inset 0 0 0 1px transparent; }
 .promo-x {
   position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
   width: 24px; height: 24px; border: 0; border-radius: 5px;
@@ -1195,7 +1193,7 @@ body.menu-open { overflow: hidden; }
   .promo-offer { max-width: 100%; }
   .promo-txt { flex: 0 1 auto; min-width: 0; white-space: normal; }
   .promo-rule { width: 100%; height: 1px; }
-  .promo-mark { min-width: 46px; }
+  .promo-mark { min-width: 52px; }   /* the badge's own width, so both rows start level */
 }
 /* phones: the claim takes the row and the button drops under it. The dot is
    decoration and goes; the badge stays because it states the offer. */
