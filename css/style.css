@@ -1459,33 +1459,38 @@ a.loopcard:hover .t-link { color: var(--pink); }
 .pstack--wide img { aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
 
 /* Evidence gallery, stacked.
-   Side by side never sits right here: at half width a 16:9 frame is ~330px
-   tall while six class rows run to ~500, and squeezing either one to match
-   the other costs the thing that matters. Stacked removes the problem instead
-   of tuning it. The frame takes the full content column, so the evidence is
-   the biggest thing on the page, and the six classes become a fluid tab row
-   underneath that reflows from six across to two without a breakpoint. The
-   prose the rows used to carry moved into the caption, which already updates
-   on selection. */
-.pgal--evi { grid-template-columns: 1fr; gap: 22px; }
-.pgal--evi .prows {
-  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
-  gap: 10px;
+   Side by side never sat right here: at half width a 16:9 frame is ~330px tall
+   while six class cards run to ~500, and squeezing either to match the other
+   costs the thing that matters. Stacked removes the problem instead of tuning
+   it. The frame is held well inside the text column rather than spanning it, so
+   the six class cards below can be full size and carry their own description,
+   in two rows of three. The whole block is centered as one object, so the cards
+   and the frame always share an edge. */
+.pgal--evi {
+  grid-template-columns: 1fr; gap: 26px;
+  max-width: 830px; margin-left: auto; margin-right: auto;
 }
+.pgal--evi .prows { grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .pgal--evi .prow {
   display: flex; flex-direction: column; align-items: flex-start;
-  justify-content: space-between; gap: 12px;
-  padding: 16px 16px 15px;
+  justify-content: flex-start; gap: 9px;
+  padding: 22px 20px 20px;
 }
-.pgal--evi .prow b { font-size: 15px; letter-spacing: -0.005em; }
-.pgal--evi .prow .pbadge { flex: none; }
-/* the caption swaps between two and four lines as classes change; reserving
-   the tall case stops the tab row below it from jumping on every click */
-.pgal--evi .pstack figcaption { min-height: 3.4em; }
+.pgal--evi .prow b { font-size: 16.5px; letter-spacing: -0.01em; }
+/* gap owns the rhythm here, so the base card's own margins would double it */
+.pgal--evi .prow em { margin: 0; }
+/* the badge is the row's verdict: push it to the card's floor so all six read
+   along one line however long the description runs */
+.pgal--evi .prow .pbadge { flex: none; margin-top: auto; }
+/* the caption swaps between one and two lines as classes change; reserving the
+   tall case stops the card grid below from jumping on every click */
+.pgal--evi .pstack figcaption { min-height: 2.9em; }
 /* Stacked frames inherit inset:0 from the base gallery, which stretches every
    frame after the first over the caption too. Releasing the bottom edge lets
    aspect-ratio govern again, so all six occupy exactly the same box. */
 .pgal--evi .pstack img:not(:first-child) { inset: 0 0 auto 0; height: auto; }
+@media (max-width: 760px) { .pgal--evi .prows { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .pgal--evi .prows { grid-template-columns: 1fr; } }
 
 /* ---------- evidence: results table ----------
    For scored comparisons where two numbers per row carry the argument and a
@@ -1530,3 +1535,7 @@ a.loopcard:hover .t-link { color: var(--pink); }
    start level with that table, and where prose follows it the prose needs air. */
 .evi-figure:first-child { margin-top: 0; }
 .evi-figure:not(:last-child) { margin-bottom: 26px; }
+
+/* the comparison table is three narrow columns, so it reads better centered at
+   its own width than stretched across the text column */
+.evi-tbl-wrap { max-width: 640px; margin: 8px auto 46px; }

@@ -11,14 +11,14 @@ The nav groups both product pages under one **Products** dropdown
 | About | `index.html` | vision, mission, current status, team, advisors, partners |
 | Products · SPM-01 | `product.html` | the full SPM-01 story from `SPM-01_Product_Brochure.pdf` (13 pages), turntable hero |
 | Products · SPC-01 | `spc01.html` | the SPC-01 curtain story: travel hero, filmed control loop, five-state rule gallery |
-| Evidence | `evidence.html` | **real trial footage** with the models' own overlays: birth detection, stillborn vs live pair, posture classifier gallery, respiration fit |
+| From the barn | `barn.html` | **real trial footage** with the models' own overlays: birth detection, stillborn vs live pair, posture classifier gallery, respiration fit |
 | Resources | `resources.html` | video and podcasts, press, industry and grant programs |
 | Contact | `contact.html` | book a pilot, get in touch |
 
-## The Evidence page (added 2026-08-05)
+## The “From the barn” page (added 2026-08-05)
 
 **This is the only page on the site whose media is real.** Everything else is
-concept industrial design or AI-generated concept film; `evidence.html` is
+concept industrial design or AI-generated concept film; `barn.html` is
 unretouched recording from the Apr 26 – May 20 2026 ten-sow IACUC trial, with
 the overlays burned in by the inference scripts themselves. The whole page is
 built on that contrast, so **do not blur the line**:
@@ -101,7 +101,7 @@ set the DNS record, then re-enable HTTPS in the repo's Pages settings.
 index.html            About (the company's front door)
 product.html          the SPM-01 product story, 12 sections
 spc01.html            the SPC-01 curtain story
-evidence.html         real trial footage + model outputs (the only real media)
+barn.html             real trial footage + model outputs (the only real media)
 resources.html        video, podcasts, press and industry links
 contact.html          pilot + contact
 css/style.css         design tokens: plum-charcoal stack + pink brand
@@ -122,7 +122,7 @@ assets/seq/           96-frame product turntable (scroll-scrubbed hero)
 assets/explode/       48-frame assembled-to-exploded scrub
 assets/film/          AI-GENERATED concept film (Seedance 2 via Dreamina)
 assets/trial/         REAL trial footage, classifier frames, respiration fit.
-                      Evidence page only. Never mix these two folders, and
+                      From-the-barn page only. Never mix these two folders, and
                       never let a clip carry the other one's label
 assets/fonts/         Roboto + Roboto Mono woff2, latin subset
 assets/logos/         partner logo wall
@@ -147,10 +147,10 @@ Every page's footer keeps the brochure's fact-check language. Do not loosen
 any of these when editing copy:
 
 - All imagery is **concept industrial design**, never a photo of shipped hardware.
-  The single exception is `evidence.html` / `assets/trial/`, which is real
+  The single exception is `barn.html` / `assets/trial/`, which is real
   recorded trial footage and is labelled as such. That exception does not
   travel: no trial frame may be reused on a product page as if it were the
-  product, and no render may appear on the Evidence page.
+  product, and no render may appear on the From-the-barn page.
 - **Never claim users or customers.** Nobody has bought or run the system. The
   trial is our own, on one farm. "A working farrowing room with the swine
   center's own staff running it" is true; "our users" and "customer results"
