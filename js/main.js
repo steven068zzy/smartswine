@@ -328,6 +328,33 @@
     }
   }
 
+  /* ---------- concept films ----------
+     Autoplay lives in the HTML so the clips run without JS. Here they pause
+     offscreen, and under reduced motion they stop entirely and hand the
+     viewer a play button instead. */
+  var films = document.querySelectorAll("video.film");
+  if (films.length) {
+    if (!motionOK) {
+      films.forEach(function (v) {
+        v.removeAttribute("autoplay");
+        v.pause();
+        v.setAttribute("controls", "");
+      });
+    } else if ("IntersectionObserver" in window) {
+      var fio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) {
+            var p = e.target.play();
+            if (p && p.catch) p.catch(function () {});
+          } else {
+            e.target.pause();
+          }
+        });
+      }, { threshold: 0.2 });
+      films.forEach(function (v) { fio.observe(v); });
+    }
+  }
+
   if (!hasGSAP || !motionOK) return;   /* everything below is pure garnish */
 
   /* ---------- reveals ---------- */
