@@ -1388,3 +1388,72 @@ a.loopcard:hover .t-link { color: var(--pink); }
 .spec dt { font-family: var(--mono); font-size: 11px; font-weight: 500;
            letter-spacing: 0.14em; color: var(--dim); text-transform: uppercase; }
 .spec dd { color: var(--ink); font-size: 14.5px; line-height: 1.5; }
+
+/* ---------- field evidence ----------
+   The only unrendered media on the site. These are the inference scripts' own
+   annotated outputs over video recorded in the trial barn, so the frame
+   language deliberately reads as a camera feed and not as product
+   photography: media flush to the card edge, a green verification badge
+   instead of the pink concept-film label, and every number the overlay burns
+   into the frame restated as text, because 5 fps of 640x480 barn video is not
+   legible to everyone the way a readout is. */
+.evi { padding: 0; overflow: hidden; }
+.evi .evi-film { border-radius: 0; background: #000; }
+.evi-body { padding: 24px 28px 26px; }
+.evi-body h3 { font-size: 18px; margin-bottom: 8px; }
+.evi-body > p { color: var(--mut); font-size: 14.5px; }
+
+/* Verification badge. Green on purpose: the AI concept films are labelled in
+   the pink system, so real footage must never share their signal. */
+.evi-real {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #57e0a8; background: rgba(87, 224, 168, 0.09);
+  border: 1px solid rgba(87, 224, 168, 0.35);
+  border-radius: 980px; padding: 5px 12px 5px 11px;
+  margin-bottom: 14px;
+}
+.evi-real::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: #57e0a8; flex: none;
+}
+
+/* what the overlay drew, as a table a reader can scan */
+.evi-read { display: grid; margin-top: 20px; }
+.evi-read div {
+  display: grid; grid-template-columns: 1fr auto; gap: 16px;
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.evi-read div:last-child { border-bottom: 0; }
+.evi-read dt {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.13em; color: var(--dim); text-transform: uppercase;
+}
+.evi-read dd { font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; }
+.evi-read dd.hot { color: var(--pink); font-weight: 700; }
+.evi-read dd.ok { color: #57e0a8; font-weight: 700; }
+
+/* The respiration fit is a matplotlib figure straight out of the pipeline.
+   It keeps its own white ground and is framed as the printout it is, rather
+   than being redrawn in brand colors, which would make it our picture of the
+   result instead of the result. */
+.evi-plot { background: #fff; border-radius: var(--r-lg); padding: 14px; }
+.evi-plot img { border-radius: 8px; }
+
+/* the headline figure a clip resolves to, sat beside its own explanation */
+.evi-figure { margin-top: 30px; }
+.evi-figure strong {
+  display: block; font-size: clamp(34px, 4vw, 52px); font-weight: 700;
+  letter-spacing: -0.03em; color: var(--pink);
+  font-variant-numeric: tabular-nums; line-height: 1;
+}
+.evi-figure span { display: block; color: var(--mut); font-size: 14px; margin-top: 10px; }
+
+/* Evidence page's classifier gallery reuses .pstack, but those frames are the
+   barn camera's own 848x480 and the model prints its label and confidence in
+   the top-left corner. The 4:3 cover crop that suits the curtain renders cuts
+   that label off, which would remove the very thing the frame is evidence of.
+   So: the frames' own ratio, contained, never cropped. */
+.pstack--wide img { aspect-ratio: 16 / 9; object-fit: contain; background: #000; }

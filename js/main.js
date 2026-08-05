@@ -288,9 +288,14 @@
     requestAnimationFrame(dustFrame);
   }
 
-  /* ---------- SPC-01 posture gallery ----------
-     Plain JS on purpose: the rule table must stay clickable with no GSAP
-     and no motion. Auto-advance is the only part gated on motionOK. */
+  /* ---------- posture gallery ----------
+     Drives the SPC-01 curtain rule table and the Evidence page's real-frame
+     classifier gallery from the same component. Plain JS on purpose: the rows
+     must stay clickable with no GSAP and no motion. Auto-advance is the only
+     part gated on motionOK.
+     Captions: a row carrying data-cap supplies its own (Evidence does this,
+     one caption per real trial frame); rows without it fall back to the
+     curtain-rule list below, so spc01.html needs no markup change. */
   var pgal = document.getElementById("pgal");
   if (pgal) {
     var prows = [].slice.call(pgal.querySelectorAll(".prow"));
@@ -311,7 +316,7 @@
         r.setAttribute("aria-pressed", k === i ? "true" : "false");
       });
       pimgs.forEach(function (im, k) { im.classList.toggle("on", k === i); });
-      if (pcap) pcap.textContent = pcaps[i];
+      if (pcap) pcap.textContent = prows[i].getAttribute("data-cap") || pcaps[i] || "";
     };
     prows.forEach(function (r, k) {
       r.addEventListener("click", function () {
