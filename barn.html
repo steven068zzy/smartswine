@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evidence · SMART SWINE</title>
+<title>From the barn · SMART SWINE</title>
 <meta name="description" content="Real footage from the Smart Swine on-farm farrowing trial, with the detection models' own outputs burned into the frame: births caught, stillborn discrimination, sow posture and respiration.">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
 <link rel="stylesheet" href="css/style.css">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <a href="evidence.html" class="on" aria-current="page">Evidence</a>
+    <a href="barn.html" class="on" aria-current="page">From the barn</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Get in touch</a>
   </nav>
@@ -38,7 +38,7 @@
   <a href="index.html">About</a>
   <a href="product.html">SPM-01<span>Smart Piglet Monitor</span></a>
   <a href="spc01.html">SPC-01<span>Smart Piglet Curtain</span></a>
-  <a href="evidence.html" class="on" aria-current="page">Evidence</a>
+  <a href="barn.html" class="on" aria-current="page">From the barn</a>
   <a href="resources.html">Resources</a>
   <a href="contact.html">Get in touch</a>
   <a class="btn btn-coral" href="contact.html#pilot">Free trial</a>
@@ -256,42 +256,48 @@
         <img src="assets/trial/posture_slr.webp" alt="Real trial frame, sow in sternal lying loaded right, classifier label SLR at 0.85 confidence" loading="lazy">
         <img src="assets/trial/posture_lll.webp" alt="Real trial frame, sow in lateral lying on her left, classifier label LLL at 1.00 confidence" loading="lazy">
         <img src="assets/trial/posture_llr.webp" alt="Real trial frame, sow in lateral lying on her right, classifier label LLR at 1.00 confidence" loading="lazy">
-        <figcaption id="pcap" aria-live="polite">Standing. On her feet, nothing
-          about a roll is resolved yet. Classified STA at 1.00 confidence, real
-          trial frame from the forward view, 2026-04-16 15:19.</figcaption>
+        <figcaption id="pcap" aria-live="polite">Classified STA at 1.00 confidence.
+          Real trial frame from the forward view, 2026-04-16 15:19.</figcaption>
       </figure>
       <div class="prows" aria-label="Sow posture classes">
         <button class="prow on" aria-pressed="true" data-p="0"
-                data-cap="Standing. On her feet, nothing about a roll is resolved yet. Classified STA at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:19.">
+                data-cap="Classified STA at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:19.">
           <b>Standing</b>
+          <em>on her feet, nothing about a roll is resolved yet</em>
           <span class="pbadge ok">STA · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="1"
-                data-cap="Sitting. The transitional posture, and the one most often missed. Classified SIT at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:18.">
+                data-cap="Classified SIT at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:18.">
           <b>Sitting</b>
+          <em>the transitional posture, and the one most often missed</em>
           <span class="pbadge ok">SIT · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="2"
-                data-cap="Sternal lying, loaded to her left. Down on her sternum and one roll away. Classified SLL at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:53.">
+                data-cap="Classified SLL at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:53.">
           <b>Sternal Lying, Left</b>
+          <em>down on her sternum, loaded to her left, one roll away</em>
           <span class="pbadge ok">SLL · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="3"
-                data-cap="Sternal lying, loaded to her right. The mirror case, and the weakest call in this set. Classified SLR at 0.85 confidence, the lowest of the six frames here, real trial frame from the forward view, 2026-04-17 03:51.">
+                data-cap="Classified SLR at 0.85 confidence, the lowest of the six frames here. Real trial frame from the forward view, 2026-04-17 03:51.">
           <b>Sternal Lying, Right</b>
+          <em>the mirror case, and the weakest call in this set</em>
           <span class="pbadge hot">SLR · 0.85</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="4"
-                data-cap="Lateral lying on her left. Terminal posture, the roll has already happened. Classified LLL at 1.00 confidence, real trial frame from the forward view, 2026-04-18 02:21.">
+                data-cap="Classified LLL at 1.00 confidence. Real trial frame from the forward view, 2026-04-18 02:21.">
           <b>Lateral Lying, Left</b>
+          <em>terminal posture, the roll has already happened</em>
           <span class="pbadge ok">LLL · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="5"
-                data-cap="Lateral lying on her right. Terminal posture, mirrored, and the litter can nurse. Classified LLR at 1.00 confidence, real trial frame from the forward view, 2026-04-17 02:46.">
+                data-cap="Classified LLR at 1.00 confidence. Real trial frame from the forward view, 2026-04-17 02:46.">
           <b>Lateral Lying, Right</b>
+          <em>terminal posture, mirrored, the litter can nurse</em>
           <span class="pbadge ok">LLR · 1.00</span>
         </button>
       </div>
+    </div>
     </div>
 
     <p class="lede rv center">These frames are dark because the room was dark.
@@ -339,66 +345,65 @@
   <div class="wrap">
     <header class="sec-head">
       <h3 class="sub-h rv">Then we checked it against a human counting breaths</h3>
-      <p class="lede rv">A fitted curve is only worth what it agrees with, so we
+      <p class="lede rv">A fitted curve is only worth what it agrees with. So we
         built every plausible way of reading respiration off this barn and scored
         all of them against a manual breath count. Three sensors, two trackers,
-        both motion axes and two body regions give 18 channels, 100 clips each.
-        The point of running all 18 was to find out which one to put in the
-        product, and the answer was not the obvious one.</p>
+        both motion axes and two body regions give 18 channels. The point was to
+        find out which one belongs in the product, and the answer was not the
+        obvious one.</p>
     </header>
 
-    <div class="split">
-      <div class="split-txt">
-        <div class="evi-figure rv">
-          <strong>2.43&thinsp;bpm</strong>
-          <span>mean absolute error against a manual count, for the winning
-            channel: the depth sensor reading her back</span>
-        </div>
-        <p class="lede rv">Depth on the back won on both error measures, and it
-          won in a way that matters more than the average. Its ratio of RMSE to
-          MAE is 1.37, the lowest of all 18 channels, where everything else lands
-          between 1.8 and 3.1. A low ratio means the errors it makes are small
-          ones. The other channels are dragged by occasional large misses, which
-          is the failure mode that would put a false distress alert in front of a
-          stockperson at four in the morning.</p>
-        <p class="lede rv">This is also why the forward head on the product is a
-          stereo depth module rather than a second color camera. We did not pick
-          depth because it sounded better. It came first out of 18.</p>
-      </div>
-      <div class="rv">
-        <table class="evi-tbl">
-          <caption>Respiration rate error by sensor and body region, breaths per
-            minute, best channel per sensor pairing. Lower is better.</caption>
-          <thead>
-            <tr><th scope="col">Sensor · region</th><th scope="col">MAE</th><th scope="col">RMSE</th></tr>
-          </thead>
-          <tbody>
-            <tr class="best"><th scope="row">Depth · back</th><td>2.43</td><td>3.33</td></tr>
-            <tr><th scope="row">RGB · back</th><td>3.71</td><td>9.39</td></tr>
-            <tr><th scope="row">RGB · abdomen</th><td>4.27</td><td>11.62</td></tr>
-            <tr><th scope="row">IR · abdomen</th><td>6.68</td><td>20.37</td></tr>
-            <tr><th scope="row">IR · back</th><td>7.02</td><td>21.56</td></tr>
-            <tr><th scope="row">Depth · abdomen</th><td>9.98</td><td>27.96</td></tr>
-          </tbody>
-        </table>
-        <p class="evi-tbl-note">Every channel was scored on the same detector
-          boxes. RGB, infrared and depth all arrive at 848 by 480, so one set of
-          YOLO boxes transfers across all three streams untouched, which means a
-          difference between sensors is the sensor and not a difference in where
-          we looked.</p>
-      </div>
+    <div class="stats stats-3">
+      <div class="stat rv"><strong data-count="2.43" data-dec="2" data-suffix="&thinsp;bpm">2.43&thinsp;bpm</strong><span>mean absolute error for the winning channel, the depth sensor reading her back</span></div>
+      <div class="stat rv"><strong data-count="1.37" data-dec="2">1.37</strong><span>its ratio of RMSE to MAE, the lowest of the 18, where the rest sit between 1.8 and 3.1</span></div>
+      <div class="stat rv"><strong data-count="18">18</strong><span>channels scored, 100 clips each, against a manual breath re-count</span></div>
+    </div>
+
+    <div class="evi-tbl-wrap rv">
+      <table class="evi-tbl">
+        <caption>Respiration rate error by sensor and body region, breaths per
+          minute. Lower is better.</caption>
+        <thead>
+          <tr><th scope="col">Sensor · region</th><th scope="col">MAE</th><th scope="col">RMSE</th></tr>
+        </thead>
+        <tbody>
+          <tr class="best"><th scope="row">Depth · back</th><td>2.43</td><td>3.33</td></tr>
+          <tr><th scope="row">RGB · back</th><td>3.71</td><td>9.39</td></tr>
+          <tr><th scope="row">RGB · abdomen</th><td>4.27</td><td>11.62</td></tr>
+          <tr><th scope="row">IR · abdomen</th><td>6.68</td><td>20.37</td></tr>
+          <tr><th scope="row">IR · back</th><td>7.02</td><td>21.56</td></tr>
+          <tr><th scope="row">Depth · abdomen</th><td>9.98</td><td>27.96</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="duo">
+      <article class="card edge-coral rv">
+        <h3>Why depth on the back won</h3>
+        <p>It came first on both error measures, and it won in the way that
+          counts for more than the average. A low ratio of RMSE to MAE means the
+          errors it makes are small ones. The other channels are dragged by
+          occasional large misses, and that is the failure mode that would put a
+          false distress alert in front of a stockperson at four in the morning.
+          It is also why the forward head on the product is a stereo depth module
+          rather than a second color camera. We did not pick depth because it
+          sounded better. It came first out of 18.</p>
+      </article>
+      <article class="card edge-teal rv">
+        <h3>What makes it a fair test, and what is still open</h3>
+        <p>Every channel was scored on the same detector boxes. RGB, infrared and
+          depth all arrive at 848 by 480, so one set of YOLO boxes transfers
+          across all three streams untouched, which means a difference between
+          sensors is the sensor and not a difference in where we looked. Two
+          things are still open and we are not treating either as done: the
+          Bland-Altman agreement analysis is unfinished, and recounts on 13
+          flagged clips are unconfirmed. The reference is a human counter rather
+          than a clinical instrument, so this is a sensor choice and not a
+          clinical validation.</p>
+      </article>
     </div>
   </div>
 
-  <p class="fine center rv">The plot above is a research output and it looks like
-    one. We would rather show the figure the pipeline produced than a prettier
-    version we drew afterward. On the comparison: n is 100 clips per channel and
-    the reference is a manual re-count, so these are error figures against a
-    human counter rather than against a clinical instrument. Two things are still
-    open and we are not treating them as done: the Bland-Altman agreement
-    analysis is not finished, and recounts on 13 flagged clips are still to be
-    confirmed. Respiration is a welfare and distress signal here, and we make no
-    clinical claim from it.</p>
 </section>
 
 <!-- ===== Honest limits ===== -->
