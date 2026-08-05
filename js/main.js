@@ -34,6 +34,29 @@
     }
   }
 
+  /* ---------- mobile menu ---------- */
+  var burger = document.querySelector(".nav-burger");
+  var mobileMenu = document.getElementById("mobileMenu");
+  if (burger && mobileMenu) {
+    var closeMenu = function () {
+      document.body.classList.remove("menu-open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    };
+    burger.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    /* any tap on a menu link closes the panel, same-page anchors included */
+    mobileMenu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeMenu();
+    });
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
   /* ---------- image-sequence scrubber ----------
      Shared by the hero turntable and the exploded view. Loads frame 0 first
      and only swaps the canvas in once it is decoded, so a missing or slow
