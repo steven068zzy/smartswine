@@ -6,8 +6,6 @@
 <title>SMART SWINE · SPM-01 Smart Piglet Monitor</title>
 <meta name="description" content="SPM-01: dual-axis vision for the farrowing crate. One sealed unit watches the sow and her newborn piglets at once.">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
-<link rel="preload" href="assets/fonts/roboto-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/roboto-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -33,7 +31,6 @@
     <a href="contact.html">Get in touch</a>
   </nav>
   <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
-  <span class="nav-progress" aria-hidden="true"></span>
 </header>
 
 <div class="promo" id="promo" role="region" aria-label="Announcement">
@@ -43,19 +40,11 @@
   <button class="promo-x" type="button" aria-label="Dismiss announcement">&times;</button>
 </div>
 
-<!-- Seal line — the page's signature: the product's blue perimeter gasket,
-     drawn down the left edge as you scroll -->
-<div class="sealline" aria-hidden="true">
-  <span class="sealline-fill"></span>
-  <span class="sealline-dot"></span>
-</div>
-
 <main id="top">
 
 <!-- ===== 1 · Hero ===== -->
 <section class="hero" id="hero">
   <div class="hero-stage">
-    <div class="hero-grid" aria-hidden="true"></div>
     <canvas class="hero-dust" aria-hidden="true"></canvas>
     <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
       <circle cx="50" cy="50" r="47" pathLength="100"></circle>
@@ -66,7 +55,7 @@
             aria-label="SPM-01 rotating product view"></canvas>
 
     <div class="beat beat-1">
-      <p class="eyebrow"><i></i>SMART SWINE · COLLEGE STATION, TX</p>
+      <p class="eyebrow">SMART SWINE · COLLEGE STATION, TX</p>
       <h1>SPM&#8209;01</h1>
       <p class="hero-sub">Smart Piglet Monitor</p>
       <p class="hero-tag">Dual-axis vision for the farrowing crate.<br>
@@ -85,12 +74,14 @@
 <!-- ===== 2 · Problem ===== -->
 <section class="sec" id="problem">
   <div class="wrap">
-    <p class="eyebrow"><i></i>THE FARROWING ROOM</p>
-    <h2 class="rv">One in seven never reaches weaning</h2>
-    <p class="lede rv">U.S. herds wean about 31.7 million piglets a quarter, and the
-      farrowing room still loses roughly $1.05&nbsp;billion a year to stillbirth and
-      preweaning mortality, at $44 of value per weaned piglet. Two failure modes
-      dominate the loss, and both are supervision gaps, not biology.</p>
+    <header class="sec-head">
+      <p class="eyebrow">THE FARROWING ROOM</p>
+      <h2 class="rv">One in seven never reaches weaning</h2>
+      <p class="lede rv">U.S. herds wean about 31.7 million piglets a quarter, and the
+        farrowing room still loses roughly $1.05&nbsp;billion a year to stillbirth and
+        preweaning mortality, at $44 of value per weaned piglet. Two failure modes
+        dominate the loss, and both are supervision gaps, not biology.</p>
+    </header>
 
     <div class="stats stats-4">
       <div class="stat rv"><strong data-count="1.05" data-prefix="$" data-dec="2" data-suffix="B">$1.05B</strong><span>annual U.S. farrowing-room loss (stillbirth + preweaning)</span></div>
@@ -121,10 +112,10 @@
 </section>
 
 <!-- ===== 3 · Two axes ===== -->
-<section class="sec" id="product">
+<section class="sec sec-deep" id="product">
   <div class="wrap split">
     <div class="split-txt">
-      <p class="eyebrow"><i></i>THE SENSOR</p>
+      <p class="eyebrow">THE SENSOR</p>
       <h2 class="rv">Two axes, one enclosure</h2>
       <p class="lede rv">Farrowing loss has two causes and they need two different
         kinds of sight. SPM-01 carries both.</p>
@@ -188,12 +179,14 @@
 </section>
 
 <!-- ===== 4 · Inside ===== -->
-<section class="sec sec-deep" id="inside">
+<section class="sec" id="inside">
   <div class="wrap">
-    <p class="eyebrow"><i></i>INSIDE THE SEAL</p>
-    <h2 class="rv">Sixteen parts. One gasket line.</h2>
-    <p class="lede rv">Every penetration (cable, antenna, screws, vents) gets the
-      same treatment: engineered, then sealed. Scroll to take it apart.</p>
+    <header class="sec-head">
+      <p class="eyebrow">INSIDE THE SEAL</p>
+      <h2 class="rv">Sixteen parts. One gasket line.</h2>
+      <p class="lede rv">Every penetration (cable, antenna, screws, vents) gets the
+        same treatment: engineered, then sealed. Scroll to take it apart.</p>
+    </header>
   </div>
 
   <div class="xstage" id="xstage">
@@ -225,7 +218,7 @@
 <section class="wash" id="washdown">
   <div class="wash-bg" aria-hidden="true"></div>
   <div class="wrap wash-inner">
-    <p class="eyebrow coral-i"><i></i>WASHDOWN SURVIVAL: THE #2 CONCERN IN OUR PRODUCER SURVEY (71%)</p>
+    <p class="eyebrow">WASHDOWN SURVIVAL: THE #2 CONCERN IN OUR PRODUCER SURVEY (71%)</p>
     <h2 class="rv">Built for the washdown</h2>
     <p class="lede rv">Between batches a farrowing room is emptied and hit with a
       high-pressure, high-temperature wash, the treatment that kills barn
@@ -246,21 +239,25 @@
 <!-- ===== 6 · Mounting ===== -->
 <section class="sec" id="mounting">
   <div class="wrap">
-    <p class="eyebrow"><i></i>INSTALLATION</p>
-    <h2 class="rv">Mounts to the crate itself</h2>
-    <p class="lede rv">Two rubber-lined hooks hang on the crate's own rear rail and
-      one cam lever locks the riser: on or off in seconds, no tools. Sensor and
-      crate share one rigid body, so nothing drifts out of calibration.</p>
+    <header class="sec-head">
+      <p class="eyebrow">INSTALLATION</p>
+      <h2 class="rv">Mounts to the crate itself</h2>
+      <p class="lede rv">Two rubber-lined hooks hang on the crate's own rear rail and
+        one cam lever locks the riser: on or off in seconds, no tools. Sensor and
+        crate share one rigid body, so nothing drifts out of calibration.</p>
+    </header>
   </div>
   <figure class="wide-fig rv">
     <img src="assets/img/install.webp" alt="SPM-01 mounted inside a farrowing crate above the sow, concept industrial design">
     <figcaption><span class="mono">ONE UNIT</span> per farrowing crate · <span class="mono">TOOL-FREE</span> quick-release hooks + cam lever · <span class="mono">ADJUSTABLE</span> pitch on each head, height on the mount</figcaption>
   </figure>
   <div class="wrap">
-    <h3 class="sub-h rv">One plate, four ways up</h3>
-    <p class="lede rv">Every SPM-01 carries the same quick-mount plate: two bosses,
-      two thumb knobs, no tools. The plate stays the same while the arm changes,
-      so one unit moves between rooms and layouts.</p>
+    <header class="sec-head">
+      <h3 class="sub-h rv">One plate, four ways up</h3>
+      <p class="lede rv">Every SPM-01 carries the same quick-mount plate: two bosses,
+        two thumb knobs, no tools. The plate stays the same while the arm changes,
+        so one unit moves between rooms and layouts.</p>
+    </header>
     <div class="mounts">
       <article class="mcard rv"><img src="assets/img/mount_crate.webp" alt="Crate arm mount"><h4>Crate arm</h4><p>The standard install. J-hooks hang on the crate's rear rail and a cam lever locks the riser.</p></article>
       <article class="mcard rv"><img src="assets/img/mount_rail.webp" alt="Rail clamp mount"><h4>Rail clamp</h4><p>No arm at all. Two thumb-screw ring clamps grab a crate rail directly.</p></article>
@@ -315,7 +312,7 @@
         to the barn network, Bluetooth taking setup in at the crate.</figcaption>
     </figure>
     <div class="split-txt">
-      <p class="eyebrow"><i></i>CONNECTIVITY</p>
+      <p class="eyebrow">CONNECTIVITY</p>
       <h2 class="rv">Sealed, but never cut off</h2>
       <p class="lede rv">A washdown-rated metal shell is also a Faraday cage. So every
         signal path got the same treatment as every water path: engineered, then
@@ -347,7 +344,7 @@
 <section class="sec" id="app">
   <div class="wrap split">
     <div class="split-txt">
-      <p class="eyebrow"><i></i>THE APP</p>
+      <p class="eyebrow">THE APP</p>
       <h2 class="rv">Your barn, in your pocket</h2>
       <p class="lede rv">Every SPM-01 streams into the Smart Swine app: our own,
         built for the farrowing room.</p>
@@ -432,14 +429,50 @@
   <p class="fine center rv">App interface is a design preview</p>
 </section>
 
-<!-- ===== 9 · Survey ===== -->
-<section class="sec sec-deep" id="voices">
+<!-- ===== 9 · Validation ===== -->
+<section class="sec sec-deep" id="validation">
   <div class="wrap">
-    <p class="eyebrow"><i></i>CUSTOMER DISCOVERY · JUNE 2026</p>
-    <h2 class="rv">What producers told us</h2>
-    <p class="lede rv">Concept test run online through U.S. pork-industry
-      associations plus in-person field surveys. n&nbsp;≈&nbsp;16–19 responses per
-      question.</p>
+    <header class="sec-head">
+      <p class="eyebrow">EVIDENCE</p>
+      <h2 class="rv">Where the numbers come from</h2>
+    </header>
+    <div class="stats stats-5">
+      <div class="stat rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>sow-posture classification (unseen sow)</span></div>
+      <div class="stat rv"><strong data-count="98.4" data-dec="1" data-suffix="%">98.4%</strong><span>breathing-signal classification (validation)</span></div>
+      <div class="stat rv"><strong data-count="96" data-suffix="%">96%</strong><span>stillborn precision</span></div>
+      <div class="stat rv"><strong data-count="86" data-suffix="%">86%</strong><span>newborn precision</span></div>
+      <div class="stat rv"><strong data-count="0.2" data-prefix="~" data-dec="1" data-suffix="&thinsp;s">~0.2&thinsp;s</strong><span>edge inference per frame</span></div>
+    </div>
+    <div class="duo">
+      <div class="axis rv">
+        <p class="axis-tag teal">VALIDATION</p>
+        <p>Vision models trained on 500+ hours of on-farm depth and RGB farrowing
+          video. Hardware validated in a 10-sow on-farm trial under IACUC
+          oversight.</p>
+      </div>
+      <div class="axis rv">
+        <p class="axis-tag">SUPPORT</p>
+        <p>Approximately $1M in non-dilutive NSF and USDA-NIFA support (2026–2029),
+          with the university and industry partners below. Semifinalist, 2026 AI
+          Venture Velocity Challenge: 531 teams across 160 universities to 27
+          semifinalists.</p>
+      </div>
+    </div>
+    <p class="lede rv center">The partners behind that work are
+      listed <a href="index.html#partners">on the About page</a>.</p>
+  </div>
+</section>
+
+<!-- ===== 10 · Survey ===== -->
+<section class="sec" id="voices">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">CUSTOMER DISCOVERY · JUNE 2026</p>
+      <h2 class="rv">What producers told us</h2>
+      <p class="lede rv">Concept test run online through U.S. pork-industry
+        associations plus in-person field surveys. n&nbsp;≈&nbsp;16–19 responses per
+        question.</p>
+    </header>
     <div class="stats stats-4">
       <div class="stat rv"><strong data-count="89" data-suffix="%">89%</strong><span>call preweaning mortality a moderate-to-major problem</span></div>
       <div class="stat rv"><strong data-count="58" data-suffix="%">58%</strong><span>run 8–15% preweaning mortality today</span></div>
@@ -467,14 +500,16 @@
   </div>
 </section>
 
-<!-- ===== 10 · Pricing ===== -->
-<section class="sec" id="pricing">
+<!-- ===== 11 · Pricing ===== -->
+<section class="sec sec-deep" id="pricing">
   <div class="wrap">
-    <p class="eyebrow"><i></i>BUSINESS MODEL</p>
-    <h2 class="rv">Buy it or rent it</h2>
-    <p class="lede rv">Try one free this season first. After that farms budget
-      differently, so SPM-01 sells both ways. Either way the hardware is the same
-      sealed unit, and either way it carries a lifetime warranty.</p>
+    <header class="sec-head">
+      <p class="eyebrow">BUSINESS MODEL</p>
+      <h2 class="rv">Buy it or rent it</h2>
+      <p class="lede rv">Try one free this season first. After that farms budget
+        differently, so SPM-01 sells both ways. Either way the hardware is the same
+        sealed unit, and either way it carries a lifetime warranty.</p>
+    </header>
     <div class="duo">
       <article class="card price-card edge-teal rv">
         <p class="axis-tag teal">BUY THE UNITS</p>
@@ -502,49 +537,17 @@
   </div>
 </section>
 
-<!-- ===== 11 · Validation ===== -->
-<section class="sec sec-deep" id="validation">
-  <div class="wrap">
-    <p class="eyebrow"><i></i>EVIDENCE</p>
-    <h2 class="rv">Where the numbers come from</h2>
-    <div class="stats stats-5">
-      <div class="stat rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>sow-posture classification (unseen sow)</span></div>
-      <div class="stat rv"><strong data-count="98.4" data-dec="1" data-suffix="%">98.4%</strong><span>breathing-signal classification (validation)</span></div>
-      <div class="stat rv"><strong data-count="96" data-suffix="%">96%</strong><span>stillborn precision</span></div>
-      <div class="stat rv"><strong data-count="86" data-suffix="%">86%</strong><span>newborn precision</span></div>
-      <div class="stat rv"><strong data-count="0.2" data-prefix="~" data-dec="1" data-suffix="&thinsp;s">~0.2&thinsp;s</strong><span>edge inference per frame</span></div>
-    </div>
-    <div class="duo">
-      <div class="axis rv">
-        <p class="axis-tag teal">VALIDATION</p>
-        <p>Vision models trained on 500+ hours of on-farm depth and RGB farrowing
-          video. Hardware validated in a 10-sow on-farm trial under IACUC
-          oversight.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag">SUPPORT</p>
-        <p>Approximately $1M in non-dilutive NSF and USDA-NIFA support (2026–2029),
-          with the university and industry partners below. Semifinalist, 2026 AI
-          Venture Velocity Challenge: 531 teams across 160 universities to 27
-          semifinalists.</p>
-      </div>
-    </div>
-    <p class="lede rv" style="margin-top: 30px;">The partners behind that work are
-      listed <a href="index.html#partners" style="color: var(--pink);">on the About page</a>.</p>
-  </div>
-</section>
-
 <!-- ===== 11.5 · The other half ===== -->
 <section class="sec" id="spcteaser">
   <div class="wrap split">
     <div class="split-txt">
-      <p class="eyebrow"><i></i>NEW · THE OTHER HALF</p>
+      <p class="eyebrow">NEW · THE OTHER HALF</p>
       <h2 class="rv">SPM-01 watches.<br>SPC-01 acts.</h2>
       <p class="lede rv">Detection without an actuator leaves the last meter of
         the crushing problem unsolved. SPC-01 closes it: a motorized curtain on
         the crate that shuts the danger zone SPM-01 has named, seconds before
         the sow rolls, and lifts the moment she is safe.</p>
-      <div class="cta-row rv" style="justify-content: flex-start;">
+      <div class="cta-row rv">
         <a class="btn btn-coral" href="spc01.html">Meet SPC-01</a>
         <a class="btn btn-ghost" href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
       </div>

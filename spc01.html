@@ -6,8 +6,6 @@
 <title>SMART SWINE · SPC-01 Smart Piglet Curtain</title>
 <meta name="description" content="SPC-01: a motorized curtain for the farrowing crate. It keeps the crushing danger zone curtained until the sow's posture makes it safe, and lifts the moment it is.">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
-<link rel="preload" href="assets/fonts/roboto-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/roboto-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -33,7 +31,6 @@
     <a href="contact.html">Get in touch</a>
   </nav>
   <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
-  <span class="nav-progress" aria-hidden="true"></span>
 </header>
 
 <div class="promo" id="promo" role="region" aria-label="Announcement">
@@ -43,17 +40,12 @@
   <button class="promo-x" type="button" aria-label="Dismiss announcement">&times;</button>
 </div>
 
-<div class="sealline" aria-hidden="true">
-  <span class="sealline-fill"></span>
-  <span class="sealline-dot"></span>
-</div>
 
 <main id="top">
 
 <!-- ===== 1 · Hero: the curtain runs its travel as you scroll ===== -->
 <section class="hero" id="spcHero">
   <div class="hero-stage">
-    <div class="hero-grid" aria-hidden="true"></div>
     <canvas class="hero-dust" aria-hidden="true"></canvas>
     <!-- Desktop (where the scrub runs) falls back to the PARKED first
          frame so the canvas takeover is pixel-identical and nothing on
@@ -73,7 +65,7 @@
     </div>
 
     <div class="beat beat-1">
-      <p class="eyebrow"><i></i>SMART SWINE · COLLEGE STATION, TX</p>
+      <p class="eyebrow">SMART SWINE · COLLEGE STATION, TX</p>
       <h1>SPC&#8209;01</h1>
       <p class="hero-sub">Smart Piglet Curtain</p>
       <p class="hero-tag">A farrowing-crate device that acts on a crushing
@@ -92,14 +84,16 @@
 <!-- ===== 2 · Problem ===== -->
 <section class="sec" id="problem">
   <div class="wrap">
-    <p class="eyebrow"><i></i>THE CRUSHING EVENT</p>
-    <h2 class="rv">Three seconds, one direction</h2>
-    <p class="lede rv">Crushing kills more piglets than any disease, and it is not
-      random. Most crushing deaths happen during one specific event: the sow
-      rolling from sternal to lateral lying. The roll goes to one side that is
-      knowable in advance, and the window is about three seconds long. An alert
-      cannot cross a farrowing room that fast. An actuator that is already
-      mounted on the crate can.</p>
+    <header class="sec-head">
+      <p class="eyebrow">THE CRUSHING EVENT</p>
+      <h2 class="rv">Three seconds, one direction</h2>
+      <p class="lede rv">Crushing kills more piglets than any disease, and it is not
+        random. Most crushing deaths happen during one specific event: the sow
+        rolling from sternal to lateral lying. The roll goes to one side that is
+        knowable in advance, and the window is about three seconds long. An alert
+        cannot cross a farrowing room that fast. An actuator that is already
+        mounted on the crate can.</p>
+    </header>
 
     <div class="stats stats-4">
       <div class="stat rv"><strong data-count="30" data-prefix="~" data-suffix="%">~30%</strong><span>of preweaning loss is crushing, the single largest cause</span></div>
@@ -131,14 +125,16 @@
 <!-- ===== 3 · The loop, filmed end to end ===== -->
 <section class="sec sec-deep" id="window">
   <div class="wrap">
-    <p class="eyebrow"><i></i>HOW IT WORKS</p>
-    <h2 class="rv">One roll, filmed end to end</h2>
-    <p class="lede rv">The whole loop, rendered to real crate dimensions with
-      SPM-01 watching from the crate rear. Scroll to run it: on her feet both
-      strips stay curtained, SPM-01's forward camera reads her posture the
-      moment it changes and beams the call to the curtain that must act, the
-      safe curtain lifts, the roll lands on a strip that was never occupied,
-      and nursing comes back.</p>
+    <header class="sec-head">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2 class="rv">One roll, filmed end to end</h2>
+      <p class="lede rv">The whole loop, rendered to real crate dimensions with
+        SPM-01 watching from the crate rear. Scroll to run it: on her feet both
+        strips stay curtained, SPM-01's forward camera reads her posture the
+        moment it changes and beams the call to the curtain that must act, the
+        safe curtain lifts, the roll lands on a strip that was never occupied,
+        and nursing comes back.</p>
+    </header>
   </div>
 
   <div class="loop-stage" id="loopStage">
@@ -182,13 +178,15 @@
 <!-- ===== 4 · Four postures, one rule ===== -->
 <section class="sec" id="postures">
   <div class="wrap">
-    <p class="eyebrow"><i></i>THE RULE</p>
-    <h2 class="rv">Four postures, one rule</h2>
-    <p class="lede rv">Crushing is a one-way transition. On her feet nothing is
-      resolved yet, so both curtains stay down. From sternal lying she can roll
-      to exactly one side without getting up, so only that side stays curtained.
-      Both lateral postures are terminal, no further roll is possible from them.
-      So the rule fits in five lines.</p>
+    <header class="sec-head">
+      <p class="eyebrow">THE RULE</p>
+      <h2 class="rv">Four postures, one rule</h2>
+      <p class="lede rv">Crushing is a one-way transition. On her feet nothing is
+        resolved yet, so both curtains stay down. From sternal lying she can roll
+        to exactly one side without getting up, so only that side stays curtained.
+        Both lateral postures are terminal, no further roll is possible from them.
+        So the rule fits in five lines.</p>
+    </header>
 
     <div class="pgal rv" id="pgal">
       <div class="prows" aria-label="Sow postures">
@@ -247,7 +245,7 @@
 <section class="sec sec-deep" id="roller">
   <div class="wrap split">
     <div class="split-txt">
-      <p class="eyebrow"><i></i>THE MECHANISM</p>
+      <p class="eyebrow">THE MECHANISM</p>
       <h2 class="rv">A roller, and nothing else</h2>
       <p class="lede rv">The whole product is one overhead roller assembly. No
         posts on the floor, no rails, no moving parts at piglet height.</p>
@@ -283,14 +281,16 @@
 <!-- ===== 6 · Closed loop with SPM-01 ===== -->
 <section class="sec" id="loop">
   <div class="wrap">
-    <p class="eyebrow"><i></i>THE SYSTEM</p>
-    <h2 class="rv">Half of a closed loop</h2>
-    <p class="lede rv">SPC-01 is the actuator half of the Smart Swine farrowing
-      system. The eyes belong to SPM-01, the dual-axis monitor already watching
-      the crate from the rear. While the sow is on her feet both strips stay
-      curtained. The moment she settles into sternal lying it knows which side
-      she can roll to, and over the sealed wireless link the safe curtain lifts
-      while the danger side holds.</p>
+    <header class="sec-head">
+      <p class="eyebrow">THE SYSTEM</p>
+      <h2 class="rv">Half of a closed loop</h2>
+      <p class="lede rv">SPC-01 is the actuator half of the Smart Swine farrowing
+        system. The eyes belong to SPM-01, the dual-axis monitor already watching
+        the crate from the rear. While the sow is on her feet both strips stay
+        curtained. The moment she settles into sternal lying it knows which side
+        she can roll to, and over the sealed wireless link the safe curtain lifts
+        while the danger side holds.</p>
+    </header>
 
     <div class="duo loop-cards">
       <a class="card edge-teal loopcard rv" href="product.html">
@@ -344,7 +344,7 @@
         screw closes it. Half a turn per bracket.</figcaption>
     </figure>
     <div class="split-txt">
-      <p class="eyebrow"><i></i>INSTALLATION</p>
+      <p class="eyebrow">INSTALLATION</p>
       <h2 class="rv">Two brackets, half a turn each</h2>
       <p class="lede rv">Every fastener goes to the crate and nothing touches the
         floor, because the floor is pressure washed and scraped.</p>
@@ -380,7 +380,7 @@
 <section class="sec" id="sealed">
   <div class="wrap split">
     <div class="split-txt">
-      <p class="eyebrow coral-i"><i></i>WASHDOWN</p>
+      <p class="eyebrow">WASHDOWN</p>
       <h2 class="rv">Sealed for the washdown</h2>
       <p class="lede rv">Everything electrical lives at one end, in one sealed
         stack, speaking the same waterproofing language as SPM-01.</p>
@@ -416,11 +416,13 @@
 <!-- ===== 9 · Safety + specs ===== -->
 <section class="sec sec-deep" id="safety">
   <div class="wrap">
-    <p class="eyebrow"><i></i>DESIGN BRIEF</p>
-    <h2 class="rv">Designed to be harmless first</h2>
-    <p class="lede rv">A device that acts inside a farrowing crate has to be safe
-      against its own mistakes. Three behaviors are part of the design brief,
-      ahead of any performance figure.</p>
+    <header class="sec-head">
+      <p class="eyebrow">DESIGN BRIEF</p>
+      <h2 class="rv">Designed to be harmless first</h2>
+      <p class="lede rv">A device that acts inside a farrowing crate has to be safe
+        against its own mistakes. Three behaviors are part of the design brief,
+        ahead of any performance figure.</p>
+    </header>
 
     <div class="duo">
       <article class="card edge-coral rv">
@@ -441,7 +443,9 @@
       </article>
     </div>
 
-    <h3 class="sub-h rv">Design parameters</h3>
+    <header class="sec-head">
+      <h3 class="sub-h rv">Design parameters</h3>
+    </header>
     <dl class="spec rv">
       <div><dt>Curtain span</dt><dd>1.0 m per side, two independent units per crate</dd></div>
       <div><dt>Curtain plane</dt><dd>outboard of the anti-crush bar, out of the sow's reach</dd></div>

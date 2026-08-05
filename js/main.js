@@ -34,29 +34,6 @@
     }
   }
 
-  /* ---------- nav progress + seal line (no GSAP needed) ---------- */
-  var navBar = document.querySelector(".nav-progress");
-  var sealFill = document.querySelector(".sealline-fill");
-  var sealDot = document.querySelector(".sealline-dot");
-  var ticking = false;
-
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      var doc = document.documentElement;
-      var max = doc.scrollHeight - window.innerHeight;
-      var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
-      if (navBar) navBar.style.transform = "scaleX(" + p + ")";
-      if (sealFill) sealFill.style.transform = "scaleY(" + p + ")";
-      if (sealDot) sealDot.style.top = (p * 100) + "%";
-      ticking = false;
-    });
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
   /* ---------- image-sequence scrubber ----------
      Shared by the hero turntable and the exploded view. Loads frame 0 first
      and only swaps the canvas in once it is decoded, so a missing or slow
@@ -329,30 +306,23 @@
   }
 
   /* ---------- concept films ----------
-     Autoplay lives in the HTML so the clips run without JS. Here they pause
-     offscreen, and under reduced motion they stop entirely and hand the
-     viewer a play button instead. */
+     Autoplay lives in the HTML so the clips run without JS. The clips are
+     ambient product footage, muted and looping, and must always run with no
+     visible controls (client 2026-08-05) — including under reduced motion.
+     JS only pauses them while they are offscreen. */
   var films = document.querySelectorAll("video.film");
-  if (films.length) {
-    if (!motionOK) {
-      films.forEach(function (v) {
-        v.removeAttribute("autoplay");
-        v.pause();
-        v.setAttribute("controls", "");
+  if (films.length && "IntersectionObserver" in window) {
+    var fio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          var p = e.target.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          e.target.pause();
+        }
       });
-    } else if ("IntersectionObserver" in window) {
-      var fio = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) {
-            var p = e.target.play();
-            if (p && p.catch) p.catch(function () {});
-          } else {
-            e.target.pause();
-          }
-        });
-      }, { threshold: 0.2 });
-      films.forEach(function (v) { fio.observe(v); });
-    }
+    }, { threshold: 0.2 });
+    films.forEach(function (v) { fio.observe(v); });
   }
 
   if (!hasGSAP || !motionOK) return;   /* everything below is pure garnish */
