@@ -662,8 +662,8 @@ body.menu-open { overflow: hidden; }
 
 /* ---------- logo marquee ----------
    Partners run as one slow seamless band, faded at both edges; the track
-   holds two identical sets so -50% loops invisibly. Hover pauses it, and
-   reduced motion lays the first set out as a static wrapped row. */
+   holds two identical sets so -50% loops invisibly. The loop NEVER stops:
+   no hover pause and no reduced-motion fallback (client 2026-08-05). */
 .logo-marquee {
   overflow: hidden; margin-top: 50px;
   mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
@@ -673,7 +673,6 @@ body.menu-open { overflow: hidden; }
   display: flex; width: max-content;
   animation: logoScroll 44s linear infinite;
 }
-.logo-track:hover { animation-play-state: paused; }
 .logo-set { display: flex; gap: 16px; padding-right: 16px; flex: none; }
 .logo-set span {
   background: #f2f2f4; border-radius: var(--r-md);
@@ -682,12 +681,6 @@ body.menu-open { overflow: hidden; }
 }
 .logo-set img { max-height: 52px; width: auto; max-width: 150px; object-fit: contain; }
 @keyframes logoScroll { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) {
-  .logo-marquee { mask-image: none; -webkit-mask-image: none; }
-  .logo-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
-  .logo-set { flex-wrap: wrap; justify-content: center; padding-right: 0; }
-  .logo-set[aria-hidden="true"] { display: none; }
-}
 
 /* ---------- CTA + footer ---------- */
 .cta {
