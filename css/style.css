@@ -99,6 +99,17 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .sec-head .lede { margin-left: auto; margin-right: auto; }
 .lede.center { margin: 30px auto 0; text-align: center; }
 
+/* Display headlines fade from ink into the muted tone toward the baseline —
+   the big-type treatment of premium dark product pages. Skipped on the hero
+   beats, whose text-shadow would show through a transparent fill. */
+.sec-head h2, .sec-head .sub-h, .page-hero h1, .cta h2 {
+  background: linear-gradient(180deg, var(--ink) 52%, rgba(197, 191, 205, 0.82));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--ink);
+}
+.page-hero h1 em { -webkit-text-fill-color: var(--pink); }
+
 /* ---------- nav ---------- */
 .nav {
   position: fixed; inset: 0 0 auto 0; z-index: 50;
@@ -233,8 +244,20 @@ body.menu-open { overflow: hidden; }
 }
 .btn-coral {
   background: var(--coral); color: #2b0a19; font-weight: 600;
+  position: relative; overflow: hidden;
 }
 .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(246, 83, 143, 0.35); }
+/* a single light sweep crosses the pill on hover */
+.btn-coral::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+  transform: translateX(-130%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+.btn-coral:hover::after { transform: translateX(130%); }
+.btn:active { transform: translateY(0) scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .btn-coral::after { display: none; } }
 .btn-ghost { background: var(--bg3); color: var(--ink); }
 .btn-ghost:hover { background: var(--line); transform: translateY(-2px); }
 :is(a, button):focus-visible { outline: 2px solid var(--seal-hi); outline-offset: 3px; }
@@ -637,19 +660,34 @@ body.menu-open { overflow: hidden; }
 .warranty h3 { font-size: clamp(22px, 2.6vw, 30px); margin-bottom: 10px; }
 .warranty p:last-child { color: var(--mut); max-width: 760px; }
 
-/* ---------- logo wall ---------- */
-.logowall {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px;
+/* ---------- logo marquee ----------
+   Partners run as one slow seamless band, faded at both edges; the track
+   holds two identical sets so -50% loops invisibly. Hover pauses it, and
+   reduced motion lays the first set out as a static wrapped row. */
+.logo-marquee {
+  overflow: hidden; margin-top: 50px;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
 }
-@media (max-width: 760px) { .logowall { grid-template-columns: 1fr 1fr; } }
-.logowall span {
+.logo-track {
+  display: flex; width: max-content;
+  animation: logoScroll 44s linear infinite;
+}
+.logo-track:hover { animation-play-state: paused; }
+.logo-set { display: flex; gap: 16px; padding-right: 16px; flex: none; }
+.logo-set span {
   background: #f2f2f4; border-radius: var(--r-md);
   display: grid; place-items: center;
-  padding: 18px; height: 92px;
-  transition: transform 0.2s;
+  padding: 18px 36px; height: 92px; min-width: 190px;
 }
-.logowall span:hover { transform: translateY(-4px); }
-.logowall img { max-height: 52px; width: auto; max-width: 82%; object-fit: contain; }
+.logo-set img { max-height: 52px; width: auto; max-width: 150px; object-fit: contain; }
+@keyframes logoScroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee { mask-image: none; -webkit-mask-image: none; }
+  .logo-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+  .logo-set { flex-wrap: wrap; justify-content: center; padding-right: 0; }
+  .logo-set[aria-hidden="true"] { display: none; }
+}
 
 /* ---------- CTA + footer ---------- */
 .cta {
@@ -834,20 +872,23 @@ body.menu-open { overflow: hidden; }
 .sec-deep, .wash, .page-hero { position: relative; isolation: isolate; }
 .cta { position: relative; isolation: isolate; }
 
+/* Vertical-only drift: the light fields sit 3% inside each edge and never
+   scale past 1.06, so no animation frame can push them outside the page
+   and fake a horizontal scrollbar. */
 @keyframes auraDrift {
-  0%, 100% { transform: translate3d(-3%, -2%, 0) scale(1); }
-  50%      { transform: translate3d(3%, 2.5%, 0) scale(1.1); }
+  0%, 100% { transform: translate3d(0, -2%, 0) scale(1); }
+  50%      { transform: translate3d(0, 2.5%, 0) scale(1.06); }
 }
 @keyframes auraDrift2 {
-  0%, 100% { transform: translate3d(2.5%, 2%, 0) scale(1.08); }
-  50%      { transform: translate3d(-3%, -3%, 0) scale(0.97); }
+  0%, 100% { transform: translate3d(0, 2%, 0) scale(1.05); }
+  50%      { transform: translate3d(0, -2.5%, 0) scale(0.97); }
 }
 
 /* page heroes: a warm key light high on one side, a cool rose fill low
    on the other, breathing against each other */
 .page-hero::after {
   content: "";
-  position: absolute; inset: -8%; z-index: -1;
+  position: absolute; inset: -8% 3%; z-index: -1;
   pointer-events: none;
   background:
     radial-gradient(ellipse 42% 36% at 68% 14%, rgba(246, 83, 143, 0.16), transparent 66%),
@@ -856,7 +897,7 @@ body.menu-open { overflow: hidden; }
 }
 .page-hero::before {
   content: "";
-  position: absolute; inset: -8%; z-index: -1;
+  position: absolute; inset: -8% 3%; z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse 48% 40% at 16% 82%, rgba(207, 61, 120, 0.11), transparent 72%);
   animation: auraDrift2 22s ease-in-out infinite;
@@ -865,7 +906,7 @@ body.menu-open { overflow: hidden; }
 /* deep sections: the same two-source light, quieter */
 .sec-deep::after {
   content: "";
-  position: absolute; inset: -8%; z-index: -1;
+  position: absolute; inset: -8% 3%; z-index: -1;
   pointer-events: none;
   background:
     radial-gradient(ellipse 52% 38% at 82% 8%, rgba(246, 83, 143, 0.11), transparent 66%),
@@ -874,7 +915,7 @@ body.menu-open { overflow: hidden; }
 }
 .sec-deep::before {
   content: "";
-  position: absolute; inset: -8%; z-index: -1;
+  position: absolute; inset: -8% 3%; z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse 40% 34% at 32% 28%, rgba(207, 61, 120, 0.07), transparent 70%);
   animation: auraDrift2 26s ease-in-out infinite;
@@ -894,7 +935,7 @@ body.menu-open { overflow: hidden; }
 /* closing CTA: the bottom glow it already had learns to breathe */
 .cta::before {
   content: "";
-  position: absolute; inset: -8%; z-index: -1;
+  position: absolute; inset: -8% 3%; z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse 44% 38% at 74% 20%, rgba(246, 83, 143, 0.10), transparent 68%);
   animation: auraDrift2 24s ease-in-out infinite;
@@ -912,9 +953,37 @@ body.menu-open { overflow: hidden; }
 .warranty, .step, .prow {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
               0 14px 34px rgba(24, 20, 34, 0.22);
+  position: relative;
 }
 .wide-fig img, .film, .split-img img, .pstack img, .loopcard img {
   box-shadow: 0 18px 44px rgba(24, 20, 34, 0.30);
+}
+
+/* Pointer-tracked glow: the hovered card carries a soft pink light that
+   follows the cursor (JS writes --mx/--my). Fine pointers only. */
+@media (pointer: fine) {
+  .card::after, .stat::after, .tcard::after, .rcard::after, .ccard::after,
+  .mcard::after, .vm article::after, .warranty::after, .step::after, .prow::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(246, 83, 143, 0.10), transparent 65%);
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .card:hover::after, .stat:hover::after, .tcard:hover::after,
+  .rcard:hover::after, .ccard:hover::after, .mcard:hover::after,
+  .vm article:hover::after, .warranty:hover::after, .step:hover::after,
+  .prow:hover::after { opacity: 1; }
+}
+
+/* Media tiles rise to the pointer; split figures keep their scroll
+   parallax instead (an inline transform would fight the hover one). */
+.wide-fig img, .film, .loopcard img {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.wide-fig:hover img, .film:hover, .loopcard:hover img {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(24, 20, 34, 0.38);
 }
 
 /* Card lift: the whole grid responds, not only the ones that already did */

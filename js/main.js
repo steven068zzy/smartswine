@@ -350,16 +350,36 @@
 
   if (!hasGSAP || !motionOK) return;   /* everything below is pure garnish */
 
-  /* ---------- reveals ---------- */
-  gsap.utils.toArray(".rv").forEach(function (el) {
-    gsap.from(el, {
-      autoAlpha: 0,
-      y: 28,
-      duration: 0.9,
-      ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%", once: true }
-    });
+  /* ---------- reveals ----------
+     Batched: siblings that enter together animate as one staggered group
+     instead of popping in simultaneously. */
+  gsap.set(".rv", { autoAlpha: 0, y: 28 });
+  ScrollTrigger.batch(".rv", {
+    start: "top 88%",
+    once: true,
+    onEnter: function (batch) {
+      gsap.to(batch, {
+        autoAlpha: 1, y: 0,
+        duration: 0.9, ease: "power3.out",
+        stagger: 0.08
+      });
+    }
   });
+
+  /* ---------- pointer-tracked card glow ----------
+     One delegated listener feeds --mx/--my to whichever card the cursor
+     is over; the glow itself is pure CSS. */
+  if (finePointer) {
+    var glowSel = ".card, .stat, .tcard, .rcard, .ccard, .mcard, " +
+                  ".vm article, .warranty, .step, .prow";
+    document.addEventListener("pointermove", function (e) {
+      var card = e.target.closest ? e.target.closest(glowSel) : null;
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  }
 
   /* Section-specific effects below only exist on the product page. `has()`
      keeps the other pages from logging a wall of GSAP target-not-found. */
@@ -590,14 +610,17 @@
     });
   }
 
-  /* ---------- heads figure parallax ---------- */
-  if (has("#headsFig img")) {
-    gsap.fromTo("#headsFig img", { y: 30 }, {
+  /* ---------- split figure parallax ----------
+     Every plain split image drifts gently against the scroll. Direct
+     children only: imgs inside .fig-media sit under aligned SVG overlays
+     (FOV wedges, RF fans) that must stay registered to the pixels. */
+  gsap.utils.toArray(".split-img > img").forEach(function (img) {
+    gsap.fromTo(img, { y: 30 }, {
       y: -30,
       ease: "none",
-      scrollTrigger: { trigger: "#headsFig", start: "top bottom", end: "bottom top", scrub: true }
+      scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true }
     });
-  }
+  });
 
   /* ---------- phone: float + bar chart ---------- */
   if (has(".bars i")) {
