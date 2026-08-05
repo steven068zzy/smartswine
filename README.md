@@ -38,6 +38,17 @@ built on that contrast, so **do not blur the line**:
   `~/Downloads/{NEWBORN_DETECTION,Stillborn _Detection}/`, mirrored from the
   Drive folder "SmartSwine AI Model". Clips are transcoded to H.264 only: no
   upscaling, no grading, no cuts.
+- The respiration comparison table (`.evi-tbl`) comes from Emmanuel Otchere's
+  lab meeting deck of 2026-07-30, `~/Downloads/lab_meeting_rgb_ir (1).pptx`:
+  18 channels of sensor × tracker × axis × region, n = 100 clips each, scored
+  against a manual breath re-count. Depth on the back wins at MAE 2.43 / RMSE
+  3.33 bpm, and its RMSE-to-MAE ratio of 1.37 is the lowest of the 18 (the rest
+  sit between 1.8 and 3.1), meaning few large misses. **Two caveats from the
+  deck's own next-steps slide must stay on the page**: the Bland-Altman
+  agreement analysis is unfinished and recounts on 13 flagged clips are
+  unconfirmed. That table is a sensor selection result, not a clinical
+  validation, and the site must not upgrade it into one. The product page cites
+  the same 2.43 figure to justify why the forward head is depth.
 
 The posture gallery reuses the SPC-01 `.pgal` component. Captions now come from
 each `.prow`'s `data-cap` attribute, and rows without one fall back to the

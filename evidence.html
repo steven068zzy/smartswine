@@ -248,45 +248,7 @@
         corner where it wrote them. Pick a posture to see its frame.</p>
     </header>
 
-    <div class="pgal rv" id="pgal">
-      <div class="prows" aria-label="Sow posture classes">
-        <button class="prow on" aria-pressed="true" data-p="0"
-                data-cap="Standing (STA), returned at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:19.">
-          <b>Standing</b>
-          <em>on her feet, nothing about a roll is resolved yet</em>
-          <span class="pbadge ok">STA · 1.00</span>
-        </button>
-        <button class="prow" aria-pressed="false" data-p="1"
-                data-cap="Sitting (SIT), returned at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:18.">
-          <b>Sitting</b>
-          <em>the transitional posture, and the one most often missed</em>
-          <span class="pbadge ok">SIT · 1.00</span>
-        </button>
-        <button class="prow" aria-pressed="false" data-p="2"
-                data-cap="Sternal Lying Left (SLL), returned at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:53.">
-          <b>Sternal Lying, Left</b>
-          <em>down on her sternum, loaded to her left, one roll away</em>
-          <span class="pbadge ok">SLL · 1.00</span>
-        </button>
-        <button class="prow" aria-pressed="false" data-p="3"
-                data-cap="Sternal Lying Right (SLR), returned at 0.85 confidence, the lowest of the six frames shown here. Real trial frame from the forward view, 2026-04-17 03:51.">
-          <b>Sternal Lying, Right</b>
-          <em>the mirror case, and the weakest call in this set</em>
-          <span class="pbadge hot">SLR · 0.85</span>
-        </button>
-        <button class="prow" aria-pressed="false" data-p="4"
-                data-cap="Lateral Lying Left (LLL), returned at 1.00 confidence. Real trial frame from the forward view, 2026-04-18 02:21.">
-          <b>Lateral Lying, Left</b>
-          <em>terminal posture, the roll has already happened</em>
-          <span class="pbadge ok">LLL · 1.00</span>
-        </button>
-        <button class="prow" aria-pressed="false" data-p="5"
-                data-cap="Lateral Lying Right (LLR), returned at 1.00 confidence. Real trial frame from the forward view, 2026-04-17 02:46.">
-          <b>Lateral Lying, Right</b>
-          <em>terminal posture, mirrored, the litter can nurse</em>
-          <span class="pbadge ok">LLR · 1.00</span>
-        </button>
-      </div>
+    <div class="pgal pgal--evi rv" id="pgal">
       <figure class="pstack pstack--wide">
         <img class="on" src="assets/trial/posture_sta.webp" alt="Real trial frame, forward view along the crate at night, sow standing, with the classifier's label STA and confidence 1.00 printed in the corner">
         <img src="assets/trial/posture_sit.webp" alt="Real trial frame, sow sitting, classifier label SIT at 1.00 confidence" loading="lazy">
@@ -294,9 +256,42 @@
         <img src="assets/trial/posture_slr.webp" alt="Real trial frame, sow in sternal lying loaded right, classifier label SLR at 0.85 confidence" loading="lazy">
         <img src="assets/trial/posture_lll.webp" alt="Real trial frame, sow in lateral lying on her left, classifier label LLL at 1.00 confidence" loading="lazy">
         <img src="assets/trial/posture_llr.webp" alt="Real trial frame, sow in lateral lying on her right, classifier label LLR at 1.00 confidence" loading="lazy">
-        <figcaption id="pcap" aria-live="polite">Standing (STA), returned at 1.00
-          confidence. Real trial frame from the forward view, 2026-04-16 15:19.</figcaption>
+        <figcaption id="pcap" aria-live="polite">Standing. On her feet, nothing
+          about a roll is resolved yet. Classified STA at 1.00 confidence, real
+          trial frame from the forward view, 2026-04-16 15:19.</figcaption>
       </figure>
+      <div class="prows" aria-label="Sow posture classes">
+        <button class="prow on" aria-pressed="true" data-p="0"
+                data-cap="Standing. On her feet, nothing about a roll is resolved yet. Classified STA at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:19.">
+          <b>Standing</b>
+          <span class="pbadge ok">STA · 1.00</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="1"
+                data-cap="Sitting. The transitional posture, and the one most often missed. Classified SIT at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:18.">
+          <b>Sitting</b>
+          <span class="pbadge ok">SIT · 1.00</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="2"
+                data-cap="Sternal lying, loaded to her left. Down on her sternum and one roll away. Classified SLL at 1.00 confidence, real trial frame from the forward view, 2026-04-16 15:53.">
+          <b>Sternal Lying, Left</b>
+          <span class="pbadge ok">SLL · 1.00</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="3"
+                data-cap="Sternal lying, loaded to her right. The mirror case, and the weakest call in this set. Classified SLR at 0.85 confidence, the lowest of the six frames here, real trial frame from the forward view, 2026-04-17 03:51.">
+          <b>Sternal Lying, Right</b>
+          <span class="pbadge hot">SLR · 0.85</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="4"
+                data-cap="Lateral lying on her left. Terminal posture, the roll has already happened. Classified LLL at 1.00 confidence, real trial frame from the forward view, 2026-04-18 02:21.">
+          <b>Lateral Lying, Left</b>
+          <span class="pbadge ok">LLL · 1.00</span>
+        </button>
+        <button class="prow" aria-pressed="false" data-p="5"
+                data-cap="Lateral lying on her right. Terminal posture, mirrored, and the litter can nurse. Classified LLR at 1.00 confidence, real trial frame from the forward view, 2026-04-17 02:46.">
+          <b>Lateral Lying, Right</b>
+          <span class="pbadge ok">LLR · 1.00</span>
+        </button>
+      </div>
     </div>
 
     <p class="lede rv center">These frames are dark because the room was dark.
@@ -340,10 +335,70 @@
       </dl>
     </div>
   </div>
-  <p class="fine center rv">The plot is a research output and it looks like one.
-    We would rather show the figure the pipeline produced than a prettier version
-    we drew afterward. Respiration is a welfare and distress signal, and we make
-    no clinical claim from it.</p>
+
+  <div class="wrap">
+    <header class="sec-head">
+      <h3 class="sub-h rv">Then we checked it against a human counting breaths</h3>
+      <p class="lede rv">A fitted curve is only worth what it agrees with, so we
+        built every plausible way of reading respiration off this barn and scored
+        all of them against a manual breath count. Three sensors, two trackers,
+        both motion axes and two body regions give 18 channels, 100 clips each.
+        The point of running all 18 was to find out which one to put in the
+        product, and the answer was not the obvious one.</p>
+    </header>
+
+    <div class="split">
+      <div class="split-txt">
+        <div class="evi-figure rv">
+          <strong>2.43&thinsp;bpm</strong>
+          <span>mean absolute error against a manual count, for the winning
+            channel: the depth sensor reading her back</span>
+        </div>
+        <p class="lede rv">Depth on the back won on both error measures, and it
+          won in a way that matters more than the average. Its ratio of RMSE to
+          MAE is 1.37, the lowest of all 18 channels, where everything else lands
+          between 1.8 and 3.1. A low ratio means the errors it makes are small
+          ones. The other channels are dragged by occasional large misses, which
+          is the failure mode that would put a false distress alert in front of a
+          stockperson at four in the morning.</p>
+        <p class="lede rv">This is also why the forward head on the product is a
+          stereo depth module rather than a second color camera. We did not pick
+          depth because it sounded better. It came first out of 18.</p>
+      </div>
+      <div class="rv">
+        <table class="evi-tbl">
+          <caption>Respiration rate error by sensor and body region, breaths per
+            minute, best channel per sensor pairing. Lower is better.</caption>
+          <thead>
+            <tr><th scope="col">Sensor · region</th><th scope="col">MAE</th><th scope="col">RMSE</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best"><th scope="row">Depth · back</th><td>2.43</td><td>3.33</td></tr>
+            <tr><th scope="row">RGB · back</th><td>3.71</td><td>9.39</td></tr>
+            <tr><th scope="row">RGB · abdomen</th><td>4.27</td><td>11.62</td></tr>
+            <tr><th scope="row">IR · abdomen</th><td>6.68</td><td>20.37</td></tr>
+            <tr><th scope="row">IR · back</th><td>7.02</td><td>21.56</td></tr>
+            <tr><th scope="row">Depth · abdomen</th><td>9.98</td><td>27.96</td></tr>
+          </tbody>
+        </table>
+        <p class="evi-tbl-note">Every channel was scored on the same detector
+          boxes. RGB, infrared and depth all arrive at 848 by 480, so one set of
+          YOLO boxes transfers across all three streams untouched, which means a
+          difference between sensors is the sensor and not a difference in where
+          we looked.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="fine center rv">The plot above is a research output and it looks like
+    one. We would rather show the figure the pipeline produced than a prettier
+    version we drew afterward. On the comparison: n is 100 clips per channel and
+    the reference is a manual re-count, so these are error figures against a
+    human counter rather than against a clinical instrument. Two things are still
+    open and we are not treating them as done: the Bland-Altman agreement
+    analysis is not finished, and recounts on 13 flagged clips are still to be
+    confirmed. Respiration is a welfare and distress signal here, and we make no
+    clinical claim from it.</p>
 </section>
 
 <!-- ===== Honest limits ===== -->
