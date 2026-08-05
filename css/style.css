@@ -1134,11 +1134,13 @@ body.menu-open { overflow: hidden; }
 .promo-rail {
   position: relative;
   display: flex; align-items: center;
-  gap: clamp(12px, 2vw, 24px);
-  max-width: 100%;
+  gap: clamp(26px, 3.2vw, 48px);
 }
-.promo-offer { display: flex; align-items: center; gap: 9px; min-width: 0; }
-.promo-rule { flex: none; width: 1px; height: 18px; background: rgba(43, 10, 25, 0.3); }
+/* nothing here may shrink: a nowrap claim squeezed below its own width
+   spills out of its box and lands on top of the next offer */
+.promo-offer { flex: none; display: flex; align-items: center; gap: 10px; }
+.promo-txt, .promo-cta { flex: none; }
+.promo-rule { flex: none; width: 1px; height: 22px; background: rgba(43, 10, 25, 0.34); }
 
 /* one slot, two markers, so the stacked rows share a left edge */
 .promo-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; }
@@ -1159,7 +1161,7 @@ body.menu-open { overflow: hidden; }
   color: #2b0a19;
 }
 
-.promo-txt { min-width: 0; white-space: nowrap; }
+.promo-txt { white-space: nowrap; }
 .promo-txt b { font-weight: 700; }
 .promo-cta {
   position: relative;
@@ -1187,11 +1189,12 @@ body.menu-open { overflow: hidden; }
 /* Each offer stays on one line or it stops being scannable, so the rail
    stacks rather than letting either claim wrap. Both keep their claim and
    their button at every width; the terms live on the contact page. */
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .promo { padding: 8px 44px 8px 16px; font-size: 12.5px; line-height: 1.35; }
-  .promo-rail { flex-direction: column; align-items: flex-start; gap: 7px; width: 100%; }
+  .promo-rail { flex-direction: column; align-items: flex-start; gap: 8px; width: 100%; }
+  .promo-offer { max-width: 100%; }
+  .promo-txt { flex: 0 1 auto; min-width: 0; white-space: normal; }
   .promo-rule { width: 100%; height: 1px; }
-  .promo-txt { white-space: normal; }
   .promo-mark { min-width: 46px; }
 }
 /* phones: the claim takes the row and the button drops under it. The dot is
