@@ -13,14 +13,14 @@
   /* Well off black: the darkest surface is a plum-tinted charcoal, not a void.
      Every step is ~11 levels apart so cards, cards-on-cards and rules all
      separate without needing borders to do the work. */
-  --bg0: #262330;
-  --bg1: #2e2b39;
-  --bg2: #383445;
-  --bg3: #464152;
-  --line: #574f68;
+  --bg0: #363247;
+  --bg1: #3f3a52;
+  --bg2: #4a4560;
+  --bg3: #57516e;
+  --line: #6b6383;
   --ink: #f8f6f9;
   --mut: #c5bfcd;
-  --dim: #9d95a9;
+  --dim: #a49cb0;
   --pink: #f6538f;
   --rose: #f9a8c7;
   --coral: var(--pink);
@@ -105,10 +105,10 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   display: flex; align-items: center; gap: 26px;
   padding: 0 clamp(16px, 3vw, 36px);
   height: 60px;
-  background: rgba(38, 35, 48, 0.78);
+  background: rgba(54, 50, 71, 0.78);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(87, 79, 104, 0.45);
+  border-bottom: 1px solid rgba(107, 99, 131, 0.45);
 }
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
@@ -139,10 +139,10 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .nav-sub-panel {
   display: flex; flex-direction: column; gap: 2px;
-  background: rgba(38, 35, 48, 0.96);
+  background: rgba(54, 50, 71, 0.96);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid rgba(87, 79, 104, 0.45); border-radius: 16px;
+  border: 1px solid rgba(107, 99, 131, 0.45); border-radius: 16px;
   padding: 8px;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
 }
@@ -152,14 +152,82 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .nav-sub a b { color: var(--ink); font-weight: 700; }
 .nav-sub a span { display: block; font-size: 11px; letter-spacing: 0.04em;
                   color: var(--dim); margin-top: 1px; }
-.nav-cta { margin-left: 6px; padding: 8px 18px; font-size: 13px; }
-@media (max-width: 980px) { .nav-links { display: none; } .nav-cta { margin-left: auto; } }
+/* .btn.nav-cta: compound beats the later .btn rule regardless of order */
+.nav-cta { margin-left: 6px; }
+.btn.nav-cta { padding: 8px 18px; font-size: 13px; }
+@media (max-width: 980px) {
+  .nav-links { display: none; }
+  .nav-cta { margin-left: auto; }
+}
+/* very narrow: the bar holds brand + pill + burger on one line */
+@media (max-width: 560px) {
+  .nav { gap: 10px; }
+  .nav-brand span { font-size: 12px; letter-spacing: 0.1em; }
+  .btn.nav-cta { padding: 7px 14px; font-size: 12px; }
+}
+
+/* ---------- mobile menu ----------
+   Burger lives in the nav on small screens; the panel drops below the
+   60px bar, covers the promo strip, and locks page scroll while open. */
+.nav-burger {
+  display: none;
+  width: 40px; height: 40px; flex: none;
+  border: 0; border-radius: 980px;
+  background: transparent; cursor: pointer;
+  position: relative;
+}
+.nav-burger span {
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 1.6px; border-radius: 1px;
+  background: var(--ink);
+  transition: transform 0.3s ease;
+}
+.nav-burger span:first-child { transform: translate(-50%, -4px); }
+.nav-burger span:last-child { transform: translate(-50%, 3px); }
+.nav-burger.open span:first-child { transform: translate(-50%, -1px) rotate(45deg); }
+.nav-burger.open span:last-child { transform: translate(-50%, -1px) rotate(-45deg); }
+/* after the base display:none, so source order can't cancel it */
+@media (max-width: 980px) { .nav-burger { display: block; } }
+
+.mobile-menu {
+  position: fixed; inset: 60px 0 0 0; z-index: 51;
+  display: none;
+  flex-direction: column;
+  padding: 24px var(--pad) 44px;
+  background: rgba(54, 50, 71, 0.97);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  overflow-y: auto;
+}
+body.menu-open .mobile-menu { display: flex; }
+body.menu-open { overflow: hidden; }
+.mobile-menu a {
+  text-decoration: none; color: var(--ink);
+  font-size: 24px; font-weight: 600; letter-spacing: -0.015em;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(107, 99, 131, 0.35);
+}
+.mobile-menu a span {
+  display: block;
+  font-size: 13px; font-weight: 400; letter-spacing: 0.01em;
+  color: var(--dim); margin-top: 2px;
+}
+.mobile-menu a.on { color: var(--pink); }
+.mobile-menu .btn {
+  margin-top: 30px; align-self: flex-start;
+  font-size: 15px; padding: 13px 28px;
+  border-bottom: 0;
+}
+@media (min-width: 981px) {
+  .mobile-menu { display: none !important; }
+  body.menu-open { overflow: auto; }
+}
 
 /* ---------- buttons: pills ---------- */
 .btn {
   display: inline-block;
   font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
-  text-decoration: none;
+  text-decoration: none; white-space: nowrap;
   padding: 12px 24px; border-radius: 980px;
   transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s;
 }
@@ -212,7 +280,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: absolute; z-index: 5;
   left: clamp(20px, 7vw, 110px); bottom: clamp(72px, 13vh, 150px);
   max-width: 640px;
-  text-shadow: 0 2px 26px rgba(38, 35, 48, 0.92);
+  text-shadow: 0 2px 26px rgba(54, 50, 71, 0.92);
 }
 .beat h1 {
   font-size: clamp(64px, 11vw, 148px);
@@ -269,6 +337,9 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .stat span { color: var(--mut); font-size: 12.5px; line-height: 1.5; display: block; }
 @media (max-width: 900px) { .stats-4, .stats-5 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .stats-3 { grid-template-columns: 1fr; } }
+/* below ~400px two columns hit the longest word's min-content and overflow */
+@media (max-width: 400px) { .stats-4, .stats-5 { grid-template-columns: 1fr; } }
+.stat { min-width: 0; }
 
 /* cards */
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
@@ -377,7 +448,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   line-height: 1.5; white-space: nowrap;
   opacity: 0;
   transition: opacity 0.45s ease;
-  text-shadow: 0 1px 4px rgba(27, 25, 32, 0.95), 0 0 14px rgba(38, 35, 48, 0.92);
+  text-shadow: 0 1px 4px rgba(40, 37, 52, 0.95), 0 0 14px rgba(54, 50, 71, 0.92);
 }
 .xlabels.on .xlabel { opacity: 1; }
 .xlabel b { color: var(--pink); margin-right: 7px; font-weight: 700; }
@@ -433,12 +504,12 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 }
 .wash-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(38, 35, 48, 0.94) 0%, rgba(38, 35, 48, 0.62) 52%, rgba(38, 35, 48, 0.30) 100%);
+  background: linear-gradient(90deg, rgba(54, 50, 71, 0.94) 0%, rgba(54, 50, 71, 0.62) 52%, rgba(54, 50, 71, 0.30) 100%);
 }
 .wash-inner { position: relative; z-index: 2; }
 .wash-inner .lede { max-width: 560px; }
 .wash .stats { grid-auto-rows: 1fr; max-width: 900px; }
-.wash .stat { background: rgba(56, 52, 69, 0.80); backdrop-filter: blur(6px); }
+.wash .stat { background: rgba(74, 69, 96, 0.80); backdrop-filter: blur(6px); }
 
 /* ---------- wide media figures ----------
    Same column as the text (.wrap's 1180px), so film and stills sit on the
@@ -678,7 +749,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .rcard:hover .nthumb img { transform: scale(1.05); }
 .nthumb::after {          /* keep the eyebrow legible over any photo */
   content: ""; position: absolute; inset: auto 0 0 0; height: 42%;
-  background: linear-gradient(180deg, transparent, rgba(38, 35, 48, 0.55));
+  background: linear-gradient(180deg, transparent, rgba(54, 50, 71, 0.55));
 }
 
 /* video cards */
@@ -700,7 +771,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: absolute; inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
   width: 54px; height: 54px; border-radius: 50%;
-  background: rgba(38, 35, 48, 0.74);
+  background: rgba(54, 50, 71, 0.74);
   border: 2px solid var(--pink);
   backdrop-filter: blur(3px);
   transition: background 0.25s, transform 0.25s;
@@ -718,7 +789,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .vlen {
   position: absolute; right: 10px; bottom: 10px;
   font-family: var(--mono); font-size: 10.5px; font-weight: 400;
-  background: rgba(38, 35, 48, 0.86); color: var(--ink);
+  background: rgba(54, 50, 71, 0.86); color: var(--ink);
   padding: 3px 7px; border-radius: 4px;
 }
 
@@ -885,7 +956,7 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
     rgba(207, 61, 120, 0.92) 0%, rgba(246, 83, 143, 0.92) 55%, rgba(207, 61, 120, 0.92) 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(38, 35, 48, 0.35);
+  border-bottom: 1px solid rgba(54, 50, 71, 0.35);
   color: #2b0a19;
   font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em;
   overflow: hidden;
@@ -960,7 +1031,7 @@ body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
 .hero--scrub .trail { display: flex; }
 .trail-track {
   flex: 1 1 auto; width: 2px; position: relative;
-  background: rgba(87, 79, 104, 0.8); border-radius: 2px;
+  background: rgba(107, 99, 131, 0.8); border-radius: 2px;
 }
 .trail-fill {
   position: absolute; inset: 0;
@@ -1012,7 +1083,7 @@ body.has-promo .loop-sticky { top: 42px; height: calc(100vh - 42px); }
 .sk-status {
   position: absolute; top: 0; right: 0;
   width: min(240px, 24vw);
-  background: rgba(46, 43, 57, 0.88);
+  background: rgba(63, 58, 82, 0.88);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-radius: var(--r-sm);
