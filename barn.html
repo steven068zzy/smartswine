@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>From the barn · SMART SWINE</title>
+<title>Case study · SMART SWINE</title>
 <meta name="description" content="Real footage from the Smart Swine on-farm farrowing trial, with the detection models' own outputs burned into the frame: births caught, stillborn discrimination, sow posture and respiration.">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
 <link rel="stylesheet" href="css/style.css">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <a href="barn.html" class="on" aria-current="page">From the barn</a>
+    <a href="barn.html" class="on" aria-current="page">Case study</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Get in touch</a>
   </nav>
@@ -38,7 +38,7 @@
   <a href="index.html">About</a>
   <a href="product.html">SPM-01<span>Smart Piglet Monitor</span></a>
   <a href="spc01.html">SPC-01<span>Smart Piglet Curtain</span></a>
-  <a href="barn.html" class="on" aria-current="page">From the barn</a>
+  <a href="barn.html" class="on" aria-current="page">Case study</a>
   <a href="resources.html">Resources</a>
   <a href="contact.html">Get in touch</a>
   <a class="btn btn-coral" href="contact.html#pilot">Free trial</a>
@@ -67,7 +67,7 @@
 <!-- ===== Hero ===== -->
 <section class="page-hero">
   <div class="wrap">
-    <p class="eyebrow">FIELD EVIDENCE · ON-FARM FARROWING TRIAL, APR&ndash;MAY 2026</p>
+    <p class="eyebrow">FIELD EVIDENCE · ON-FARM FARROWING TRIAL</p>
     <h1 class="rv">The rest of this site<br>is a render. This <em>isn't</em>.</h1>
     <p class="lede rv">Every other page shows you a concept design and film we
       generated. This page shows the opposite: unretouched video from a working
@@ -86,19 +86,19 @@
   <div class="wrap">
     <header class="sec-head">
       <p class="eyebrow">THE RECORDING</p>
-      <h2 class="rv">Ten sows, one working room, nobody watching</h2>
-      <p class="lede rv">Between April 26 and May 20 2026 we ran the sensing rig
-        on ten pre-farrowing sows in a working farrowing room at the Texas A&amp;M
-        swine center, under IACUC oversight, with the center's own staff running
-        the room around us. It recorded through the nights. Everything below came
-        out of that recording.</p>
+      <h2 class="rv">How this was recorded</h2>
+      <p class="lede rv">We ran the sensing rig through a farrowing batch in a
+        working room at the Texas A&amp;M swine center, under IACUC oversight,
+        with the center's own staff running the room around us. It recorded
+        through the nights, on every crate it could see. All four models below
+        came out of that recording.</p>
     </header>
 
     <div class="stats stats-4">
-      <div class="stat rv"><strong data-count="10">10</strong><span>pre-farrowing sows, one working farrowing room</span></div>
-      <div class="stat rv"><strong data-count="500" data-suffix="+&thinsp;h">500+&thinsp;h</strong><span>of depth, RGB and IR farrowing video recorded</span></div>
-      <div class="stat rv"><strong data-count="4">4</strong><span>detection tasks, all four outputs shown on this page</span></div>
-      <div class="stat rv"><strong>Apr&ndash;May</strong><span>2026 trial window, under IACUC oversight</span></div>
+      <div class="stat rv"><strong data-count="9" data-suffix="M+">9M+</strong><span>frames of depth, RGB and IR video, at 5 fps day and night</span></div>
+      <div class="stat rv"><strong data-count="500" data-suffix="+&thinsp;h">500+&thinsp;h</strong><span>of a working farrowing room, recorded with nobody in it</span></div>
+      <div class="stat rv"><strong data-count="1800">1,800</strong><span>clip scores behind the breathing sensor choice, 18 channels &times; 100 clips</span></div>
+      <div class="stat rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>posture accuracy, measured on a sow the model had never seen</span></div>
     </div>
 
     <div class="duo">
@@ -127,7 +127,7 @@
   <div class="wrap split">
     <div class="split-txt">
       <p class="eyebrow">DOWNWARD AXIS · NEWBORN DETECTION</p>
-      <h2 class="rv">A birth, caught at the moment it happens</h2>
+      <h2 class="rv">It sees the birth happen</h2>
       <p class="lede rv">Twenty one seconds of the landing zone under a sow in
         labor. For the first thirteen seconds there is nothing to report and the
         counter in the header reads zero. Then a piglet arrives, the model boxes
@@ -138,8 +138,8 @@
         the next one being late mean something.</p>
       <div class="evi-figure rv">
         <strong>11:31:43</strong>
-        <span>the timestamp the counter went from zero newborns to one, on
-          video recorded 2026&#8209;04&#8209;22</span>
+        <span>the barn wall-clock time the counter went from zero newborns to
+          one</span>
       </div>
     </div>
     <article class="card evi rv">
@@ -170,7 +170,7 @@
   <div class="wrap">
     <header class="sec-head">
       <p class="eyebrow">DOWNWARD AXIS · STILLBORN DISCRIMINATION</p>
-      <h2 class="rv">Same model, same crate, two different answers</h2>
+      <h2 class="rv">Telling a still piglet from a live one</h2>
       <p class="lede rv">Finding a piglet is the easy half. The half that matters
         is telling a piglet that needs help from one that is already gone, and
         that is a question about movement, not appearance. So the model holds a
@@ -240,7 +240,7 @@
   <div class="wrap">
     <header class="sec-head">
       <p class="eyebrow">FORWARD AXIS · SOW POSTURE CLASSIFICATION</p>
-      <h2 class="rv">Six postures, read in the dark</h2>
+      <h2 class="rv">Reading her posture in the dark</h2>
       <p class="lede rv">Crushing is a posture problem, so the forward view has
         one job: name what the sow is doing, all night, without a wearable and
         without a light on. Below is one real frame per class, straight out of
@@ -257,41 +257,41 @@
         <img src="assets/trial/posture_lll.webp" alt="Real trial frame, sow in lateral lying on her left, classifier label LLL at 1.00 confidence" loading="lazy">
         <img src="assets/trial/posture_llr.webp" alt="Real trial frame, sow in lateral lying on her right, classifier label LLR at 1.00 confidence" loading="lazy">
         <figcaption id="pcap" aria-live="polite">Classified STA at 1.00 confidence.
-          Real trial frame from the forward view, 2026-04-16 15:19.</figcaption>
+          Real trial frame from the forward view.</figcaption>
       </figure>
       <div class="prows" aria-label="Sow posture classes">
         <button class="prow on" aria-pressed="true" data-p="0"
-                data-cap="Classified STA at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:19.">
+                data-cap="Classified STA at 1.00 confidence. Real trial frame from the forward view.">
           <b>Standing</b>
           <em>on her feet, nothing about a roll is resolved yet</em>
           <span class="pbadge ok">STA · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="1"
-                data-cap="Classified SIT at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:18.">
+                data-cap="Classified SIT at 1.00 confidence. Real trial frame from the forward view.">
           <b>Sitting</b>
           <em>the transitional posture, and the one most often missed</em>
           <span class="pbadge ok">SIT · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="2"
-                data-cap="Classified SLL at 1.00 confidence. Real trial frame from the forward view, 2026-04-16 15:53.">
+                data-cap="Classified SLL at 1.00 confidence. Real trial frame from the forward view.">
           <b>Sternal Lying, Left</b>
           <em>down on her sternum, loaded to her left, one roll away</em>
           <span class="pbadge ok">SLL · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="3"
-                data-cap="Classified SLR at 0.85 confidence, the lowest of the six frames here. Real trial frame from the forward view, 2026-04-17 03:51.">
+                data-cap="Classified SLR at 0.85 confidence, the lowest of the six frames here. Real trial frame from the forward view.">
           <b>Sternal Lying, Right</b>
           <em>the mirror case, and the weakest call in this set</em>
           <span class="pbadge hot">SLR · 0.85</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="4"
-                data-cap="Classified LLL at 1.00 confidence. Real trial frame from the forward view, 2026-04-18 02:21.">
+                data-cap="Classified LLL at 1.00 confidence. Real trial frame from the forward view.">
           <b>Lateral Lying, Left</b>
           <em>terminal posture, the roll has already happened</em>
           <span class="pbadge ok">LLL · 1.00</span>
         </button>
         <button class="prow" aria-pressed="false" data-p="5"
-                data-cap="Classified LLR at 1.00 confidence. Real trial frame from the forward view, 2026-04-17 02:46.">
+                data-cap="Classified LLR at 1.00 confidence. Real trial frame from the forward view.">
           <b>Lateral Lying, Right</b>
           <em>terminal posture, mirrored, the litter can nurse</em>
           <span class="pbadge ok">LLR · 1.00</span>
@@ -323,7 +323,7 @@
     </figure>
     <div class="split-txt">
       <p class="eyebrow">FORWARD AXIS · RESPIRATION</p>
-      <h2 class="rv">Breathing, taken from the video itself</h2>
+      <h2 class="rv">Counting her breaths from video</h2>
       <p class="lede rv">Nothing touches the sow. The forward view watches the
         rise and fall of her flank, and the pipeline pulls a periodic signal out
         of that motion and fits a rate to it. This is the output for one 20
@@ -331,7 +331,7 @@
       <div class="evi-figure rv">
         <strong>0.189&thinsp;Hz</strong>
         <span>fitted breathing frequency, about 11 breaths per minute, from a
-          20&thinsp;s window recorded 2026&#8209;04&#8209;18 at 06:31</span>
+          single 20&thinsp;s window of trial video</span>
       </div>
       <dl class="evi-read rv">
         <div><dt>Method</dt><dd>periodic fit, no contact</dd></div>
@@ -436,8 +436,8 @@
           look, and never to decide alone.</p>
       </article>
     </div>
-    <p class="fine rv">Trial conducted April 26 to May 20 2026 at the Texas A&amp;M
-      University swine center under IACUC oversight. Overlays, labels,
+    <p class="fine rv">Trial conducted at the Texas A&amp;M University swine
+      center under IACUC oversight. Overlays, labels,
       timestamps, confidences and tracking figures are the inference scripts'
       output, unedited. Clips are transcoded for the web and otherwise unaltered:
       no upscaling, no color grading, no cuts. Accuracy figures quoted here are
@@ -472,7 +472,7 @@
     <p class="fine">Unlike the rest of this site, the media on this page is real
       recorded footage rather than concept industrial design or AI-generated
       film. It comes from a prototype rig validated in a 10-sow on-farm trial
-      under IACUC oversight (Apr–May 2026), not from the sealed product shown on
+      under IACUC oversight, not from the sealed product shown on
       the product pages, and not from a customer installation. No producer has
       run the system yet. Multi-farm validation is planned. Overlays and figures
       are the detection pipeline's own output.<br>© 2026 SMART SWINE, LLC.</p>

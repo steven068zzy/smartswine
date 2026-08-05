@@ -611,14 +611,20 @@
     var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
     var pre = el.getAttribute("data-prefix") || "";
     var suf = el.getAttribute("data-suffix") || "";
+    /* Four figures and up get thousands separators, so 1800 reads as 1,800. */
+    var fmt = function (v) {
+      return v.toLocaleString("en-US", {
+        minimumFractionDigits: dec, maximumFractionDigits: dec
+      });
+    };
     var obj = { v: 0 };
     gsap.to(obj, {
       v: target,
       duration: 1.6,
       ease: "power2.out",
       scrollTrigger: { trigger: el, start: "top 88%", once: true },
-      onUpdate: function () { el.textContent = pre + obj.v.toFixed(dec) + suf; },
-      onComplete: function () { el.textContent = pre + target.toFixed(dec) + suf; }
+      onUpdate: function () { el.textContent = pre + fmt(obj.v) + suf; },
+      onComplete: function () { el.textContent = pre + fmt(target) + suf; }
     });
   });
 
