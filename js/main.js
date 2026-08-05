@@ -11,10 +11,12 @@
 
   if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- promo bar ----------
+  /* ---------- offer bar ----------
      Pinned under the fixed nav, so it costs vertical space the layout has to
-     know about. body.has-promo carries that offset; dismissing removes it and
-     the choice sticks for the session. */
+     know about. It carries two offers and stacks them below 900px, so the
+     cost is not a constant: --promo-h is measured from the live element and
+     every offset in the stylesheet reads from it. body.has-promo carries the
+     offset; dismissing removes it and the choice sticks for the session. */
   var promo = document.getElementById("promo");
   if (promo) {
     var DISMISS = "ss-promo-dismissed";
@@ -24,10 +26,24 @@
       promo.remove();
     } else {
       document.body.classList.add("has-promo");
+
+      var lastH = 0;
+      var measure = function () {
+        var h = Math.round(promo.getBoundingClientRect().height);
+        if (!h || h === lastH) return;
+        lastH = h;
+        document.documentElement.style.setProperty("--promo-h", h + "px");
+        if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+      };
+      measure();
+      if (window.ResizeObserver) new ResizeObserver(measure).observe(promo);
+      else window.addEventListener("resize", measure);
+
       var x = promo.querySelector(".promo-x");
       if (x) x.addEventListener("click", function () {
         promo.remove();
         document.body.classList.remove("has-promo");
+        document.documentElement.style.removeProperty("--promo-h");
         try { sessionStorage.setItem(DISMISS, "1"); } catch (e) {}
         if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
       });

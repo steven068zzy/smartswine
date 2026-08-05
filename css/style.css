@@ -833,6 +833,20 @@ body.menu-open { overflow: hidden; }
 .ccard.hot {
   background: linear-gradient(150deg, rgba(246, 83, 143, 0.12), var(--bg2) 58%);
 }
+/* the referral is the quieter half of the same pair: same shape, less heat */
+.ccard.warm {
+  background: linear-gradient(150deg, rgba(249, 168, 199, 0.07), var(--bg2) 58%);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.ccard.wide { grid-column: 1 / -1; }
+@media (max-width: 860px) { .ccard.wide { grid-column: auto; } }
+.ccard[id] { scroll-margin-top: calc(64px + var(--promo-h)); }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--pink);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-ghost:hover { background: rgba(246, 83, 143, 0.12); transform: translateY(-2px); }
 .ccard h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 10px 0 14px; }
 .ccard p { color: var(--mut); font-size: 15.5px; }
 .ccard .btn { margin-top: 26px; }
@@ -1081,14 +1095,21 @@ body.menu-open { overflow: hidden; }
 }
 
 /* =====================================================================
-   Promo bar — pinned directly under the fixed nav, so it rides with it
-   rather than scrolling away. Slim enough to live there permanently.
+   Offer bar — pinned directly under the fixed nav, so it rides with it
+   rather than scrolling away. Two offers share the strip and stay
+   separate: the trial is the way in, the referral is what taking it
+   earns you. That ladder is carried by weight rather than colour, a
+   filled dot and a solid pill for the first, a duration badge and an
+   outlined pill for the second, with a hairline between them.
+   --promo-h is measured in JS so every offset below stays exact when
+   the rail wraps to two rows on narrow screens.
    ===================================================================== */
+:root { --promo-h: 42px; }
+
 .promo {
   position: fixed; inset: 60px 0 auto 0; z-index: 49;
   display: flex; align-items: center; justify-content: center;
-  gap: clamp(10px, 2vw, 20px);
-  height: 42px; padding: 0 clamp(14px, 3vw, 36px);
+  min-height: 42px; padding: 0 46px;
   background: linear-gradient(90deg,
     rgba(207, 61, 120, 0.92) 0%, rgba(246, 83, 143, 0.92) 55%, rgba(207, 61, 120, 0.92) 100%);
   backdrop-filter: blur(10px);
@@ -1109,15 +1130,36 @@ body.menu-open { overflow: hidden; }
 @keyframes promoSheen { 0%, 62% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 @media (prefers-reduced-motion: reduce) { .promo::before { animation: none; opacity: 0; } }
 
+/* the rail is positioned so both offers paint above the sheen */
+.promo-rail {
+  position: relative;
+  display: flex; align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+  max-width: 100%;
+}
+.promo-offer { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.promo-rule { flex: none; width: 1px; height: 18px; background: rgba(43, 10, 25, 0.3); }
+
+/* one slot, two markers, so the stacked rows share a left edge */
+.promo-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; }
 .promo-dot {
-  width: 7px; height: 7px; flex: none; border-radius: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
   background: #2b0a19;
   animation: promoPulse 2.4s ease-in-out infinite;
 }
 @keyframes promoPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 @media (prefers-reduced-motion: reduce) { .promo-dot { animation: none; } }
 
-.promo-txt { position: relative; }
+/* the reward, stated as a unit of time rather than a second live dot */
+.promo-badge {
+  flex: none;
+  font: 700 10px/1 var(--mono); letter-spacing: 0.09em;
+  padding: 4px 6px; border-radius: 4px;
+  border: 1px solid rgba(43, 10, 25, 0.42);
+  color: #2b0a19;
+}
+
+.promo-txt { min-width: 0; white-space: nowrap; }
 .promo-txt b { font-weight: 700; }
 .promo-cta {
   position: relative;
@@ -1130,6 +1172,9 @@ body.menu-open { overflow: hidden; }
   white-space: nowrap;
 }
 .promo-cta:hover { background: #fff; transform: translateY(-1px); }
+/* the second offer is a consequence of the first, so its button waits */
+.promo-cta-ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(43, 10, 25, 0.45); }
+.promo-cta-ghost:hover { background: rgba(255, 255, 255, 0.9); box-shadow: inset 0 0 0 1px transparent; }
 .promo-x {
   position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
   width: 24px; height: 24px; border: 0; border-radius: 5px;
@@ -1139,18 +1184,31 @@ body.menu-open { overflow: hidden; }
 }
 .promo-x:hover { opacity: 1; background: rgba(255,255,255,0.35); }
 
-/* the bar occupies 42px, so everything the nav used to clear moves down */
-body.has-promo section { scroll-margin-top: 106px; }
-@media (max-width: 720px) {
-  .promo { height: auto; min-height: 44px; padding: 7px 40px 7px 14px;
-           font-size: 12.5px; line-height: 1.35; flex-wrap: wrap; row-gap: 4px; }
+/* Each offer stays on one line or it stops being scannable, so the rail
+   stacks rather than letting either claim wrap. Both keep their claim and
+   their button at every width; the terms live on the contact page. */
+@media (max-width: 1080px) {
+  .promo { padding: 8px 44px 8px 16px; font-size: 12.5px; line-height: 1.35; }
+  .promo-rail { flex-direction: column; align-items: flex-start; gap: 7px; width: 100%; }
+  .promo-rule { width: 100%; height: 1px; }
+  .promo-txt { white-space: normal; }
+  .promo-mark { min-width: 46px; }
+}
+/* phones: the claim takes the row and the button drops under it. The dot is
+   decoration and goes; the badge stays because it states the offer. */
+@media (max-width: 560px) {
+  .promo { padding: 9px 38px 9px 14px; font-size: 12px; }
+  .promo-offer { flex-wrap: wrap; row-gap: 7px; column-gap: 8px; }
+  .promo-mark { min-width: 0; }
+  .promo-mark:not(.promo-badge) { display: none; }
 }
 
 /* the bar sits between the nav and the page, so anything that measured from
-   the nav's 60px has to clear 102px while it is up */
-body.has-promo .page-hero { padding-top: calc(102px + clamp(80px, 14vh, 170px)); }
-body.has-promo .hero-stage { top: 42px; height: calc(100vh - 42px); }
-body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
+   the nav's 60px has to clear the nav plus whatever the bar currently is */
+body.has-promo section { scroll-margin-top: calc(64px + var(--promo-h)); }
+body.has-promo .page-hero { padding-top: calc(60px + var(--promo-h) + clamp(80px, 14vh, 170px)); }
+body.has-promo .hero-stage { top: var(--promo-h); height: calc(100vh - var(--promo-h)); }
+body.has-promo .xsticky { top: var(--promo-h); height: calc(100vh - var(--promo-h)); }
 
 /* =====================================================================
    SPC-01 page — travel hero, control-law schematic, posture gallery.
@@ -1199,7 +1257,7 @@ body.has-promo .xsticky { top: 42px; height: calc(100vh - 42px); }
   padding: 76px var(--pad) 30px;
   overflow: hidden;
 }
-body.has-promo .loop-sticky { top: 42px; height: calc(100vh - 42px); }
+body.has-promo .loop-sticky { top: var(--promo-h); height: calc(100vh - var(--promo-h)); }
 .loop-view {
   /* the 4/3 frame must leave the caption strip on screen inside a 100vh
      pin, so the width is also capped by the height budget (~66vh) */
