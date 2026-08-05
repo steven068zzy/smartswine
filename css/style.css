@@ -1457,3 +1457,76 @@ a.loopcard:hover .t-link { color: var(--pink); }
    that label off, which would remove the very thing the frame is evidence of.
    So: the frames' own ratio, contained, never cropped. */
 .pstack--wide img { aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
+
+/* Evidence gallery, stacked.
+   Side by side never sits right here: at half width a 16:9 frame is ~330px
+   tall while six class rows run to ~500, and squeezing either one to match
+   the other costs the thing that matters. Stacked removes the problem instead
+   of tuning it. The frame takes the full content column, so the evidence is
+   the biggest thing on the page, and the six classes become a fluid tab row
+   underneath that reflows from six across to two without a breakpoint. The
+   prose the rows used to carry moved into the caption, which already updates
+   on selection. */
+.pgal--evi { grid-template-columns: 1fr; gap: 22px; }
+.pgal--evi .prows {
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 10px;
+}
+.pgal--evi .prow {
+  display: flex; flex-direction: column; align-items: flex-start;
+  justify-content: space-between; gap: 12px;
+  padding: 16px 16px 15px;
+}
+.pgal--evi .prow b { font-size: 15px; letter-spacing: -0.005em; }
+.pgal--evi .prow .pbadge { flex: none; }
+/* the caption swaps between two and four lines as classes change; reserving
+   the tall case stops the tab row below it from jumping on every click */
+.pgal--evi .pstack figcaption { min-height: 3.4em; }
+/* Stacked frames inherit inset:0 from the base gallery, which stretches every
+   frame after the first over the caption too. Releasing the bottom edge lets
+   aspect-ratio govern again, so all six occupy exactly the same box. */
+.pgal--evi .pstack img:not(:first-child) { inset: 0 0 auto 0; height: auto; }
+
+/* ---------- evidence: results table ----------
+   For scored comparisons where two numbers per row carry the argument and a
+   readout list would flatten them. Row rules only, no vertical lines, numbers
+   tabular so the columns read down. The winning row is the point of the table,
+   so it gets the brand color rather than a note underneath saying which one
+   won. */
+.evi-tbl {
+  width: 100%; border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg2); border-radius: var(--r-md);
+  overflow: hidden;
+}
+.evi-tbl caption {
+  caption-side: bottom; text-align: left;
+  color: var(--dim); font-size: 12.5px; line-height: 1.6; padding-top: 14px;
+}
+.evi-tbl th, .evi-tbl td { padding: 13px 18px; text-align: right; }
+.evi-tbl thead th {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--dim);
+  border-bottom: 1px solid var(--line);
+}
+.evi-tbl tbody th {
+  text-align: left; font-weight: 500; font-size: 14.5px; color: var(--ink);
+}
+.evi-tbl thead th:first-child { text-align: left; }
+.evi-tbl tbody td { font-size: 14.5px; color: var(--mut); }
+.evi-tbl tbody tr + tr th, .evi-tbl tbody tr + tr td {
+  border-top: 1px solid rgba(107, 99, 131, 0.45);
+}
+.evi-tbl tbody tr.best { background: rgba(246, 83, 143, 0.10); }
+.evi-tbl tbody tr.best th, .evi-tbl tbody tr.best td { color: var(--pink); font-weight: 700; }
+.evi-tbl-note { color: var(--dim); font-size: 12.5px; line-height: 1.7; margin-top: 18px; }
+@media (max-width: 520px) {
+  .evi-tbl th, .evi-tbl td { padding: 11px 12px; font-size: 13.5px; }
+  .evi-tbl tbody th { font-size: 13.5px; }
+}
+
+/* .evi-figure was written for the end of a column, where its own top margin is
+   the only spacing it needs. Where it opens a column beside a table it has to
+   start level with that table, and where prose follows it the prose needs air. */
+.evi-figure:first-child { margin-top: 0; }
+.evi-figure:not(:last-child) { margin-bottom: 26px; }
