@@ -11,11 +11,11 @@ The nav groups both product pages under one **Products** dropdown
 | About | `index.html` | vision, mission, current status, team, advisors, partners |
 | Products · SPM-01 | `product.html` | the full SPM-01 story from `SPM-01_Product_Brochure.pdf` (13 pages), turntable hero |
 | Products · SPC-01 | `spc01.html` | the SPC-01 curtain story: travel hero, filmed control loop, five-state rule gallery |
-| From the barn | `barn.html` | **real trial footage** with the models' own overlays: birth detection, stillborn vs live pair, posture classifier gallery, respiration fit |
+| Case study | `barn.html` | **real trial footage** with the models' own overlays: birth detection, stillborn vs live pair, posture classifier gallery, respiration fit |
 | Resources | `resources.html` | video and podcasts, press, industry and grant programs |
 | Contact | `contact.html` | book a pilot, get in touch |
 
-## The “From the barn” page (added 2026-08-05)
+## The “Case study” page, `barn.html` (added 2026-08-05, renamed from “From the barn” 2026-08-05)
 
 **This is the only page on the site whose media is real.** Everything else is
 concept industrial design or AI-generated concept film; `barn.html` is
