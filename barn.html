@@ -12,11 +12,10 @@
 
 <header class="nav" id="nav">
   <a class="nav-brand" href="index.html" aria-label="Smart Swine home">
-    <img src="assets/img/logo_badge.png" alt="" width="30" height="30">
+    <img src="assets/img/logo_badge.png" alt="" width="38" height="38">
     <span>SMART&nbsp;SWINE</span>
   </a>
   <nav class="nav-links" aria-label="Pages">
-    <a href="index.html">About</a>
     <div class="nav-drop">
       <a href="product.html" class="nav-drop-top" aria-haspopup="true">Products<span class="caret" aria-hidden="true">&#9662;</span></a>
       <div class="nav-sub">
@@ -27,20 +26,23 @@
       </div>
     </div>
     <a href="barn.html" class="on" aria-current="page">Case study</a>
+    <a href="index.html">About</a>
     <a href="resources.html">Resources</a>
-    <a href="contact.html">Get in touch</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
   <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
-  <a href="index.html">About</a>
   <a href="product.html">SPM-01<span>Smart Piglet Monitor</span></a>
   <a href="spc01.html">SPC-01<span>Smart Piglet Curtain</span></a>
   <a href="barn.html" class="on" aria-current="page">Case study</a>
+  <a href="index.html">About</a>
   <a href="resources.html">Resources</a>
-  <a href="contact.html">Get in touch</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact</a>
   <a class="btn btn-coral" href="contact.html#pilot">Free trial</a>
 </nav>
 
@@ -90,14 +92,17 @@
       <p class="lede rv">We ran the sensing rig through a farrowing batch in a
         working room at the Texas A&amp;M swine center, under IACUC oversight,
         with the center's own staff running the room around us. It recorded
-        through the nights, on every crate it could see. All four models below
-        came out of that recording.</p>
+        through the nights, on every crate it could see. The newborn, stillborn
+        and posture work below came out of that recording. The breathing
+        comparison at the bottom of the page is a separate, earlier recording,
+        because it is the set that carries the manual breath counts, and its
+        clips carry their own dates in frame.</p>
     </header>
 
     <div class="stats stats-4">
       <div class="stat rv"><strong data-count="9" data-suffix="M+">9M+</strong><span>frames of depth, RGB and IR video, at 5 fps day and night</span></div>
       <div class="stat rv"><strong data-count="500" data-suffix="+&thinsp;h">500+&thinsp;h</strong><span>of a working farrowing room, recorded with nobody in it</span></div>
-      <div class="stat rv"><strong data-count="1800">1,800</strong><span>clip scores behind the breathing sensor choice, 18 channels &times; 100 clips</span></div>
+      <div class="stat rv"><strong data-count="1800">1,800</strong><span>clip scores behind the breathing sensor choice, 18 channels &times; 100 clips, from the earlier recording</span></div>
       <div class="stat rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>posture accuracy, measured on a sow the model had never seen</span></div>
     </div>
 
@@ -128,16 +133,15 @@
     <div class="split-txt">
       <p class="eyebrow">DOWNWARD AXIS · NEWBORN DETECTION</p>
       <h2 class="rv">It sees the birth happen</h2>
-      <p class="lede rv">Twenty one seconds of the landing zone under a sow in
-        labor. For the first thirteen seconds there is nothing to report and the
-        counter in the header reads zero. Then a piglet arrives, the model boxes
-        it, labels it a newborn and the counter turns over. No stockperson was in
-        the room.</p>
+      <p class="lede rv">Twelve seconds of the landing zone under a sow in
+        labor. It opens on an empty floor with the counter in the header reading
+        zero. One second in, a piglet arrives, the model boxes it, labels it a
+        newborn and the counter turns over. No stockperson was in the room.</p>
       <p class="lede rv">This is the event the whole alert chain hangs from. A
         birth that is seen can be timed, and a birth that is timed is what makes
         the next one being late mean something.</p>
       <div class="evi-figure rv">
-        <strong>11:31:43</strong>
+        <strong>11:31:40</strong>
         <span>the barn wall-clock time the counter went from zero newborns to
           one</span>
       </div>
@@ -153,12 +157,14 @@
         <h3>Newborn detection, unedited clip</h3>
         <p>The header strip is written by the inference script: source file,
           wall-clock time in the barn, and a running count of each class it is
-          holding.</p>
+          holding. Seven seconds after the birth the header moves the same
+          animal out of the newborn count and into the piglet count.</p>
         <dl class="evi-read">
           <div><dt>Source</dt><dd>20260422_113130.avi</dd></div>
-          <div><dt>Clip length</dt><dd>21.4 s at 5 fps</dd></div>
-          <div><dt>First detection</dt><dd class="ok">11:31:43</dd></div>
+          <div><dt>Clip length</dt><dd>12.0 s at 5 fps</dd></div>
+          <div><dt>First detection</dt><dd class="ok">11:31:40</dd></div>
           <div><dt>Class returned</dt><dd class="ok">Newborn</dd></div>
+          <div><dt>Reclassified piglet</dt><dd>11:31:47</dd></div>
         </dl>
       </div>
     </article>
@@ -343,6 +349,31 @@
   </div>
 
   <div class="wrap">
+    <figure class="evi-wide rv">
+      <p class="evi-real">Real farm footage · pipeline output</p>
+      <div class="evi-plot">
+        <video class="film" autoplay muted loop playsinline preload="metadata"
+               poster="assets/trial/trial_resp_channels_poster.webp"
+               aria-label="One trial clip played twice over, RGB above and infrared below, each with a red abdomen box and a green back box full of cyan tracked points. Four motion traces draw themselves alongside in step with the video, one per sensor and region, each showing a regular breathing wave.">
+          <source src="assets/trial/trial_resp_channels.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Four of the eighteen channels running at once, on one clip.
+        The same twenty seconds is played in RGB and in infrared, the cyan dots
+        are the tracked points inside each box, and the traces on the right are
+        the motion signal each box gives up. The header is written by the
+        script, manual count first.</figcaption>
+    </figure>
+    <dl class="evi-read evi-read-wide rv">
+      <div><dt>Source</dt><dd>20241210_010600</dd></div>
+      <div><dt>Clip</dt><dd>101 frames at 5 fps</dd></div>
+      <div><dt>Manual count</dt><dd>27.0 bpm</dd></div>
+      <div><dt>Depth &middot; abdomen</dt><dd class="ok">27.9 bpm</dd></div>
+      <div><dt>Depth &middot; back</dt><dd class="ok">28.2 bpm</dd></div>
+    </dl>
+  </div>
+
+  <div class="wrap">
     <header class="sec-head">
       <h3 class="sub-h rv">Then we checked it against a human counting breaths</h3>
       <p class="lede rv">A fitted curve is only worth what it agrees with. So we
@@ -377,6 +408,27 @@
       </table>
     </div>
 
+    <figure class="evi-wide rv">
+      <p class="evi-real">Real farm footage · detector output</p>
+      <div class="evi-plot">
+        <video class="film" autoplay muted loop playsinline preload="metadata"
+               poster="assets/trial/trial_roi_rgb_ir_poster.webp"
+               aria-label="The same trial clip side by side, RGB on the left and infrared on the right, with an identical red abdomen box and green back box sitting on the sow in both panels and holding position as she breathes.">
+          <source src="assets/trial/trial_roi_rgb_ir.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Why the comparison above is a fair one. Two boxes, drawn once
+        by the detector, shown on both sensors at the same instant. Nothing is
+        redrawn per run, so a difference in the table is a difference between
+        sensors and not between where we happened to look.</figcaption>
+    </figure>
+    <dl class="evi-read evi-read-wide rv">
+      <div><dt>Source</dt><dd>20241208_022600</dd></div>
+      <div><dt>Streams</dt><dd>RGB and IR, both 848 &times; 480</dd></div>
+      <div><dt>Boxes</dt><dd>one YOLO detection per region</dd></div>
+      <div><dt>Transferred coordinates</dt><dd class="ok">identical</dd></div>
+    </dl>
+
     <div class="duo">
       <article class="card edge-coral rv">
         <h3>Why depth on the back won</h3>
@@ -401,6 +453,13 @@
           choice.</p>
       </article>
     </div>
+
+    <p class="fine rv">Everything in this section comes from a separate, earlier
+      recording than the newborn, stillborn and posture footage above, which is
+      why the dates burned into the two clips are not the April 2026 dates seen
+      elsewhere on this page. The earlier set is the one carrying the manual
+      breath counts every channel was scored against, so it is the set the
+      comparison had to run on.</p>
   </div>
 
 </section>
