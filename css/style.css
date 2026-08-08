@@ -33,6 +33,9 @@
      and weight rather than a second face. */
   --mono: var(--sans);
   --pad: clamp(20px, 5vw, 72px);
+  /* Nav height is read by the promo bar, the mobile menu and every hero's
+     top padding, so it lives here rather than as a literal in five places. */
+  --nav-h: 70px;
   --r-lg: 22px;   /* media tiles, feature cards */
   --r-md: 18px;   /* stat tiles, list cards */
   --r-sm: 14px;   /* small chrome */
@@ -115,33 +118,53 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
   position: fixed; inset: 0 0 auto 0; z-index: 50;
   display: flex; align-items: center; gap: 26px;
   padding: 0 clamp(16px, 3vw, 36px);
-  height: 60px;
-  background: rgba(54, 50, 71, 0.78);
+  height: var(--nav-h);
+  /* opaque enough that the links keep their weight over bright media —
+     at 0.78 they washed out anywhere the page went light */
+  background: rgba(48, 44, 63, 0.9);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(107, 99, 131, 0.45);
+  border-bottom: 1px solid rgba(107, 99, 131, 0.6);
 }
 .nav-brand {
-  display: flex; align-items: center; gap: 10px;
-  font-weight: 700; letter-spacing: 0.14em; font-size: 14px;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 700; letter-spacing: 0.12em; font-size: 16.5px;
   text-decoration: none;
 }
-.nav-links { display: flex; gap: 4px; margin-left: auto; }
+.nav-brand img { width: 38px; height: 38px; }
+.nav-links { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+/* Destinations have to out-rank the brand and the pill, or the bar reads as
+   a logo and a button with grey noise in between. Near-ink at 550 does it
+   without turning five links into five headlines. */
 .nav-links a {
-  font-size: 13px; font-weight: 400; letter-spacing: 0.01em;
-  color: var(--mut); text-decoration: none;
-  padding: 6px 12px; border-radius: 980px;
+  position: relative;
+  font-size: 16px; font-weight: 500; letter-spacing: 0.005em;
+  color: #e7e3ec; text-decoration: none;
+  padding: 8px 13px; border-radius: 980px;
   transition: color 0.2s, background 0.2s;
 }
-.nav-links a:hover, .nav-links a.on { color: var(--ink); background: rgba(255,255,255,0.06); }
+.nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.09); }
+/* The current page is marked with the brand pink under the label. A 6%
+   white pill was the old marker and nobody could see it. */
+.nav-links a.on { color: var(--ink); font-weight: 700; }
+.nav-links a.on::after {
+  content: ""; position: absolute; left: 13px; right: 13px; bottom: 2px;
+  height: 2px; border-radius: 2px; background: var(--pink);
+}
+/* the sub-menu entries are a list, not tabs — no underline rule there */
+.nav-sub a.on::after { display: none; }
 /* Products dropdown: both product pages live under one nav item.
    CSS-only — opens on hover and on keyboard focus (focus-within), the
    top link itself still goes to product.html. */
 .nav-drop { position: relative; }
+/* the caret is the only sign that two products live behind one label, so it
+   is readable rather than decorative */
 .nav-drop-top .caret {
-  display: inline-block; margin-left: 5px; font-size: 9px;
-  transform: translateY(-1px); opacity: 0.7;
+  display: inline-block; margin-left: 6px; font-size: 10px;
+  transform: translateY(-1px); opacity: 0.95;
+  transition: transform 0.2s;
 }
+.nav-drop:hover .caret, .nav-drop:focus-within .caret { transform: translateY(1px); }
 .nav-sub {
   position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%);
@@ -163,33 +186,47 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .nav-sub a b { color: var(--ink); font-weight: 700; }
 .nav-sub a span { display: block; font-size: 11px; letter-spacing: 0.04em;
                   color: var(--dim); margin-top: 1px; }
+/* A hairline splits the destinations from the action, so the pill stops
+   reading as a sixth place to go. */
+.nav-links::after {
+  content: ""; align-self: center;
+  width: 1px; height: 22px; margin: 0 6px 0 12px;
+  background: rgba(107, 99, 131, 0.75);
+}
 /* .btn.nav-cta: compound beats the later .btn rule regardless of order */
-.nav-cta { margin-left: 6px; }
-.btn.nav-cta { padding: 8px 18px; font-size: 13px; }
-@media (max-width: 980px) {
+.nav-cta { margin-left: 0; }
+.btn.nav-cta { padding: 9px 20px; font-size: 14.5px; }
+/* Six destinations at 16px plus the brand and the pill need the room. Below
+   this the row would have to shrink back down to fit, so it hands over to the
+   burger instead of getting quietly smaller again. */
+@media (max-width: 1120px) { .nav-links::after { display: none; } }
+@media (max-width: 1120px) {
   .nav-links { display: none; }
   .nav-cta { margin-left: auto; }
 }
 /* very narrow: the bar holds brand + pill + burger on one line */
 @media (max-width: 560px) {
+  :root { --nav-h: 62px; }
   .nav { gap: 10px; }
-  .nav-brand span { font-size: 12px; letter-spacing: 0.1em; }
-  .btn.nav-cta { padding: 7px 14px; font-size: 12px; }
+  .nav-brand { gap: 9px; }
+  .nav-brand img { width: 30px; height: 30px; }
+  .nav-brand span { font-size: 13px; letter-spacing: 0.1em; }
+  .btn.nav-cta { padding: 8px 15px; font-size: 13px; }
 }
 
 /* ---------- mobile menu ----------
    Burger lives in the nav on small screens; the panel drops below the
-   60px bar, covers the promo strip, and locks page scroll while open. */
+   bar, covers the promo strip, and locks page scroll while open. */
 .nav-burger {
   display: none;
-  width: 40px; height: 40px; flex: none;
+  width: 44px; height: 44px; flex: none;
   border: 0; border-radius: 980px;
   background: transparent; cursor: pointer;
   position: relative;
 }
 .nav-burger span {
   position: absolute; left: 50%; top: 50%;
-  width: 18px; height: 1.6px; border-radius: 1px;
+  width: 21px; height: 1.8px; border-radius: 1px;
   background: var(--ink);
   transition: transform 0.3s ease;
 }
@@ -198,10 +235,10 @@ h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
 .nav-burger.open span:first-child { transform: translate(-50%, -1px) rotate(45deg); }
 .nav-burger.open span:last-child { transform: translate(-50%, -1px) rotate(-45deg); }
 /* after the base display:none, so source order can't cancel it */
-@media (max-width: 980px) { .nav-burger { display: block; } }
+@media (max-width: 1120px) { .nav-burger { display: block; } }
 
 .mobile-menu {
-  position: fixed; inset: 60px 0 0 0; z-index: 51;
+  position: fixed; inset: var(--nav-h) 0 0 0; z-index: 51;
   display: none;
   flex-direction: column;
   padding: 24px var(--pad) 44px;
@@ -229,7 +266,7 @@ body.menu-open { overflow: hidden; }
   font-size: 15px; padding: 13px 28px;
   border-bottom: 0;
 }
-@media (min-width: 981px) {
+@media (min-width: 1121px) {
   .mobile-menu { display: none !important; }
   body.menu-open { overflow: auto; }
 }
@@ -695,11 +732,11 @@ body.menu-open { overflow: hidden; }
 .cta-row { display: flex; gap: 14px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
 
 /* ---------- company pages (about / resources / contact) ---------- */
-@media (max-width: 560px) { .nav-links { display: none; } }
+
 
 .page-hero {
   position: relative; overflow: hidden;
-  padding: calc(60px + clamp(80px, 14vh, 170px)) 0 clamp(70px, 11vh, 140px);
+  padding: calc(var(--nav-h) + clamp(80px, 14vh, 170px)) 0 clamp(70px, 11vh, 140px);
   background: var(--bg0);
   text-align: center;
 }
@@ -839,7 +876,12 @@ body.menu-open { overflow: hidden; }
 .ccard h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 10px 0 14px; }
 .ccard p { color: var(--mut); font-size: 15.5px; }
 .ccard .btn { margin-top: 26px; }
-.ccard ul { list-style: none; margin-top: 18px; }
+/* Role cards carry a second small label further down the card, over the list
+   of what the job owns. Muted rather than pink, so it sits under the role
+   title instead of competing with it. */
+.mut-tag { color: var(--dim); margin-top: 30px; }
+.ccard ul { list-style: none; margin-top: 4px; }
+.ccard ul + p { margin-top: 22px; }
 .ccard li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
 .ccard li:last-child { border-bottom: none; }
 .ccard li a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
@@ -1096,7 +1138,7 @@ body.menu-open { overflow: hidden; }
 :root { --promo-h: 42px; }
 
 .promo {
-  position: fixed; inset: 60px 0 auto 0; z-index: 49;
+  position: fixed; inset: var(--nav-h) 0 auto 0; z-index: 49;
   display: flex; align-items: center; justify-content: center;
   min-height: 42px; padding: 0 46px;
   background: linear-gradient(90deg,
@@ -1196,7 +1238,7 @@ body.menu-open { overflow: hidden; }
 /* the bar sits between the nav and the page, so anything that measured from
    the nav's 60px has to clear the nav plus whatever the bar currently is */
 body.has-promo section { scroll-margin-top: calc(64px + var(--promo-h)); }
-body.has-promo .page-hero { padding-top: calc(60px + var(--promo-h) + clamp(80px, 14vh, 170px)); }
+body.has-promo .page-hero { padding-top: calc(var(--nav-h) + var(--promo-h) + clamp(80px, 14vh, 170px)); }
 body.has-promo .hero-stage { top: var(--promo-h); height: calc(100vh - var(--promo-h)); }
 body.has-promo .xsticky { top: var(--promo-h); height: calc(100vh - var(--promo-h)); }
 
@@ -1440,7 +1482,46 @@ a.loopcard:hover .t-link { color: var(--pink); }
    than being redrawn in brand colors, which would make it our picture of the
    result instead of the result. */
 .evi-plot { background: #fff; border-radius: var(--r-lg); padding: 14px; }
-.evi-plot img { border-radius: 8px; }
+.evi-plot img, .evi-plot video { border-radius: 8px; width: 100%; }
+
+/* Same printout logic, running. These clips carry the script's own header and
+   its live traces, so they get the white ground rather than the black camera
+   frame — what is on screen is the figure, and the barn video is inside it.
+   Full column width, because the burned-in header is the whole point and it
+   stops being readable much below this. */
+.evi-wide { margin: 46px 0 0; }
+.evi-wide .evi-real { margin-bottom: 12px; }
+.evi-wide figcaption {
+  color: var(--mut); font-size: 14.5px; line-height: 1.6;
+  max-width: 760px; margin-top: 16px;
+}
+/* The readout under a wide clip runs across rather than down, so the label
+   sits over its value instead of beside it — side by side in a narrow column
+   breaks values like "848 x 480" across two lines. */
+.evi-read-wide {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0 30px; margin: 26px 0 46px;
+}
+.evi-read-wide div {
+  display: block; padding: 0;
+  border-bottom: 0; border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.evi-read-wide dd { text-align: left; margin-top: 5px; font-size: 15px; }
+
+/* Squeezed to a phone column these clips fall to about 100px tall and the
+   boxes stop being visible at all, so below the breakpoint the frame holds
+   its readable width and pans instead of shrinking. The readout underneath
+   still carries every number for anyone who does not pan. */
+@media (max-width: 760px) {
+  .evi-wide .evi-plot { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .evi-wide .evi-plot video { width: 620px; max-width: none; }
+  .evi-wide figcaption::after {
+    content: "Drag the frame sideways to read it at full size.";
+    display: block; margin-top: 10px;
+    font-size: 12.5px; color: var(--dim);
+  }
+}
 
 /* the headline figure a clip resolves to, sat beside its own explanation */
 .evi-figure { margin-top: 30px; }
