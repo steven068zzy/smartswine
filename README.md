@@ -159,8 +159,9 @@ any of these when editing copy:
   multi-farm validation is planned, not done.
 - **IP69K is a design target**, never "rated" or "certified".
 - **~$1M is non-dilutive NSF / USDA-NIFA grant support**, never "raised", no investors.
-- Competition wording: **"semifinalist, 27 of 531 teams"** — the Top 12 finals are
-  September 2026 and have not happened. The $100k is the prize on offer, not won.
+- Competition wording: **"finalist, 12 of 531 teams"** (531 → 27 semifinalists →
+  12 finalists, named 2026-09-03). The finals are September 26, 2026 at Mays and
+  have not happened. The $100k top prize / $175k pool is on offer, not won.
 - Pork-industry organizations gave **letters of support and survey distribution**.
   They are not investors, customers or commercial partners.
 - Survey is a **concept test**, n ≈ 16–19, not orders or letters of intent.
