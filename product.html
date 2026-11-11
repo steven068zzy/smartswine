@@ -2,216 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMART SWINE · SPM-01 Smart Piglet Monitor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPM-01 Smart Piglet Monitor · Smart Swine</title>
 <meta name="description" content="SPM-01: dual-axis vision for the farrowing crate. One sealed unit watches the sow and her newborn piglets at once.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Swine">
+<meta property="og:title" content="SPM-01 Smart Piglet Monitor · Smart Swine">
+<meta property="og:description" content="SPM-01: dual-axis vision for the farrowing crate. One sealed unit watches the sow and her newborn piglets at once.">
+<meta property="og:image" content="https://steven068zzy.github.io/smartswine/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>(function(c){c.add("js");try{if(sessionStorage.getItem("ss-topbar-dismissed")==="1")c.add("no-topbar")}catch(e){}setTimeout(function(){if(!window.__ssReady)c.add("rv-all")},3000)})(document.documentElement.classList)</script>
 </head>
 <body>
 
-<!-- ===== Nav ===== -->
+<div class="topbar" id="topbar" role="region" aria-label="Current offers">
+  <div class="topbar-in">
+    <a href="contact.html#pilot"><span><b>Free prototype trial</b> on your crates this season</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <span class="topbar-sep" aria-hidden="true"></span>
+    <a href="contact.html#refer"><span><b>Refer a producer</b>, get 3 months free</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <button class="topbar-x" type="button" aria-label="Dismiss offers"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>
+  </div>
+</div>
+
 <header class="nav" id="nav">
-  <a class="nav-brand" href="index.html" aria-label="Smart Swine home">
-    <img src="assets/img/logo_badge.png" alt="" width="38" height="38">
-    <span>SMART&nbsp;SWINE</span>
-  </a>
-  <nav class="nav-links" aria-label="Pages">
-    <div class="nav-drop">
-      <a href="product.html" class="nav-drop-top on" aria-haspopup="true">Products<span class="caret" aria-hidden="true">&#9662;</span></a>
-      <div class="nav-sub">
-        <div class="nav-sub-panel">
-          <a href="product.html" class="on" aria-current="page"><b>SPM-01</b><span>Smart Piglet Monitor</span></a>
-          <a href="spc01.html"><b>SPC-01</b><span>Smart Piglet Curtain</span></a>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="Smart Swine home"><img src="assets/img/logo_badge.png" alt="" width="230" height="170"><span>Smart <em>Swine</em></span></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-drop">
+        <button class="nav-drop-btn is-current" type="button" aria-expanded="false" aria-haspopup="true">Products<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-menu">
+          <div class="nav-menu-in">
+            <a href="product.html" aria-current="page"><b>SPM-01 Monitor</b><span>Sees the sow and her litter</span></a>
+            <a href="spc01.html"><b>SPC-01 Curtain</b><span>Acts on what the monitor sees</span></a>
+            <a href="software.html"><b>Software</b><span>Manages every crate and site</span></a>
+          </div>
         </div>
       </div>
+      <a href="barn.html">Case study</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="careers.html">Careers</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-contact" href="contact.html">Contact</a>
+      <a class="btn btn--primary btn--sm" href="contact.html#pilot">Free trial</a>
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
-    <a href="barn.html">Case study</a>
-    <a href="index.html">About</a>
-    <a href="resources.html">Resources</a>
-    <a href="careers.html">Careers</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
-  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
-  <a href="product.html" class="on" aria-current="page">SPM-01<span>Smart Piglet Monitor</span></a>
-  <a href="spc01.html">SPC-01<span>Smart Piglet Curtain</span></a>
+  <a href="product.html" aria-current="page">SPM-01 Monitor<span>Sees the sow and her litter</span></a>
+  <a href="spc01.html">SPC-01 Curtain<span>Acts on what the monitor sees</span></a>
+  <a href="software.html">Software<span>Manages every crate and site</span></a>
   <a href="barn.html">Case study</a>
-  <a href="index.html">About</a>
+  <a href="about.html">About</a>
   <a href="resources.html">Resources</a>
   <a href="careers.html">Careers</a>
   <a href="contact.html">Contact</a>
-  <a class="btn btn-coral" href="contact.html#pilot">Free trial</a>
+  <a class="btn btn--primary" href="contact.html#pilot">Request a free trial</a>
 </nav>
 
-<div class="promo" id="promo" role="region" aria-label="Current offers">
-  <div class="promo-rail">
-    <div class="promo-offer">
-      <span class="promo-mark" aria-hidden="true"><span class="promo-dot"></span></span>
-      <span class="promo-txt"><b>Free prototype trial</b> on your crates this season.</span>
-      <a class="promo-cta" href="contact.html#pilot">Request a trial</a>
-    </div>
-    <span class="promo-rule" aria-hidden="true"></span>
-    <div class="promo-offer">
-      <span class="promo-mark promo-badge" aria-hidden="true">+3 MO</span>
-      <span class="promo-txt"><b>Refer a producer, get 3 months free.</b></span>
-      <a class="promo-cta" href="contact.html#refer">Refer a farm</a>
-    </div>
-  </div>
-  <button class="promo-x" type="button" aria-label="Dismiss offers">&times;</button>
-</div>
-
 <main id="top">
-
-<!-- ===== 1 · Hero ===== -->
-<section class="hero" id="hero">
-  <div class="hero-stage">
-    <canvas class="hero-dust" aria-hidden="true"></canvas>
-    <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
-      <circle cx="50" cy="50" r="47" pathLength="100"></circle>
-    </svg>
-    <img class="hero-fallback" src="assets/img/hero_static.webp"
-         alt="SPM-01 Smart Piglet Monitor, concept industrial design render">
-    <canvas class="hero-turn" id="turnCanvas" role="img"
-            aria-label="SPM-01 rotating product view"></canvas>
-
-    <div class="beat beat-1">
-      <p class="eyebrow">SMART SWINE · COLLEGE STATION, TX</p>
-      <h1>SPM&#8209;01</h1>
-      <p class="hero-sub">Smart Piglet Monitor</p>
-      <p class="hero-tag">Dual-axis vision for the farrowing crate.<br>
-        One sealed unit watches the sow and her newborn piglets at once.</p>
+<!-- ===== 1 · Hero: the turntable ===== -->
+<section class="phero" id="hero">
+  <div class="phero-stage">
+    <div class="wrap phero-grid">
+      <div class="phero-copy">
+        <div class="beat beat-1">
+          <p class="eyebrow">Detect</p>
+          <h1>SPM&#8209;01</h1>
+          <p class="beat-name">Smart Piglet Monitor</p>
+          <p class="lede">Dual-axis vision for the farrowing crate. One sealed
+            unit watches the sow and her newborn piglets at once.</p>
+          <p><span class="status status--ok">Prototype validated on farm</span></p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="contact.html#pilot">Request a free trial</a>
+            <a class="btn btn--secondary" href="SPM-01_Product_Brochure.pdf" download>Brochure (PDF)<svg class="dl" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v7M5 7.5l3 3 3-3M3.5 13h9"/></svg></a>
+          </div>
+        </div>
+        <div class="beat beat-2">
+          <h2>Sealed on<br>every face.</h2>
+          <p class="lede">Gasket, gland, vents, rain lip: engineered for the
+            pressure washer, then hung on the crate without a tool.</p>
+        </div>
+      </div>
+      <div class="phero-visual">
+        <img class="phero-fallback" src="assets/img/hero_static.webp" width="1440" height="1440"
+             alt="SPM-01 Smart Piglet Monitor, concept industrial design render">
+        <canvas id="turnCanvas" role="img" aria-label="SPM-01 rotating product view"></canvas>
+      </div>
     </div>
-    <div class="beat beat-2">
-      <h2>Sealed on<br>every face.</h2>
-      <p>Gasket, gland, vents, rain lip: engineered for the pressure washer,<br>
-         then hung on the crate without a tool.</p>
-    </div>
-
-    <div class="hero-cue" aria-hidden="true"><span></span>SCROLL</div>
+    <div class="phero-cue" aria-hidden="true"><i></i>Scroll to turn it</div>
   </div>
 </section>
 
-<!-- ===== 2 · Problem ===== -->
-<section class="sec" id="problem">
+<!-- ===== 2 · Two axes ===== -->
+<section class="section" id="product">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">THE FARROWING ROOM</p>
-      <h2 class="rv">One in seven never reaches weaning</h2>
-      <p class="lede rv">U.S. herds wean about 31.7 million piglets a quarter, and the
-        farrowing room still loses roughly $1.05&nbsp;billion a year to stillbirth and
-        preweaning mortality, at $44 of value per weaned piglet. Two failure modes
-        dominate the loss, and both are supervision gaps, not biology.</p>
-    </header>
-
-    <div class="stats stats-4">
-      <div class="stat rv"><strong data-count="1.05" data-prefix="$" data-dec="2" data-suffix="B">$1.05B</strong><span>annual U.S. farrowing-room loss (stillbirth + preweaning)</span></div>
-      <div class="stat rv"><strong data-count="7" data-prefix="1 in ">1 in 7</strong><span>born-alive piglets lost before weaning (14–15% average)</span></div>
-      <div class="stat rv"><strong data-count="3" data-prefix="~" data-suffix="&thinsp;s">~&thinsp;3&thinsp;s</strong><span>duration of the sternal-to-lateral roll that crushes piglets</span></div>
-      <div class="stat rv"><strong data-count="72" data-suffix="%">72%</strong><span>of stillbirths happen during farrowing, most of them preventable</span></div>
+    <div class="split">
+      <div>
+        <p class="eyebrow">The sensor</p>
+        <h2 class="rv">It watches from two angles</h2>
+        <p class="lede rv" style="margin-top:18px">Farrowing loss has two causes and
+          they need two different kinds of sight. SPM-01 carries both.</p>
+        <div class="flist">
+          <div class="fitem rv">
+            <p class="ftag"><i class="rose"></i>Forward</p>
+            <h3>Stereo depth module</h3>
+            <p>Looks along the sow's body. Posture, respiration rate and the
+              sternal-to-lateral roll that causes most crushing deaths. Depth
+              reading her back came first out of 18 sensor and tracker
+              combinations we scored against a manual breath count, at 2.43
+              breaths per minute of mean absolute error, which is why this head
+              is depth rather than a second color camera. The scores are in the
+              <a href="barn.html#respiration">case study</a>.</p>
+          </div>
+          <div class="fitem rv">
+            <p class="ftag"><i></i>Downward</p>
+            <h3>RGB camera + IR illuminator</h3>
+            <p>Looks straight down at the perineal region and the landing zone.
+              Newborn detection and stillborn discrimination need color and
+              membrane texture, which depth cannot give.</p>
+          </div>
+        </div>
+      </div>
+      <figure class="split-media rv" id="headsFig">
+        <!-- The overlay must box the image alone: if it stretched to include
+             the caption the viewBox would skew and every apex would slide
+             off its optic. Geometry is in the render's own 4:3 space, with
+             the apexes measured off the render itself. -->
+        <div class="fig-media">
+          <img src="assets/img/heads.webp" width="1600" height="1200" loading="lazy"
+               alt="Close-up of the two tilting camera heads, concept industrial design">
+          <svg class="fov" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+            <g class="fov-fwd">
+              <path class="fov-fill" d="M305,111 L382,96 A78,78 0 0,1 377,142 Z"/>
+              <line class="fov-edge" x1="305" y1="111" x2="382" y2="96"/>
+              <line class="fov-edge" x1="305" y1="111" x2="377" y2="142"/>
+              <line class="fov-scan" x1="305" y1="111" x2="385" y2="119"/>
+              <circle class="fov-pivot" cx="305" cy="111" r="2"/>
+            </g>
+            <g class="fov-down">
+              <path class="fov-fill" d="M194,211 L216,275 A68,68 0 0,1 172,275 Z"/>
+              <line class="fov-edge" x1="194" y1="211" x2="216" y2="275"/>
+              <line class="fov-edge" x1="194" y1="211" x2="172" y2="275"/>
+              <line class="fov-scan" x1="194" y1="211" x2="194" y2="281"/>
+              <circle class="fov-pivot" cx="194" cy="211" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="plain">Each head tilts on its own yoke. The wedges are
+          the pitch range you can set, one thumb screw at a time.</figcaption>
+      </figure>
     </div>
 
-    <div class="duo">
-      <article class="card edge-coral rv">
-        <h3>Crushing: about 30% of the loss</h3>
-        <p>80% of crushing deaths happen in the first four days after farrowing, and
-          68% during one specific event: the sow rolling from sternal to lateral
-          lying. The window is about three seconds long. No stockperson can watch
-          every crate through every one of those windows.</p>
-      </article>
-      <article class="card edge-teal rv">
-        <h3>Stillbirth: about 30% of the loss</h3>
-        <p>72% of stillbirths happen during farrowing: the piglet is alive when
-          labor starts and dies waiting. Piglets normally arrive ~15 minutes apart,
-          so a stalled birth is survivable if someone notices in time. But more than
-          half of sows farrow more than two days off their predicted date, so
-          usually nobody is there.</p>
-      </article>
-    </div>
-    <p class="fine rv">Industry economics from USDA quarterly weaning volumes and published preweaning-mortality literature. Per-piglet value $44.</p>
-  </div>
-</section>
-
-<!-- ===== 3 · Two axes ===== -->
-<section class="sec sec-deep" id="product">
-  <div class="wrap split">
-    <div class="split-txt">
-      <p class="eyebrow">THE SENSOR</p>
-      <h2 class="rv">It watches from two angles</h2>
-      <p class="lede rv">Farrowing loss has two causes and they need two different
-        kinds of sight. SPM-01 carries both.</p>
-      <div class="axis rv">
-        <p class="axis-tag teal">FORWARD</p>
-        <h3>Stereo depth module</h3>
-        <p>Looks along the sow's body. Posture, respiration rate and the
-          sternal-to-lateral roll that causes most crushing deaths. Depth
-          reading her back came first out of 18 sensor and tracker combinations
-          we scored against a manual breath count, at 2.43 breaths per minute of
-          mean absolute error, which is why this head is depth rather than a
-          second color camera. The scores are in the
-          <a href="barn.html#respiration">case study</a>.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag coral">DOWNWARD</p>
-        <h3>RGB camera + IR illuminator</h3>
-        <p>Looks straight down at the perineal region and the landing zone. Newborn
-          detection and stillborn discrimination need color and membrane texture,
-          which depth cannot give.</p>
-      </div>
-    </div>
-    <figure class="split-img rv" id="headsFig">
-      <!-- The overlay must box the image alone: if it stretches to include the
-           caption the viewBox skews and every apex slides off its optic. -->
-      <div class="fig-media">
-        <img src="assets/img/heads.webp" alt="Close-up of the two tilting camera heads, concept industrial design">
-        <!-- Each wedge is the span a head can be aimed across on its yoke; the
-             ray sweeping inside it is the head being re-aimed. Geometry is in
-             the render's own 4:3 space, so the apexes sit on the real optics. -->
-        <svg class="fov" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
-          <!-- Apexes are measured off the render itself: the forward aperture
-               strip ends at (305,111) and the RGB lens face is at (196,220) in
-               these units, so each wedge starts on the glass, not near it. -->
-          <g class="fov-fwd">
-            <path class="fov-fill" d="M305,111 L382,96 A78,78 0 0,1 377,142 Z"/>
-            <line class="fov-edge" x1="305" y1="111" x2="382" y2="96"/>
-            <line class="fov-edge" x1="305" y1="111" x2="377" y2="142"/>
-            <line class="fov-scan" x1="305" y1="111" x2="385" y2="119"/>
-            <circle class="fov-pivot" cx="305" cy="111" r="2"/>
-          </g>
-          <g class="fov-down">
-            <path class="fov-fill" d="M194,211 L216,275 A68,68 0 0,1 172,275 Z"/>
-            <line class="fov-edge" x1="194" y1="211" x2="216" y2="275"/>
-            <line class="fov-edge" x1="194" y1="211" x2="172" y2="275"/>
-            <line class="fov-scan" x1="194" y1="211" x2="194" y2="281"/>
-            <circle class="fov-pivot" cx="194" cy="211" r="2"/>
-          </g>
-        </svg>
-      </div>
-      <figcaption>Each head tilts on its own yoke. The wedges are the pitch
-        range you can set, one thumb screw at a time.</figcaption>
+    <figure class="band rv">
+      <video class="film" width="1920" height="1080" autoplay muted loop playsinline preload="metadata"
+             poster="assets/film/film_spm_closeup_poster.webp"
+             aria-label="Close pass around an SPM-01 unit mounted at crate height, the lit farrowing room soft behind it, AI-generated concept film">
+        <source src="assets/film/film_spm_closeup.mp4" type="video/mp4">
+      </video>
+      <figcaption class="cap"><span class="tag tag--ai">AI concept film</span>On
+        the crate: both heads aimed, the room soft behind the glass.</figcaption>
     </figure>
   </div>
-
-  <figure class="wide-fig rv">
-    <video class="film" autoplay muted loop playsinline preload="metadata"
-           poster="assets/film/film_spm_closeup_poster.webp"
-           aria-label="Close pass around an SPM-01 unit mounted at crate height, the lit farrowing room soft behind it, AI-generated concept film">
-      <source src="assets/film/film_spm_closeup.mp4" type="video/mp4">
-    </video>
-    <figcaption><span class="mono">ON THE CRATE</span> · both heads aimed, the
-      room soft behind the glass · <span class="mono">AI CONCEPT
-      FILM</span></figcaption>
-  </figure>
 </section>
 
-<!-- ===== 4 · Inside ===== -->
-<section class="sec" id="inside">
+<!-- ===== 3 · Inside ===== -->
+<section class="section section--alt" id="inside">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">INSIDE THE SEAL</p>
+    <header class="shead">
+      <p class="eyebrow">Inside the seal</p>
       <h2 class="rv">How it comes apart</h2>
       <p class="lede rv">Every penetration (cable, antenna, screws, vents) gets the
         same treatment: engineered, then sealed. Scroll to take it apart.</p>
@@ -220,7 +186,7 @@
 
   <div class="xstage" id="xstage">
     <div class="xsticky">
-      <img class="xfallback" src="assets/img/exploded.webp"
+      <img class="xfallback" src="assets/img/exploded.webp" width="1600" height="900" loading="lazy"
            alt="SPM-01 exploded view (internal layout is a design proposal)">
       <canvas class="xcanvas" id="xCanvas" role="img"
               aria-label="SPM-01 taking itself apart as you scroll"></canvas>
@@ -228,293 +194,226 @@
     </div>
   </div>
 
-  <ul class="xlist wrap" aria-label="Exploded components">
-    <li><b>01</b>Power + data cable<em>Sealed gland · strain relief</em></li>
-    <li><b>02</b>Captive screws ×6<em>Bonded seal washers</em></li>
-    <li><b>04</b>Sealed antenna<em>Wi-Fi / BT feed-through</em></li>
-    <li><b>07</b>Compute carrier<em>Raspberry Pi CM4 · M.2 storage</em></li>
-    <li><b>08</b>Camera I/O board<em>USB 3 hub · head connectors</em></li>
-    <li><b>09</b>IP69K gasket<em>Compressed perimeter seal</em></li>
-    <li><b>12</b>Quick-mount plate<em>Tool-free bracket interface</em></li>
-    <li><b>14</b>Stereo depth module<em>Sow posture · respiration</em></li>
-    <li><b>16</b>RGB camera + IR<em>Newborn · stillborn imaging</em></li>
-  </ul>
-
-  <p class="fine center rv">Internal layout is a design proposal · IP69K is a design target</p>
+  <div class="wrap">
+    <ul class="xlist" aria-label="Exploded components">
+      <li><b>01</b>Power + data cable<em>Sealed gland · strain relief</em></li>
+      <li><b>02</b>Captive screws ×6<em>Bonded seal washers</em></li>
+      <li><b>04</b>Sealed antenna<em>Wi-Fi / BT feed-through</em></li>
+      <li><b>07</b>Compute carrier<em>Raspberry Pi CM4 · M.2 storage</em></li>
+      <li><b>08</b>Camera I/O board<em>USB 3 hub · head connectors</em></li>
+      <li><b>09</b>IP69K gasket<em>Compressed perimeter seal</em></li>
+      <li><b>12</b>Quick-mount plate<em>Tool-free bracket interface</em></li>
+      <li><b>14</b>Stereo depth module<em>Sow posture · respiration</em></li>
+      <li><b>16</b>RGB camera + IR<em>Newborn · stillborn imaging</em></li>
+    </ul>
+    <p class="note">Internal layout is a design proposal. IP69K is a design target.</p>
+  </div>
 </section>
 
-<!-- ===== 5 · Washdown ===== -->
-<section class="wash" id="washdown">
-  <div class="wash-bg" aria-hidden="true"></div>
-  <div class="wrap wash-inner">
-    <p class="eyebrow">WASHDOWN SURVIVAL: THE #2 CONCERN IN OUR PRODUCER SURVEY (71%)</p>
-    <h2 class="rv">Built for the washdown</h2>
-    <p class="lede rv">Between batches a farrowing room is emptied and hit with a
-      high-pressure, high-temperature wash, the treatment that kills barn
-      electronics. SPM-01 treats it as a design input: a compressed perimeter
-      gasket, six captive screws on bonded seal washers, membrane
-      pressure-equalizing vents, a sealed cable gland behind five stages of strain
-      relief, a rain lip over the optics and a self-draining top slope. Or skip the
-      shower entirely: the quick-mount plate takes the unit off in seconds,
-      sealed while it waits out the wash.</p>
-    <div class="stats stats-3">
-      <div class="stat rv"><strong>IP69K</strong><span>design target: the close-range jet-wash profile of ISO 20653, certification planned on production tooling</span></div>
-      <div class="stat rv"><strong>80–100&thinsp;bar · 80&thinsp;°C</strong><span>14–16 L/min jets from 100–150 mm at 0°, 30°, 60° and 90°; every face is a wash face</span></div>
-      <div class="stat rv"><strong>Tool-free</strong><span>off in seconds on wash day, or stay put and take the jet: it is designed for both</span></div>
+<!-- ===== 4 · Washdown ===== -->
+<section class="section" id="washdown">
+  <div class="wrap">
+    <div class="panel panel--dark wash rv">
+      <div class="wash-bg" aria-hidden="true"></div>
+      <div class="wash-in">
+        <div>
+          <p class="eyebrow">Washdown survival: the #2 concern in our producer survey (71%)</p>
+          <h2>Built for the washdown</h2>
+          <p class="lede">Between batches a farrowing room is emptied and hit
+            with a high-pressure, high-temperature wash, the treatment that
+            kills barn electronics. SPM-01 treats it as a design input: a
+            compressed perimeter gasket, six captive screws on bonded seal
+            washers, membrane pressure-equalizing vents, a sealed cable gland
+            behind five stages of strain relief, a rain lip over the optics and
+            a self-draining top slope. Or skip the shower entirely: the
+            quick-mount plate takes the unit off in seconds, sealed while it
+            waits out the wash.</p>
+        </div>
+        <div class="metrics metrics--3">
+          <div class="metric metric--sm"><strong>IP69K</strong><span>design target: the close-range jet-wash profile of ISO 20653, certification planned on production tooling</span></div>
+          <div class="metric metric--sm"><strong>80–100&thinsp;bar · 80&thinsp;°C</strong><span>14–16 L/min jets from 100–150 mm at 0°, 30°, 60° and 90°; every face is a wash face</span></div>
+          <div class="metric metric--sm"><strong>Tool-free</strong><span>off in seconds on wash day, or stay put and take the jet: it is designed for both</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 6 · Mounting ===== -->
-<section class="sec" id="mounting">
+<!-- ===== 5 · Mounting ===== -->
+<section class="section section--alt" id="mounting">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">INSTALLATION</p>
+    <header class="shead">
+      <p class="eyebrow">Installation</p>
       <h2 class="rv">Mounts to the crate itself</h2>
       <p class="lede rv">Two rubber-lined hooks hang on the crate's own rear rail and
         one cam lever locks the riser: on or off in seconds, no tools. Sensor and
         crate share one rigid body, so nothing drifts out of calibration.</p>
     </header>
-  </div>
-  <figure class="wide-fig rv">
-    <img src="assets/img/install.webp" alt="SPM-01 mounted inside a farrowing crate above the sow, concept industrial design">
-    <figcaption><span class="mono">ONE UNIT</span> per farrowing crate · <span class="mono">TOOL-FREE</span> quick-release hooks + cam lever · <span class="mono">ADJUSTABLE</span> pitch on each head, height on the mount</figcaption>
-  </figure>
-  <div class="wrap">
-    <header class="sec-head">
-      <h3 class="sub-h rv">One plate, four ways up</h3>
+
+    <figure class="rv">
+      <div class="band" style="margin-top:0">
+        <img class="crop-install" src="assets/img/install.webp" width="2000" height="1333" loading="lazy"
+             alt="SPM-01 mounted inside a farrowing crate above the sow, concept industrial design">
+      </div>
+      <figcaption class="cap">One unit per farrowing crate, on tool-free
+        quick-release hooks and a cam lever. Pitch adjusts on each head, height
+        on the mount.</figcaption>
+    </figure>
+
+    <header class="shead shead--sub">
+      <h2 class="rv">Four ways to hang the same unit</h2>
       <p class="lede rv">Every SPM-01 carries the same quick-mount plate: two bosses,
         two thumb knobs, no tools. The plate stays the same while the arm changes,
         so one unit moves between rooms and layouts.</p>
     </header>
-    <div class="mounts">
-      <article class="mcard rv"><img src="assets/img/mount_crate.webp" alt="Crate arm mount"><h4>Crate arm</h4><p>The standard install. J-hooks hang on the crate's rear rail and a cam lever locks the riser.</p></article>
-      <article class="mcard rv"><img src="assets/img/mount_rail.webp" alt="Rail clamp mount"><h4>Rail clamp</h4><p>No arm at all. Two thumb-screw ring clamps grab a crate rail directly.</p></article>
-      <article class="mcard rv"><img src="assets/img/mount_drop.webp" alt="Overhead drop mount"><h4>Overhead drop</h4><p>A ceiling tube with a height collar, for pens without a usable rail.</p></article>
-      <article class="mcard rv"><img src="assets/img/mount_wall.webp" alt="Wall boom mount"><h4>Wall boom</h4><p>A panel plate and boom arm, for solid-wall farrowing rooms.</p></article>
+    <div class="grid g4 mounts">
+      <article class="mcard rv"><img src="assets/img/mount_crate.webp" width="1100" height="1375" loading="lazy" alt="Crate arm mount"><div><h3>Crate arm</h3><p>The standard install. J-hooks hang on the crate's rear rail and a cam lever locks the riser.</p></div></article>
+      <article class="mcard rv"><img src="assets/img/mount_rail.webp" width="1100" height="1375" loading="lazy" alt="Rail clamp mount"><div><h3>Rail clamp</h3><p>No arm at all. Two thumb-screw ring clamps grab a crate rail directly.</p></div></article>
+      <article class="mcard rv"><img src="assets/img/mount_drop.webp" width="1100" height="1375" loading="lazy" alt="Overhead drop mount"><div><h3>Overhead drop</h3><p>A ceiling tube with a height collar, for pens without a usable rail.</p></div></article>
+      <article class="mcard rv"><img src="assets/img/mount_wall.webp" width="1100" height="1375" loading="lazy" alt="Wall boom mount"><div><h3>Wall boom</h3><p>A panel plate and boom arm, for solid-wall farrowing rooms.</p></div></article>
     </div>
-    <p class="lede rv tilt-note"><span class="mono teal">EVERY MOUNT, SAME FREEDOM</span>: each optical
-      head rides its own yoke with a thumb-screw pitch lock. Aim the depth bar along
-      the sow and the RGB head at the landing zone, whatever the room's geometry.
-      The mount sets the height. The heads set the view. No tools on either.</p>
-  </div>
+    <p class="lede rv mt-m">Every mount, same freedom: each optical head rides its
+      own yoke with a thumb-screw pitch lock. Aim the depth bar along the sow and
+      the RGB head at the landing zone, whatever the room's geometry. The mount
+      sets the height. The heads set the view. No tools on either.</p>
 
-  <figure class="wide-fig rv">
-    <video class="film" autoplay muted loop playsinline preload="metadata"
-           poster="assets/film/film_spm_scale_poster.webp"
-           aria-label="A full farrowing room at night, an SPM-01 unit on the overhead-drop mount above every crate, AI-generated concept film">
-      <source src="assets/film/film_spm_scale.mp4" type="video/mp4">
-    </video>
-    <figcaption><span class="mono">ONE ROOM, EVERY CRATE</span> · a farrowing
-      room on the overhead-drop mount, one unit per crate · <span class="mono">AI
-      CONCEPT FILM</span></figcaption>
-  </figure>
+    <figure class="band rv">
+      <video class="film" width="1920" height="1080" autoplay muted loop playsinline preload="metadata"
+             poster="assets/film/film_spm_scale_poster.webp"
+             aria-label="A full farrowing room at night, an SPM-01 unit on the overhead-drop mount above every crate, AI-generated concept film">
+        <source src="assets/film/film_spm_scale.mp4" type="video/mp4">
+      </video>
+      <figcaption class="cap"><span class="tag tag--ai">AI concept film</span>One
+        room, every crate: a farrowing room on the overhead-drop mount, one unit
+        per crate.</figcaption>
+    </figure>
+  </div>
 </section>
 
-<!-- ===== 7 · Connected ===== -->
-<section class="sec sec-deep" id="connected">
-  <div class="wrap split">
-    <figure class="split-img rv">
-      <div class="fig-media">
-        <img src="assets/img/antenna.webp" alt="Sealed through-wall antenna on top of the SPM-01, concept industrial design">
+<!-- ===== 6 · Connected ===== -->
+<section class="section" id="connected">
+  <div class="wrap">
+    <div class="split">
+      <figure class="split-media rv">
         <!-- Both fans spring from the dome's apex at (176,101), measured off
              the render. Wi-Fi pulses outward (the unit reporting to the barn
-             network), Bluetooth inward (a phone reaching the unit crate-side)
-             — one sealed antenna doing both directions. -->
-        <svg class="rf" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
-          <g class="rf-wifi">
-            <path class="rf-arc a1" d="M187.0,77.4 A26,26 0 0,1 201.9,98.7"/>
-            <path class="rf-arc a2" d="M192.9,64.7 A40,40 0 0,1 215.8,97.5"/>
-            <path class="rf-arc a3" d="M198.8,52.1 A54,54 0 0,1 229.8,96.3"/>
-            <text class="rf-tag" x="236" y="60">WI-FI</text>
-          </g>
-          <g class="rf-bt">
-            <path class="rf-arc a1" d="M150.1,98.7 A26,26 0 0,1 165.0,77.4"/>
-            <path class="rf-arc a2" d="M136.2,97.5 A40,40 0 0,1 159.1,64.7"/>
-            <path class="rf-arc a3" d="M122.2,96.3 A54,54 0 0,1 153.2,52.1"/>
-            <text class="rf-tag" x="128" y="58" text-anchor="end">BLUETOOTH</text>
-          </g>
-          <circle class="rf-dot" cx="176" cy="101" r="2.2"/>
-        </svg>
-      </div>
-      <figcaption>One sealed dome, both directions: Wi-Fi carrying alerts out
-        to the barn network, Bluetooth taking setup in at the crate.</figcaption>
-    </figure>
-    <div class="split-txt">
-      <p class="eyebrow">CONNECTIVITY</p>
-      <h2 class="rv">Sealed, but never cut off</h2>
-      <p class="lede rv">A washdown-rated metal shell is also a Faraday cage. So every
-        signal path got the same treatment as every water path: engineered, then
-        sealed.</p>
-      <div class="axis rv">
-        <p class="axis-tag teal">THROUGH THE WALL</p>
-        <h3>Sealed Wi-Fi + Bluetooth antenna</h3>
-        <p>The radio's antenna lives outside the shell: steel base, compression
-          O-ring, TPE dome, sealed like every other penetration.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag coral">ALERTS THAT TRAVEL</p>
-        <h3>The barn calls you</h3>
-        <p>Crushing-risk postures and stalled farrowings are inferred on the unit in
-          ~0.2&nbsp;s per frame and relayed through the farm network to the herd
-          team's phones, wherever the team happens to be.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag">LOCAL-FIRST</p>
-        <h3>On-board M.2 storage</h3>
-        <p>Every recording lands on the M.2 drive first. A network outage costs
-          nothing, and footage stays on the farm until you decide otherwise.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 8 · App ===== -->
-<section class="sec" id="app">
-  <div class="wrap split">
-    <div class="split-txt">
-      <p class="eyebrow">THE APP</p>
-      <h2 class="rv">Your barn, in your pocket</h2>
-      <p class="lede rv">Every SPM-01 streams into the Smart Swine app: our own,
-        built for the farrowing room.</p>
-      <div class="axis rv">
-        <p class="axis-tag teal">LIVE VIEW</p>
-        <h3>Watch any crate in real time</h3>
-        <p>Open the app and the sensor's video is live on your phone: from the
-          office, the house or the road. An alert takes you straight to the crate
-          that raised it.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag coral">AI SUMMARY</p>
-        <h3>The whole night in three lines</h3>
-        <p>The app pools video from every sensor and the AI writes the morning
-          brief: births overnight, interventions that mattered, crates to check
-          first. Read it with your first coffee instead of scrubbing footage.</p>
-      </div>
-      <div class="axis rv">
-        <p class="axis-tag">ANALYTICS</p>
-        <h3>Numbers you can act on</h3>
-        <p>Births, birth intervals, posture patterns and alert history roll up into
-          per-sow and per-room dashboards. Trends surface before they turn into
-          losses, and everything exports.</p>
-      </div>
-    </div>
-
-    <div class="phone-col">
-      <div class="phone rv" id="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-status mono"><span>9:41</span><span>▮▮▮ ᯤ ▐▓</span></div>
-        <div class="phone-head">
-          <img src="assets/img/logo_badge.png" alt="">
-          <span class="mono">SMART SWINE</span>
-          <span class="live mono">LIVE</span>
+             network), Bluetooth inward (a phone reaching the unit crate-side):
+             one sealed antenna doing both directions. -->
+        <div class="fig-media">
+          <img src="assets/img/antenna.webp" width="1600" height="1200" loading="lazy"
+               alt="Sealed through-wall antenna on top of the SPM-01, concept industrial design">
+          <svg class="rf" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+            <g class="rf-wifi">
+              <path class="rf-arc a1" d="M187.0,77.4 A26,26 0 0,1 201.9,98.7"/>
+              <path class="rf-arc a2" d="M192.9,64.7 A40,40 0 0,1 215.8,97.5"/>
+              <path class="rf-arc a3" d="M198.8,52.1 A54,54 0 0,1 229.8,96.3"/>
+              <text class="rf-tag" x="236" y="60">WI-FI</text>
+            </g>
+            <g class="rf-bt">
+              <path class="rf-arc a1" d="M150.1,98.7 A26,26 0 0,1 165.0,77.4"/>
+              <path class="rf-arc a2" d="M136.2,97.5 A40,40 0 0,1 159.1,64.7"/>
+              <path class="rf-arc a3" d="M122.2,96.3 A54,54 0 0,1 153.2,52.1"/>
+              <text class="rf-tag" x="128" y="58" text-anchor="end">BLUETOOTH</text>
+            </g>
+            <circle class="rf-dot" cx="176" cy="101" r="2.2"/>
+          </svg>
         </div>
-        <div class="phone-feed">
-          <img src="assets/img/app_feed.webp" alt="Live crate view with AI detections">
-          <span class="dbox teal-b" style="left:52%;top:6%;width:40%;height:52%"><i>SOW · STANDING</i></span>
-          <span class="dbox teal-b" style="left:18%;top:66%;width:13%;height:20%"><i>NEWBORN</i></span>
-          <span class="dbox teal-b" style="left:37%;top:74%;width:12%;height:18%"><i>NEWBORN</i></span>
-          <span class="dbox coral-b" style="left:71%;top:70%;width:15%;height:20%"><i>STILLBORN</i></span>
-          <span class="feed-tag mono">CRATE 07 · LIVE · 04:32</span>
-        </div>
-        <div class="phone-stats">
-          <div><strong>14</strong><span>born tonight</span></div>
-          <div><strong>2</strong><span>alerts raised</span></div>
-          <div><strong>24</strong><span>sows watched</span></div>
-        </div>
-        <div class="phone-chart">
-          <p class="mono">BIRTHS PER NIGHT</p>
-          <div class="bars">
-            <i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:34%"></i>
-            <i style="--h:66%"></i><i style="--h:52%"></i><i class="hot" style="--h:92%"></i>
-            <i style="--h:70%"></i>
+        <figcaption class="plain">One sealed dome, both directions: Wi-Fi carrying
+          alerts out to the barn network, Bluetooth taking setup in at the
+          crate.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Connectivity</p>
+        <h2 class="rv">Sealed, but never cut off</h2>
+        <p class="lede rv" style="margin-top:18px">A washdown-rated metal shell is also
+          a Faraday cage. So every signal path got the same treatment as every
+          water path: engineered, then sealed.</p>
+        <div class="flist">
+          <div class="fitem rv">
+            <p class="ftag">Through the wall</p>
+            <h3>Sealed Wi-Fi + Bluetooth antenna</h3>
+            <p>The radio's antenna lives outside the shell: steel base,
+              compression O-ring, TPE dome, sealed like every other
+              penetration.</p>
+          </div>
+          <div class="fitem rv">
+            <p class="ftag">Alerts that travel</p>
+            <h3>The barn calls you</h3>
+            <p>Crushing-risk postures and stalled farrowings are inferred on the
+              unit in ~0.2&nbsp;s per frame and relayed through the farm network
+              to the herd team's phones, wherever the team happens to be.</p>
+          </div>
+          <div class="fitem rv">
+            <p class="ftag">Local-first</p>
+            <h3>On-board M.2 storage</h3>
+            <p>Every recording lands on the M.2 drive first. A network outage
+              costs nothing, and footage stays on the farm until you decide
+              otherwise.</p>
           </div>
         </div>
-        <div class="phone-brief">
-          <p class="mono">AI NIGHT SUMMARY</p>
-          <p><strong>14 piglets born across 3 sows.</strong> One stillborn in crate 07
-            at 04:32. Barn team alerted. Crate 12 showed repeated lateral-roll
-            warnings. Check the sow before morning feed.</p>
-        </div>
-        <div class="phone-alert">
-          <span class="dot"></span>Stillborn flagged · Crate 07<em class="mono">04:32</em>
-        </div>
-        <div class="phone-tabs mono"><span class="on">Live</span><span>Alerts</span><span>Trends</span><span>Rooms</span><span>Settings</span></div>
       </div>
     </div>
   </div>
-
-  <figure class="wide-fig rv">
-    <video class="film" autoplay muted loop playsinline preload="metadata"
-           poster="assets/film/film_app_tablet_poster.webp"
-           aria-label="Hands holding a barn tablet showing the crate as a live 3D model, the sow's posture label switching from standing to lateral lying, AI-generated concept film">
-      <source src="assets/film/film_app_tablet.mp4" type="video/mp4">
-    </video>
-    <figcaption><span class="mono">POSTURE, LIVE</span> · the crate as the
-      pipeline reads it, standing to lateral lying on the barn tablet ·
-      <span class="mono">AI CONCEPT FILM</span></figcaption>
-  </figure>
-
-  <p class="fine center rv">App interface is a design preview</p>
 </section>
 
-<!-- ===== 9 · Validation ===== -->
-<section class="sec sec-deep" id="validation">
+<!-- ===== 7 · Validation ===== -->
+<section class="section section--alt" id="validation">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">EVIDENCE</p>
-      <h2 class="rv">Where the numbers come from</h2>
-    </header>
-    <div class="stats stats-5">
-      <div class="stat rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>sow-posture classification (unseen sow)</span></div>
-      <div class="stat rv"><strong data-count="98.4" data-dec="1" data-suffix="%">98.4%</strong><span>breathing-signal classification (validation)</span></div>
-      <div class="stat rv"><strong data-count="96" data-suffix="%">96%</strong><span>stillborn precision</span></div>
-      <div class="stat rv"><strong data-count="86" data-suffix="%">86%</strong><span>newborn precision</span></div>
-      <div class="stat rv"><strong data-count="0.2" data-prefix="~" data-dec="1" data-suffix="&thinsp;s">~0.2&thinsp;s</strong><span>edge inference per frame</span></div>
-    </div>
-    <div class="duo">
-      <div class="axis rv">
-        <p class="axis-tag teal">VALIDATION</p>
-        <p>Vision models trained on 500+ hours of on-farm depth and RGB farrowing
-          video. Hardware validated in a 10-sow on-farm trial under IACUC
-          oversight.</p>
+    <div class="split split--top">
+      <div>
+        <p class="eyebrow">Evidence</p>
+        <h2 class="rv">Where the numbers come from</h2>
+        <p class="lede rv" style="margin-top:18px">Vision models trained on 500+ hours
+          of on-farm depth and RGB farrowing video. Hardware validated in a
+          10-sow on-farm trial under IACUC oversight.</p>
+        <p class="rv" style="margin-top:14px">Every number here came out of that
+          trial, and the footage the models produced is unedited in the
+          <a href="barn.html">case study</a>.</p>
+        <p class="rv" style="margin-top:14px">Approximately $1M in non-dilutive NSF
+          and USDA-NIFA support (2026–2029), with the university and industry
+          partners listed <a href="index.html#partners">on the home page</a>.
+          Finalist, 2026 AI Venture Velocity Challenge: 531 teams across 160
+          universities, 27 semifinalists, 12 finalists.</p>
+        <div class="cta-row rv">
+          <a class="btn btn--primary" href="barn.html">See the trial footage<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
       </div>
-      <div class="axis rv">
-        <p class="axis-tag">SUPPORT</p>
-        <p>Approximately $1M in non-dilutive NSF and USDA-NIFA support (2026–2029),
-          with the university and industry partners below. Finalist, 2026 AI
-          Venture Velocity Challenge: 531 teams across 160 universities, 27
-          semifinalists, 12 finalists.</p>
+      <div class="tbl-wrap rv">
+        <table class="tbl">
+          <thead>
+            <tr><th scope="col">Capability</th><th scope="col">Result</th><th scope="col">Scope of the claim</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Sow posture</th><td class="num">99.15%</td><td>Classification, tested on an unseen sow</td></tr>
+            <tr><th scope="row">Breathing signal</th><td class="num">98.4%</td><td>Classification, on validation data</td></tr>
+            <tr><th scope="row">Stillborn detection</th><td class="num">96%</td><td>Precision</td></tr>
+            <tr><th scope="row">Newborn detection</th><td class="num">86%</td><td>Precision</td></tr>
+            <tr><th scope="row">Inference</th><td class="num">~0.2&thinsp;s</td><td>Per frame, on the unit</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="cta-row rv">
-      <a class="btn btn-coral" href="barn.html">See the trial footage</a>
-    </div>
-    <p class="lede rv center">Every number above came out of that trial, and the
-      footage the models produced is unedited in
-      the <a href="barn.html">case study</a>. The partners behind the work are
-      listed <a href="index.html#partners">on the About page</a>.</p>
   </div>
 </section>
 
-<!-- ===== 10 · Survey ===== -->
-<section class="sec" id="voices">
+<!-- ===== 8 · Survey ===== -->
+<section class="section" id="voices">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">CUSTOMER DISCOVERY · JUNE 2026</p>
+    <header class="shead">
+      <p class="eyebrow">Customer discovery · June 2026</p>
       <h2 class="rv">What producers told us</h2>
       <p class="lede rv">Concept test run online through U.S. pork-industry
         associations plus in-person field surveys. n&nbsp;≈&nbsp;16–19 responses per
         question.</p>
     </header>
-    <div class="stats stats-4">
-      <div class="stat rv"><strong data-count="89" data-suffix="%">89%</strong><span>call preweaning mortality a moderate-to-major problem</span></div>
-      <div class="stat rv"><strong data-count="58" data-suffix="%">58%</strong><span>run 8–15% preweaning mortality today</span></div>
-      <div class="stat rv"><strong data-count="69" data-suffix="%">69%</strong><span>open to a 2026 paid pilot</span></div>
-      <div class="stat rv"><strong data-count="9">9</strong><span>operations asked for direct follow-up; 8 shared contact details</span></div>
+    <div class="metrics">
+      <div class="metric rv"><strong data-count="89" data-suffix="%">89%</strong><span>call preweaning mortality a moderate-to-major problem</span></div>
+      <div class="metric rv"><strong data-count="58" data-suffix="%">58%</strong><span>run 8–15% preweaning mortality today</span></div>
+      <div class="metric rv"><strong data-count="69" data-suffix="%">69%</strong><span>open to a 2026 paid pilot</span></div>
+      <div class="metric rv"><strong data-count="9">9</strong><span>operations asked for direct follow-up; 8 shared contact details</span></div>
     </div>
-    <div class="duo">
-      <article class="card edge-coral rv">
+    <div class="grid g2 mt-l">
+      <article class="card rv">
         <h3>The washdown mandate</h3>
         <p>Asked what worries them most about crate electronics, producers ranked
           unclear cost and payback first (76%), washdown survival second (71%) and
@@ -522,7 +421,7 @@
           about the AI (29%). The sealing, the quick-release wash cycle and the
           mounting options above are the direct answers.</p>
       </article>
-      <article class="card edge-teal rv">
+      <article class="card rv">
         <h3>A workable price window</h3>
         <p>Every respondent who named a price called $1,499 or less a clear bargain.
           Resistance climbs past about $2,000. 39% rated the system high value on
@@ -530,39 +429,41 @@
           concept to explain.</p>
       </article>
     </div>
-    <p class="fine rv">Small mixed sample: a concept test, not purchases. Warm-lead contact details are held confidentially.</p>
+    <p class="note rv">Small mixed sample: a concept test, not purchases. Warm-lead contact details are held confidentially.</p>
   </div>
 </section>
 
-<!-- ===== 11 · Pricing ===== -->
-<section class="sec sec-deep" id="pricing">
+<!-- ===== 9 · Pricing ===== -->
+<section class="section section--alt" id="pricing">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">BUSINESS MODEL</p>
+    <header class="shead">
+      <p class="eyebrow">Business model</p>
       <h2 class="rv">Buy it or rent it</h2>
       <p class="lede rv">Try one free this season first. After that farms budget
         differently, so SPM-01 sells both ways. Either way the hardware is the same
         sealed unit, and either way it carries a lifetime warranty.</p>
     </header>
-    <div class="duo">
-      <article class="card price-card edge-teal rv">
-        <p class="axis-tag teal">BUY THE UNITS</p>
+    <div class="grid g2">
+      <article class="card rv">
+        <p class="eyebrow">Buy the units</p>
         <p>One unit per farrowing crate, yours outright. A unit is not tied to one
           crate: demount it at weaning, wash the room, hang it on the next batch.
           The quick-mount plate moves it between rooms and layouts as your barn
           changes.</p>
       </article>
-      <article class="card price-card edge-coral rv">
-        <p class="axis-tag coral">RENT BY THE BATCH</p>
+      <article class="card rv">
+        <p class="eyebrow">Rent by the batch</p>
         <p>The monitor earns its keep in a 10-day window around each farrowing:
           mount before the due date, demount at weaning. Rent units for the cycles
           you actually run and skip the capital line entirely. Try it on one room
           before you commit to the whole barn.</p>
       </article>
     </div>
-    <div class="warranty rv">
-      <p class="axis-tag coral">LIFETIME WARRANTY</p>
-      <h3>Covered for life, bought or rented.</h3>
+    <div class="card card--tile warranty mt-s rv">
+      <div>
+        <p class="eyebrow">Lifetime warranty</p>
+        <h3>Covered for life, bought or rented.</h3>
+      </div>
       <p>We designed this unit to take a pressure washer to the face, batch after
         batch, and we stand behind that. If an SPM-01 fails in normal farm service,
         we repair or replace it. That is what confidence in our own engineering
@@ -571,67 +472,127 @@
   </div>
 </section>
 
-<!-- ===== 11.5 · The other half ===== -->
-<section class="sec" id="spcteaser">
-  <div class="wrap split">
-    <div class="split-txt">
-      <p class="eyebrow">NEW · THE OTHER HALF</p>
-      <h2 class="rv">SPM-01 watches.<br>SPC-01 acts.</h2>
+<!-- ===== 10 · The rest of the system ===== -->
+<section class="section" id="system">
+  <div class="wrap">
+    <header class="shead">
+      <p class="eyebrow">The rest of the system</p>
+      <h2 class="rv">SPM-01 watches. <span class="soft">SPC-01 acts.</span></h2>
       <p class="lede rv">Detection without an actuator leaves the last meter of
         the crushing problem unsolved. SPC-01 closes it: a motorized curtain on
         the crate that shuts the danger zone SPM-01 has named, seconds before
         the sow rolls, and lifts the moment she is safe.</p>
-      <div class="cta-row rv">
-        <a class="btn btn-coral" href="spc01.html">Meet SPC-01</a>
-        <a class="btn btn-ghost" href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
+    </header>
+    <div class="grid g2">
+      <article class="pcard rv">
+        <div class="pcard-stage stage" style="aspect-ratio:16/9">
+          <img src="assets/travel/trav_047.webp" width="1440" height="1440" loading="lazy" alt="SPC-01 Smart Piglet Curtain, concept industrial design render">
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-role">Act</p>
+          <h3><a href="spc01.html">SPC-01 Smart Piglet Curtain</a></h3>
+          <p>Two independent curtain units per crate, commanded by SPM-01 over a
+            sealed wireless link.</p>
+          <div class="pcard-foot">
+            <span class="status">Concept in development</span>
+            <a href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
+          </div>
+        </div>
+      </article>
+      <article class="pcard rv">
+        <div class="pcard-stage stage" style="aspect-ratio:16/9" aria-hidden="true">
+          <div class="phone phone-peek">
+            <div class="phone-notch"></div>
+            <div class="phone-status"><span>9:41</span><i></i></div>
+            <div class="phone-head"><img src="assets/img/logo_badge.png" alt=""><span>SMART SWINE</span><span class="live">LIVE</span></div>
+            <div class="phone-feed">
+              <img src="assets/img/app_feed.webp" alt="" loading="lazy">
+              <span class="dbox" style="left:52%;top:6%;width:40%;height:52%"><i>SOW · STANDING</i></span>
+              <span class="dbox" style="left:18%;top:66%;width:13%;height:20%"><i>NEWBORN</i></span>
+              <span class="dbox" style="left:37%;top:74%;width:12%;height:18%"><i>NEWBORN</i></span>
+              <span class="dbox hot" style="left:71%;top:70%;width:15%;height:20%"><i>STILLBORN</i></span>
+              <span class="feed-tag">CRATE 07 · LIVE · 04:32</span>
+            </div>
+            <div class="phone-stats">
+              <div><strong>14</strong><span>born tonight</span></div>
+              <div><strong>2</strong><span>alerts raised</span></div>
+              <div><strong>24</strong><span>sows watched</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-role">Decide and manage</p>
+          <h3><a href="software.html">Smart Swine software</a></h3>
+          <p>Every SPM-01 streams into the Smart Swine app: alerts, live view and
+            the morning brief, on the herd team's phones.</p>
+          <div class="pcard-foot">
+            <span class="status">In design</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 · CTA ===== -->
+<section class="section section--flush">
+  <div class="wrap">
+    <div class="panel panel--dark panel--center rv">
+      <h2>Put an SPM&#8209;01 on one crate.</h2>
+      <p class="lede">The trial is free for the 2026 farrowing season. One room,
+        one batch: see the morning brief for yourself, then hand the prototype
+        back. We build the units by hand, so slots are limited and go first
+        come.</p>
+      <div class="cta-row">
+        <a class="btn btn--pink" href="contact.html#pilot">Request a trial</a>
+        <a class="btn btn--ghost" href="SPM-01_Product_Brochure.pdf" download>Download the brochure<svg class="dl" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v7M5 7.5l3 3 3-3M3.5 13h9"/></svg></a>
       </div>
     </div>
-    <figure class="split-img rv">
-      <img src="assets/img/spc_hero.webp" alt="SPC-01 Smart Piglet Curtain, concept industrial design render" loading="lazy">
-      <figcaption>SPC-01 Smart Piglet Curtain: two independent curtain units per
-        crate, commanded by SPM-01 over a sealed wireless link.</figcaption>
-    </figure>
   </div>
 </section>
-
-<!-- ===== 12 · CTA + Footer ===== -->
-<section class="cta" id="contact">
-  <div class="wrap">
-    <h2 class="rv">Put an SPM&#8209;01 on one crate.</h2>
-    <p class="lede rv">The trial is free for the 2026 farrowing season. One room,
-      one batch: see the morning brief for yourself, then hand the prototype back.
-      We build the units by hand, so slots are limited and go first come.</p>
-    <div class="cta-row rv">
-      <a class="btn btn-coral" href="contact.html#pilot">Request a trial</a>
-      <a class="btn btn-ghost" href="SPM-01_Product_Brochure.pdf" download>Download the brochure</a>
-    </div>
-  </div>
-</section>
-
-<footer class="foot">
-  <div class="wrap foot-grid">
-    <div>
-      <p class="foot-brand"><img src="assets/img/logo_badge.png" alt="" width="26" height="26"> SMART&nbsp;SWINE</p>
-      <p class="mut">SMART SWINE, LLC · College Station, TX</p>
-      <p class="mut"><a href="mailto:Ziyuanzhao@tamu.edu">Ziyuanzhao@tamu.edu</a> ·
-         <a href="https://www.linkedin.com/company/133423991/" rel="noopener" target="_blank">LinkedIn</a></p>
-    </div>
-    <p class="fine">All product imagery on this page is concept industrial design,
-      and film clips are AI-generated concept footage.
-      The sensing hardware reflects a prototype validated in a 10-sow on-farm trial
-      under IACUC oversight (Apr–May 2026); the articulating mount, the dual-axis
-      arrangement, the mounting variants and the internal component layout are
-      design proposals, not a production bill of materials. IP69K is a design
-      target; certification planned on production tooling. Sow and piglet
-      geometry: “Some Pig” by Austin Beaulier, licensed CC&nbsp;BY&nbsp;4.0.<br>
-      © 2026 SMART SWINE, LLC.</p>
-  </div>
-</footer>
 
 </main>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Smart Swine home"><img src="assets/img/logo_badge.png" alt="" width="230" height="170"><span>Smart <em>Swine</em></span></a>
+        <p>Camera intelligence for the farrowing room.</p>
+        <p class="foot-meta">SMART SWINE, LLC · College Station, TX</p>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <div class="foot-links">
+          <a href="product.html">SPM-01 Monitor</a>
+          <a href="spc01.html">SPC-01 Curtain</a>
+          <a href="software.html">Software</a>
+          <a href="barn.html">Case study</a>
+        </div>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="careers.html">Careers</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Get in touch</h5>
+        <div class="foot-links">
+          <a href="mailto:Ziyuanzhao@tamu.edu">Ziyuanzhao@tamu.edu</a>
+          <a href="https://www.linkedin.com/company/133423991/" rel="noopener" target="_blank">LinkedIn</a>
+          <a href="contact.html#pilot">Request a free trial</a>
+        </div>
+      </div>
+    </div>
+    <p class="foot-fine">All product imagery on this page is concept industrial design, and film clips are AI-generated concept footage. The sensing hardware reflects a prototype validated in a 10-sow on-farm trial under IACUC oversight (Apr–May 2026); the articulating mount, the dual-axis arrangement, the mounting variants and the internal component layout are design proposals, not a production bill of materials. IP69K is a design target; certification planned on production tooling. Sow and piglet geometry: “Some Pig” by Austin Beaulier, licensed CC&nbsp;BY&nbsp;4.0.</p>
+    <p class="foot-copy">© 2026 SMART SWINE, LLC.</p>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
 </body>
 </html>

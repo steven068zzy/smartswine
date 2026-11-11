@@ -2,380 +2,366 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMART SWINE · Camera intelligence for the farrowing room</title>
-<meta name="description" content="SMART SWINE, LLC builds camera intelligence for the farrowing room. Finalist in the 2026 AI Venture Velocity Challenge. Vision, mission, team and partners.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Swine · Camera intelligence for the farrowing room</title>
+<meta name="description" content="Camera intelligence for the farrowing room: a sealed monitor that watches the sow and her litter, a curtain that acts on what it sees, and software for every crate.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Swine">
+<meta property="og:title" content="Smart Swine · Camera intelligence for the farrowing room">
+<meta property="og:description" content="Camera intelligence for the farrowing room: a sealed monitor that watches the sow and her litter, a curtain that acts on what it sees, and software for every crate.">
+<meta property="og:image" content="https://steven068zzy.github.io/smartswine/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/img/logo_badge.png">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>(function(c){c.add("js");try{if(sessionStorage.getItem("ss-topbar-dismissed")==="1")c.add("no-topbar")}catch(e){}setTimeout(function(){if(!window.__ssReady)c.add("rv-all")},3000)})(document.documentElement.classList)</script>
 </head>
 <body>
 
+<div class="topbar" id="topbar" role="region" aria-label="Current offers">
+  <div class="topbar-in">
+    <a href="contact.html#pilot"><span><b>Free prototype trial</b> on your crates this season</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <span class="topbar-sep" aria-hidden="true"></span>
+    <a href="contact.html#refer"><span><b>Refer a producer</b>, get 3 months free</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <button class="topbar-x" type="button" aria-label="Dismiss offers"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>
+  </div>
+</div>
+
 <header class="nav" id="nav">
-  <a class="nav-brand" href="index.html" aria-label="Smart Swine home">
-    <img src="assets/img/logo_badge.png" alt="" width="38" height="38">
-    <span>SMART&nbsp;SWINE</span>
-  </a>
-  <nav class="nav-links" aria-label="Pages">
-    <div class="nav-drop">
-      <a href="product.html" class="nav-drop-top" aria-haspopup="true">Products<span class="caret" aria-hidden="true">&#9662;</span></a>
-      <div class="nav-sub">
-        <div class="nav-sub-panel">
-          <a href="product.html"><b>SPM-01</b><span>Smart Piglet Monitor</span></a>
-          <a href="spc01.html"><b>SPC-01</b><span>Smart Piglet Curtain</span></a>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="Smart Swine home"><img src="assets/img/logo_badge.png" alt="" width="230" height="170"><span>Smart <em>Swine</em></span></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-drop">
+        <button class="nav-drop-btn" type="button" aria-expanded="false" aria-haspopup="true">Products<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-menu">
+          <div class="nav-menu-in">
+            <a href="product.html"><b>SPM-01 Monitor</b><span>Sees the sow and her litter</span></a>
+            <a href="spc01.html"><b>SPC-01 Curtain</b><span>Acts on what the monitor sees</span></a>
+            <a href="software.html"><b>Software</b><span>Manages every crate and site</span></a>
+          </div>
         </div>
       </div>
+      <a href="barn.html">Case study</a>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="careers.html">Careers</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-contact" href="contact.html">Contact</a>
+      <a class="btn btn--primary btn--sm" href="contact.html#pilot">Free trial</a>
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
-    <a href="barn.html">Case study</a>
-    <a href="index.html" class="on" aria-current="page">About</a>
-    <a href="resources.html">Resources</a>
-    <a href="careers.html">Careers</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <a class="btn btn-coral nav-cta" href="contact.html#pilot">Free trial</a>
-  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
-  <a href="product.html">SPM-01<span>Smart Piglet Monitor</span></a>
-  <a href="spc01.html">SPC-01<span>Smart Piglet Curtain</span></a>
+  <a href="product.html">SPM-01 Monitor<span>Sees the sow and her litter</span></a>
+  <a href="spc01.html">SPC-01 Curtain<span>Acts on what the monitor sees</span></a>
+  <a href="software.html">Software<span>Manages every crate and site</span></a>
   <a href="barn.html">Case study</a>
-  <a href="index.html" class="on" aria-current="page">About</a>
+  <a href="about.html">About</a>
   <a href="resources.html">Resources</a>
   <a href="careers.html">Careers</a>
   <a href="contact.html">Contact</a>
-  <a class="btn btn-coral" href="contact.html#pilot">Free trial</a>
+  <a class="btn btn--primary" href="contact.html#pilot">Request a free trial</a>
 </nav>
 
-<div class="promo" id="promo" role="region" aria-label="Current offers">
-  <div class="promo-rail">
-    <div class="promo-offer">
-      <span class="promo-mark" aria-hidden="true"><span class="promo-dot"></span></span>
-      <span class="promo-txt"><b>Free prototype trial</b> on your crates this season.</span>
-      <a class="promo-cta" href="contact.html#pilot">Request a trial</a>
-    </div>
-    <span class="promo-rule" aria-hidden="true"></span>
-    <div class="promo-offer">
-      <span class="promo-mark promo-badge" aria-hidden="true">+3 MO</span>
-      <span class="promo-txt"><b>Refer a producer, get 3 months free.</b></span>
-      <a class="promo-cta" href="contact.html#refer">Refer a farm</a>
-    </div>
-  </div>
-  <button class="promo-x" type="button" aria-label="Dismiss offers">&times;</button>
-</div>
-
-
 <main id="top">
-
 <!-- ===== Hero ===== -->
-<section class="page-hero">
+<section class="hero">
   <div class="wrap">
-    <a class="hero-news rv" href="https://mays.tamu.edu/news/2026/09/03/ai-venture-velocity-challenge-2026-finalists/" target="_blank" rel="noopener">
-      <span class="hn-dot" aria-hidden="true"></span>
-      <span class="hn-txt">Finalist, 2026 AI Venture Velocity Challenge: one of 12 teams left from 531</span>
-      <span class="hn-more">Read the announcement</span>
+    <a class="pill" href="https://mays.tamu.edu/news/2026/09/03/ai-venture-velocity-challenge-2026-finalists/" target="_blank" rel="noopener">
+      <b>Finalist</b>
+      <span>2026 AI Venture Velocity Challenge<span class="pill-more"> · 12 of 531 teams</span></span>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"/></svg><span class="vh"> (opens in a new tab)</span>
     </a>
-    <p class="eyebrow">SMART SWINE, LLC · COLLEGE STATION, TX</p>
-    <h1 class="rv">Every piglet deserves<br>to be <em>seen</em>.</h1>
-    <p class="lede rv">Smart Swine builds camera intelligence for the farrowing
-      room: SPM-01, a sealed dual-axis monitor that watches the sow and her
-      litter through the most dangerous week of a pig's life, and SPC-01, a
-      motorized curtain that acts on what the monitor sees.</p>
-    <div class="cta-row rv">
-      <a class="btn btn-coral" href="product.html">Meet SPM-01</a>
-      <a class="btn btn-ghost" href="spc01.html">Meet SPC-01</a>
+    <h1>Every piglet deserves<br>to be <em>seen</em>.</h1>
+    <p class="hero-sub">Camera intelligence for the farrowing room. A sealed
+      monitor that watches the sow and her litter, a curtain that acts on what
+      it sees, and software that manages every crate.</p>
+    <div class="cta-row cta-row--center">
+      <a class="btn btn--primary" href="contact.html#pilot">Request a free trial</a>
+      <a class="btn btn--secondary" href="barn.html">See the trial footage<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
-  </div>
-</section>
 
-<!-- ===== Vision & Mission ===== -->
-<section class="sec" id="vision">
-  <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">WHY WE EXIST</p>
-      <h2 class="rv">Piglets do not die in secret.<br>Nobody is watching.</h2>
-      <p class="lede rv">The deaths that empty a farrowing room are visible events
-        with short windows, and no stockperson can stand at the right crate at the
-        right moment, every time, all night. That is a supervision gap, not a
-        biology problem, and supervision is exactly what a camera is for. We build
-        the camera.</p>
-    </header>
-    <div class="vm">
-      <article class="rv">
-        <p class="axis-tag coral">VISION</p>
-        <h3>A farrowing room where nothing dies unseen</h3>
-        <p>Every crate watched through every farrowing, every roll of the sow and
-          every stalled birth caught while it can still be undone, on any farm,
-          not just the ones that can afford a night crew.</p>
-      </article>
-      <article class="rv">
-        <p class="axis-tag teal">MISSION</p>
-        <h3>Give every crate a set of eyes that pays for itself</h3>
-        <p>Build affordable, washdown-proof perception for the farrowing crate,
-          turn what it sees into alerts a herd team can act on, and price it
-          inside the value of the piglets it saves.</p>
-      </article>
-    </div>
-  </div>
-
-  <figure class="wide-fig rv">
-    <video class="film" autoplay muted loop playsinline preload="metadata"
-           poster="assets/film/film_aisle_poster.webp"
-           aria-label="Slow push down the center aisle of a farrowing room at night, a green status light glowing on every crate, AI-generated concept film">
-      <source src="assets/film/film_aisle.mp4" type="video/mp4">
-    </video>
-    <figcaption><span class="mono">THE ROOM WE ARE BUILDING TOWARD</span> · every
-      crate watched, every status light green · <span class="mono">AI CONCEPT
-      FILM</span></figcaption>
-  </figure>
-</section>
-
-<!-- ===== Product teasers ===== -->
-<section class="sec sec-deep" id="productteaser">
-  <div class="wrap split">
-    <div class="split-txt">
-      <p class="eyebrow">THE PRODUCTS</p>
-      <h2 class="rv">SPM-01 Smart Piglet Monitor</h2>
-      <p class="lede rv">Two optical axes in one sealed enclosure: a stereo depth
-        module reads the sow, an RGB + IR head reads the piglets beneath her.
-        Built for the pressure washer, mounted on the crate itself, streamed to
-        the barn team's phones.</p>
-      <div class="cta-row rv">
-        <a class="btn btn-coral" href="product.html">Explore the product</a>
-        <a class="btn btn-ghost" href="SPM-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
-      </div>
-    </div>
-    <figure class="split-img rv">
-      <img src="assets/img/hero_static.webp" alt="SPM-01 Smart Piglet Monitor, concept industrial design render">
+    <figure class="hero-media">
+      <video class="film" width="1920" height="1080" autoplay muted loop playsinline preload="metadata"
+             poster="assets/film/film_aisle_poster.webp"
+             aria-label="Slow push down the center aisle of a farrowing room at night, a green status light glowing on every crate, AI-generated concept film">
+        <source src="assets/film/film_aisle.mp4" type="video/mp4">
+      </video>
+      <figcaption class="cap cap--center"><span class="tag tag--ai">AI concept film</span>The
+        room we are building toward: every crate watched, every status light green.</figcaption>
     </figure>
-  </div>
-
-  <div class="wrap split split-stack">
-    <figure class="split-img rv">
-      <img src="assets/img/spc_hero.webp" alt="SPC-01 Smart Piglet Curtain, concept industrial design render" loading="lazy">
-    </figure>
-    <div class="split-txt">
-      <h2 class="rv">SPC-01 Smart Piglet Curtain</h2>
-      <p class="lede rv">The actuator half of the system: a farrowing-crate
-        device that acts on a crushing risk instead of just
-        reporting it. A motorized fabric curtain closes the danger zone seconds
-        before the sow rolls, and lifts the moment she is safe. SPM-01 watches.
-        SPC-01 acts.</p>
-      <div class="cta-row rv">
-        <a class="btn btn-coral" href="spc01.html">Explore SPC-01</a>
-        <a class="btn btn-ghost" href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Where we are ===== -->
-<section class="sec" id="status">
-  <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">WHERE WE ARE</p>
-      <h2 class="rv">Prototype validated. Producers waiting.</h2>
-      <p class="lede rv">Smart Swine grew out of Texas A&amp;M: sensing research,
-        an on-farm trial and a venture program, in that order. That program has
-        now named us one of twelve finalists in the 2026 AI Venture Velocity
-        Challenge, out of 531 teams. The hardware is a farm-validated prototype
-        moving toward production design, and the next milestone is getting units
-        onto barns that are not ours.</p>
-    </header>
-
-    <div class="stats statusband">
-      <div class="stat rv"><strong>~$1M</strong><span>non-dilutive NSF &amp; USDA-NIFA support, 2026–2029</span></div>
-      <div class="stat rv"><strong>12 / 531</strong><span>finalist, 2026 AI Venture Velocity Challenge, 531 teams across 160 universities</span></div>
-      <div class="stat rv"><strong>3 + 4</strong><span>a three-discipline team with four academic and business advisors</span></div>
-      <div class="stat rv"><strong>Free</strong><span>trials on offer for the 2026 farrowing season, while the build slots last</span></div>
-    </div>
-
-    <p class="lede rv center">The product pages show you a concept design. If you
-      would rather see what the system actually did on a farm, the unedited trial
-      footage is in the <a href="barn.html">case study</a>.</p>
-    <div class="cta-row rv">
-      <a class="btn btn-ghost" href="barn.html">See the trial footage</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Team ===== -->
-<section class="sec sec-deep" id="team">
-  <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">THE TEAM</p>
-      <h2 class="rv">Who is building this</h2>
-      <p class="lede rv">Robotics, computer vision and animal science: everything
-        a crate-mounted sensor needs to be built, trained and trusted, in one
-        team.</p>
-    </header>
-
-    <div class="team">
-      <article class="tcard rv">
-        <img src="assets/team/steven.webp" alt="Ziyuan “Steven” Zhao">
-        <div class="t-body">
-          <h4>Ziyuan “Steven” Zhao</h4>
-          <p class="t-role">Robotics &amp; Automation · Marketing</p>
-          <p>Ph.D. student at Texas A&amp;M University researching robotics and
-            automation. Builds the machine, from CAD to the farrowing room,
-            and leads go-to-market, having headed overseas markets for other
-            companies expanding abroad.</p>
-          <a class="t-link" href="https://ziyuanzhao.org/" target="_blank" rel="noopener"><span class="t-kind">Personal site</span> ziyuanzhao.org<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.4 8.6 8.6 3.4M4.6 3.4h4v4"/></svg><span class="vh"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-      <article class="tcard rv">
-        <img src="assets/team/andy.webp" alt="Yu “Andy” Wang">
-        <div class="t-body">
-          <h4>Yu “Andy” Wang</h4>
-          <p class="t-role">Computer Vision</p>
-          <p>Ph.D. student at Texas A&amp;M University researching computer
-            vision. Builds the eyes: the models that read sow posture,
-            respiration and the lateral roll, and tell a newborn from a
-            stillborn in the landing zone.</p>
-        </div>
-      </article>
-      <article class="tcard rv">
-        <img src="assets/team/emmanuel.webp" alt="Emmanuel Otchere">
-        <div class="t-body">
-          <h4>Emmanuel Otchere</h4>
-          <p class="t-role">Animal Science</p>
-          <p>Ph.D. student at Texas A&amp;M University researching animal
-            welfare and productivity. Keeps it honest to the animal: sow and
-            piglet biology, on-farm trial protocols and the producer studies
-            that shape what we build.</p>
-        </div>
-      </article>
-    </div>
-
-    <header class="sec-head">
-      <h3 class="sub-h rv">Advisors</h3>
-      <p class="lede rv">Domain experts who keep the engineering, the agronomy and
-        the business honest.</p>
-    </header>
-    <div class="team team--4">
-      <article class="tcard rv">
-        <img src="assets/team/ziteng.webp" alt="Dr. Ziteng “Tim” Xu">
-        <div class="t-body">
-          <h4>Dr. Ziteng “Tim” Xu</h4>
-          <p class="t-role">Bioengineering Scientist</p>
-          <p>Assistant Professor, Texas A&amp;M University, working on smart technologies
-            for livestock production, machine learning and robotics.</p>
-          <a class="t-link" href="https://poultry.tamu.edu/people/xu-ziteng-tim/" target="_blank" rel="noopener"><span class="t-kind">Faculty page</span> poultry.tamu.edu<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.4 8.6 8.6 3.4M4.6 3.4h4v4"/></svg><span class="vh"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-      <article class="tcard rv">
-        <img src="assets/team/diasio.webp" alt="Dr. Steve Diasio">
-        <div class="t-body">
-          <h4>Dr. Steve Diasio</h4>
-          <p class="t-role">Innovation &amp; Entrepreneurship</p>
-          <p>Clinical Professor, Department of Management, Mays Business School,
-            Texas A&amp;M University, working on corporate innovation, design thinking
-            and how new ventures scale.</p>
-          <a class="t-link" href="https://www.stevediasio.com/" target="_blank" rel="noopener"><span class="t-kind">Personal site</span> stevediasio.com<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.4 8.6 8.6 3.4M4.6 3.4h4v4"/></svg><span class="vh"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-      <article class="tcard rv">
-        <img src="assets/team/flint.webp" alt="Dr. David Flint">
-        <div class="t-body">
-          <h4>Dr. David Flint</h4>
-          <p class="t-role">Business Strategy</p>
-          <p>Clinical Professor and Director, M.S. in Entrepreneurial Leadership,
-            Mays Business School, Texas A&amp;M University.</p>
-          <a class="t-link" href="https://drdavidflint.com/about/" target="_blank" rel="noopener"><span class="t-kind">Personal site</span> drdavidflint.com<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.4 8.6 8.6 3.4M4.6 3.4h4v4"/></svg><span class="vh"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-      <article class="tcard rv">
-        <img src="assets/team/jianfeng.webp" alt="Dr. Jianfeng Zhou">
-        <div class="t-body">
-          <h4>Dr. Jianfeng Zhou</h4>
-          <p class="t-role">Agricultural Engineering Scientist</p>
-          <p>Associate Professor, University of Missouri, working on precision livestock
-            farming and agricultural sensing.</p>
-          <a class="t-link" href="https://cafnr.missouri.edu/directory/jianfeng-zhou/" target="_blank" rel="noopener"><span class="t-kind">Faculty page</span> cafnr.missouri.edu<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.4 8.6 8.6 3.4M4.6 3.4h4v4"/></svg><span class="vh"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-    </div>
   </div>
 </section>
 
 <!-- ===== Partners ===== -->
-<section class="sec" id="partners">
+<section class="logos" id="partners" aria-label="Partners and support">
   <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow">PARTNERS &amp; SUPPORT</p>
-      <h2 class="rv">The people who know pigs</h2>
-      <p class="lede rv">University research partners, the federal programs behind
-        our non-dilutive support, and the pork-industry organizations that opened
-        doors to producers.</p>
-    </header>
-    <div class="logo-marquee rv" role="img" aria-label="Partner logos: Texas A&M University, University of Missouri, U.S. National Science Foundation, USDA, Smithfield, National Pork Board, Texas Pork Producers Association, Missouri Pork Association">
-      <div class="logo-track">
-        <div class="logo-set">
-          <span><img src="assets/logos/tamu.png"       alt=""></span>
-          <span><img src="assets/logos/mizzou.png"     alt=""></span>
-          <span><img src="assets/logos/nsf.png"        alt=""></span>
-          <span><img src="assets/logos/usda.png"       alt=""></span>
-          <span><img src="assets/logos/smithfield.png" alt=""></span>
-          <span><img src="assets/logos/npb.png"        alt=""></span>
-          <span><img src="assets/logos/tppa.png"       alt=""></span>
-          <span><img src="assets/logos/mpa.png"        alt=""></span>
-        </div>
-        <div class="logo-set" aria-hidden="true">
-          <span><img src="assets/logos/tamu.png"       alt=""></span>
-          <span><img src="assets/logos/mizzou.png"     alt=""></span>
-          <span><img src="assets/logos/nsf.png"        alt=""></span>
-          <span><img src="assets/logos/usda.png"       alt=""></span>
-          <span><img src="assets/logos/smithfield.png" alt=""></span>
-          <span><img src="assets/logos/npb.png"        alt=""></span>
-          <span><img src="assets/logos/tppa.png"       alt=""></span>
-          <span><img src="assets/logos/mpa.png"        alt=""></span>
-        </div>
+    <p class="logos-label">University research partners, federal grant programs
+      and the pork-industry organizations that opened doors to producers</p>
+  </div>
+  <div class="marquee" role="img" aria-label="Partner logos: Texas A&amp;M University, University of Missouri, U.S. National Science Foundation, USDA, Smithfield, National Pork Board, Texas Pork Producers Association, Missouri Pork Association">
+    <div class="marquee-track">
+      <div class="marquee-set">
+        <img loading="eager" decoding="async" height="52" src="assets/logos/tamu.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mizzou.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/nsf.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/usda.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/smithfield.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/npb.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/tppa.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mpa.webp" alt="">
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <img loading="eager" decoding="async" height="52" src="assets/logos/tamu.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mizzou.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/nsf.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/usda.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/smithfield.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/npb.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/tppa.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mpa.webp" alt="">
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <img loading="eager" decoding="async" height="52" src="assets/logos/tamu.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mizzou.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/nsf.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/usda.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/smithfield.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/npb.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/tppa.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mpa.webp" alt="">
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <img loading="eager" decoding="async" height="52" src="assets/logos/tamu.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mizzou.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/nsf.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/usda.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/smithfield.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/npb.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/tppa.webp" alt=""><img loading="eager" decoding="async" height="52" src="assets/logos/mpa.webp" alt="">
       </div>
     </div>
-    <p class="fine rv">Pork-industry organizations provided letters of support and
+  </div>
+  <div class="wrap">
+    <p class="note">Pork-industry organizations provided letters of support and
       helped distribute our producer survey. They are not investors, customers or
       commercial partners. NSF and USDA-NIFA are listed as sources of
       non-dilutive grant support, not as endorsements.</p>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="cta" id="contact">
+<!-- ===== Problem ===== -->
+<section class="section" id="problem">
   <div class="wrap">
-    <h2 class="rv">Try one on your crates. Free.</h2>
-    <p class="lede rv">We fit an SPM-01 prototype to one of your farrowing crates,
-      leave it there through weaning and collect it afterward. The trial costs you
-      nothing and your data stays yours. We build the units by hand, so slots are
-      limited and go in the order producers ask.</p>
-    <div class="cta-row rv">
-      <a class="btn btn-coral" href="contact.html#pilot">Request a trial</a>
-      <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+    <header class="shead">
+      <p class="eyebrow">The problem</p>
+      <h2 class="rv">Piglets do not die in secret. <span class="soft">Nobody is watching.</span></h2>
+      <p class="lede rv">The deaths that empty a farrowing room are visible events
+        with short windows, and no stockperson can stand at the right crate at the
+        right moment, every time, all night. That is a supervision gap, not a
+        biology problem, and supervision is exactly what a camera is for.</p>
+    </header>
+
+    <div class="metrics">
+      <div class="metric rv"><strong data-count="1.05" data-prefix="$" data-dec="2" data-suffix="B">$1.05B</strong><span>lost each year in U.S. farrowing rooms to stillbirth and preweaning mortality</span></div>
+      <div class="metric rv"><strong data-count="6" data-prefix="1 in ">1 in 6</strong><span>piglets born alive never reach weaning, 16.4% in 2024</span></div>
+      <div class="metric rv"><strong data-count="3" data-prefix="~" data-suffix="&thinsp;s">~3&thinsp;s</strong><span>the sternal-to-lateral roll that crushes piglets</span></div>
+      <div class="metric rv"><strong data-count="72" data-suffix="%">72%</strong><span>of stillbirths happen during farrowing, most of them preventable</span></div>
+    </div>
+
+    <div class="grid g2 mt-l">
+      <article class="card rv">
+        <h3>Crushing: about 30% of the loss</h3>
+        <p>80% of crushing deaths happen in the first four days after farrowing, and
+          68% during one specific event: the sow rolling from sternal to lateral
+          lying. The window is about three seconds long. No stockperson can watch
+          every crate through every one of those windows.</p>
+      </article>
+      <article class="card rv">
+        <h3>Stillbirth: about 30% of the loss</h3>
+        <p>72% of stillbirths happen during farrowing: the piglet is alive when
+          labor starts and dies waiting. Piglets normally arrive ~15 minutes apart,
+          so a stalled birth is survivable if someone notices in time. But more than
+          half of sows farrow more than two days off their predicted date, so
+          usually nobody is there.</p>
+      </article>
+    </div>
+    <p class="note rv">Preweaning mortality from the National Pork Board and
+      MetaFarms 2024 production analysis. Loss estimate from USDA quarterly
+      weaning volumes and published preweaning-mortality literature, at $44 per
+      weaned piglet.</p>
+  </div>
+</section>
+
+<!-- ===== The system: three product lines ===== -->
+<section class="section section--alt" id="system">
+  <div class="wrap">
+    <header class="shead">
+      <p class="eyebrow">The system</p>
+      <h2 class="rv">A closed loop for the farrowing crate</h2>
+      <p class="lede rv">It senses the sow and her newborn litter, acts on the
+        crate before a piglet is lost, and manages every crate and site from one
+        software layer.</p>
+    </header>
+
+    <div class="grid g3">
+      <article class="pcard rv">
+        <div class="pcard-stage stage">
+          <img src="assets/img/hero_static.webp" alt="SPM-01 Smart Piglet Monitor, concept industrial design render" width="1440" height="1440" loading="lazy">
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-role">Detect</p>
+          <h3><a href="product.html">SPM-01 Smart Piglet Monitor</a></h3>
+          <p>Two optical axes in one sealed enclosure: a stereo depth module
+            reads the sow, an RGB + IR head reads the piglets beneath her. Built
+            for the pressure washer and mounted on the crate itself.</p>
+          <div class="pcard-foot">
+            <span class="status status--ok">Prototype validated on farm</span>
+            <a href="SPM-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="pcard-stage stage">
+          <img src="assets/travel/trav_047.webp" alt="SPC-01 Smart Piglet Curtain, concept industrial design render" width="1440" height="1440" loading="lazy">
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-role">Act</p>
+          <h3><a href="spc01.html">SPC-01 Smart Piglet Curtain</a></h3>
+          <p>A motorized fabric curtain closes the danger zone seconds before
+            the sow rolls, and lifts the moment she is safe. SPM-01 watches.
+            SPC-01 acts.</p>
+          <div class="pcard-foot">
+            <span class="status">Concept in development</span>
+            <a href="SPC-01_Product_Brochure.pdf" download>Brochure (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="pcard-stage stage" aria-hidden="true">
+          <div class="phone phone-peek">
+            <div class="phone-notch"></div>
+            <div class="phone-status"><span>9:41</span><i></i></div>
+            <div class="phone-head"><img src="assets/img/logo_badge.png" alt=""><span>SMART SWINE</span><span class="live">LIVE</span></div>
+            <div class="phone-feed">
+              <img src="assets/img/app_feed.webp" alt="" loading="lazy">
+              <span class="dbox" style="left:52%;top:6%;width:40%;height:52%"><i>SOW · STANDING</i></span>
+              <span class="dbox" style="left:18%;top:66%;width:13%;height:20%"><i>NEWBORN</i></span>
+              <span class="dbox" style="left:37%;top:74%;width:12%;height:18%"><i>NEWBORN</i></span>
+              <span class="dbox hot" style="left:71%;top:70%;width:15%;height:20%"><i>STILLBORN</i></span>
+              <span class="feed-tag">CRATE 07 · LIVE · 04:32</span>
+            </div>
+            <div class="phone-stats">
+              <div><strong>14</strong><span>born tonight</span></div>
+              <div><strong>2</strong><span>alerts raised</span></div>
+              <div><strong>24</strong><span>sows watched</span></div>
+            </div>
+            <div class="phone-chart">
+              <p class="phone-k">BIRTHS PER NIGHT</p>
+              <div class="bars"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:34%"></i><i style="--h:66%"></i><i style="--h:52%"></i><i class="hot" style="--h:92%"></i><i style="--h:70%"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-role">Decide and manage</p>
+          <h3><a href="software.html">Smart Swine software</a></h3>
+          <p>Alerts, live view, a farrowing timeline and an AI morning brief on
+            the herd team's phones, with Software Pro for integrators who run
+            many sites.</p>
+          <div class="pcard-foot">
+            <span class="status">In design</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<footer class="foot">
-  <div class="wrap foot-grid">
-    <div>
-      <p class="foot-brand"><img src="assets/img/logo_badge.png" alt="" width="26" height="26"> SMART&nbsp;SWINE</p>
-      <p class="mut">SMART SWINE, LLC · College Station, TX</p>
-      <p class="mut"><a href="mailto:Ziyuanzhao@tamu.edu">Ziyuanzhao@tamu.edu</a> ·
-         <a href="https://www.linkedin.com/company/133423991/" rel="noopener" target="_blank">LinkedIn</a></p>
+<!-- ===== Evidence ===== -->
+<section class="section" id="evidence">
+  <div class="wrap">
+    <div class="split">
+      <header>
+        <p class="eyebrow">Evidence</p>
+        <h2 class="rv">The models already run on real barn footage</h2>
+        <p class="lede rv" style="margin-top:18px">Vision models trained on more than
+          500 hours of on-farm depth and RGB farrowing video. Hardware validated
+          in a 10-sow on-farm trial under IACUC oversight.</p>
+        <p class="rv" style="margin-top:14px">The product pages show a concept design.
+          The case study shows what the system actually did on a farm, unedited.</p>
+        <div class="cta-row rv">
+          <a class="btn btn--primary" href="barn.html">See the trial footage<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </header>
+      <div class="metrics metrics--2">
+        <div class="metric rv"><strong data-count="99.15" data-dec="2" data-suffix="%">99.15%</strong><span>sow-posture classification, on a sow the model had never seen</span></div>
+        <div class="metric rv"><strong data-count="98.4" data-dec="1" data-suffix="%">98.4%</strong><span>breathing-signal classification, on validation data</span></div>
+        <div class="metric rv"><strong data-count="96" data-suffix="%">96%</strong><span>stillborn precision</span></div>
+        <div class="metric rv"><strong data-count="86" data-suffix="%">86%</strong><span>newborn precision</span></div>
+      </div>
     </div>
-    <p class="fine">Product imagery across this site is concept industrial design,
-      and film clips are AI-generated concept footage.
-      The sensing hardware reflects a prototype validated in a 10-sow on-farm
-      trial under IACUC oversight (Apr–May 2026); mounts and internal layout are
-      design proposals. IP69K is a design target. Support figures are
-      non-dilutive grants, not equity raised. Survey findings are a small-sample
-      concept test. Sow and piglet geometry: “Some Pig” by Austin Beaulier,
-      licensed CC&nbsp;BY&nbsp;4.0.<br>© 2026 SMART SWINE, LLC.</p>
   </div>
-</footer>
+</section>
+
+<!-- ===== Free trial ===== -->
+<section class="section section--flush" id="trial">
+  <div class="wrap">
+    <div class="panel panel--dark rv">
+      <div class="panel-grid">
+        <div>
+          <p class="eyebrow">Free trial</p>
+          <h2>Try one on your crates. Free.</h2>
+          <p class="lede" style="margin-top:18px">We build the units by hand, so
+            slots are limited and go in the order producers ask.</p>
+          <div class="cta-row">
+            <a class="btn btn--pink" href="contact.html#pilot">Request a trial</a>
+            <a class="btn btn--ghost" href="contact.html">Get in touch</a>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">1</span>
+            <h3>Tell us about your room</h3>
+            <p>Your farm, your room, and roughly when the next group is due.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">2</span>
+            <h3>We fit one crate</h3>
+            <p>An SPM-01 prototype goes on one of your farrowing crates and stays
+              there through weaning.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">3</span>
+            <h3>We collect it afterward</h3>
+            <p>The trial costs you nothing and your data stays yours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Smart Swine home"><img src="assets/img/logo_badge.png" alt="" width="230" height="170"><span>Smart <em>Swine</em></span></a>
+        <p>Camera intelligence for the farrowing room.</p>
+        <p class="foot-meta">SMART SWINE, LLC · College Station, TX</p>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <div class="foot-links">
+          <a href="product.html">SPM-01 Monitor</a>
+          <a href="spc01.html">SPC-01 Curtain</a>
+          <a href="software.html">Software</a>
+          <a href="barn.html">Case study</a>
+        </div>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="careers.html">Careers</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Get in touch</h5>
+        <div class="foot-links">
+          <a href="mailto:Ziyuanzhao@tamu.edu">Ziyuanzhao@tamu.edu</a>
+          <a href="https://www.linkedin.com/company/133423991/" rel="noopener" target="_blank">LinkedIn</a>
+          <a href="contact.html#pilot">Request a free trial</a>
+        </div>
+      </div>
+    </div>
+    <p class="foot-fine">Product imagery across this site is concept industrial design, and film clips are AI-generated concept footage. The sensing hardware reflects a prototype validated in a 10-sow on-farm trial under IACUC oversight (Apr–May 2026); mounts and internal layout are design proposals. SPC-01 is a concept in development, the Smart Swine app is in design and Software Pro is planned. IP69K is a design target. Support figures are non-dilutive grants, not equity raised. Survey findings are a small-sample concept test. Sow and piglet geometry: “Some Pig” by Austin Beaulier, licensed CC&nbsp;BY&nbsp;4.0.</p>
+    <p class="foot-copy">© 2026 SMART SWINE, LLC.</p>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
 </body>
 </html>
